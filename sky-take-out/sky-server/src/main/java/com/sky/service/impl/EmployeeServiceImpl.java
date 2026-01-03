@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
+import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
@@ -69,9 +70,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUpdateTime(LocalDateTime.now());
 
         // 设置该记录的创建人id和修改人id，也就是当前管理端的登录用户id
-        // fixme: 这里先暂时写死，后续会改为动态获取当前管理端的登录用户id
-        employee.setCreateUser(10L);
-        employee.setUpdateUser(10L);
+        Long id= BaseContext.getCurrentId();
+        employee.setCreateUser(id);
+        employee.setUpdateUser(id);
 
         // 调用持久层方法新增用户
         employeeMapper.save(employee);
