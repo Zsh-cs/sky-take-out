@@ -69,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setCreateTime(LocalDateTime.now());
         employee.setUpdateTime(LocalDateTime.now());
 
-        // 设置该记录的创建人id和修改人id，也就是当前管理端的登录用户id
+        // 设置该记录的创建人id和修改人id为当前管理端的登录用户id
         Long id= BaseContext.getCurrentId();
         employee.setCreateUser(id);
         employee.setUpdateUser(id);
