@@ -1,16 +1,20 @@
 package com.sky.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
+import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import com.sky.exception.AccountLockedException;
 import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
+import com.sky.result.PageResult;
 import com.sky.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +81,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         // 调用持久层方法新增用户
         employeeMapper.save(employee);
 
+    }
+
+
+    // 员工分页查询
+    @Override
+    public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
+        // 开始分页查询，PageHelper会对我们的SQL语句动态拼接分页查询条件，它的底层是基于ThreadLocal实现的
+        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+
+        // 返回值遵循PageHelper规范
+        Page<Employee> page=employeeMapper.pageQuery(employeePageQueryDTO);
+
+        // 提取出page的total和records属性，封装到PageResult中
+        PageResult pageResult=new PageResult(page.getTotal(),page.getResult());
+        return pageResult;
     }
 
 }
