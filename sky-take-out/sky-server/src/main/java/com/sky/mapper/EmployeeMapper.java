@@ -29,4 +29,10 @@ public interface EmployeeMapper {
 
     // 为了修改的通用性，我们使用动态SQL编写更加通用的update方法：根据主键动态修改员工
     void update(Employee employee);
+
+
+    // 根据id查询员工信息
+    @Select("select id,username,name,phone,sex,id_number from employee where id=#{id}")
+    Employee getById(Long id);
+
 }

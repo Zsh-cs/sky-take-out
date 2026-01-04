@@ -19,4 +19,10 @@ public interface EmployeeService {
 
     // 启用禁用员工账号
     void changeStatus(Integer status, Long id);
+
+    // 根据id查询员工信息
+    EmployeeDTO getById(Long id);
+
+    // 修改员工信息
+    void update(EmployeeDTO employeeDTO);
 }
