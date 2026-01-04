@@ -11,7 +11,7 @@
                 and name like concat('%',#{name},'%')
             </if>
         </where>
-        order by create_time
+        order by id
     </select>
 
     <!--根据主键修改员工：动态SQL-->
@@ -24,9 +24,9 @@
             <if test="phone != null">                        phone = #{phone},</if>
             <if test="sex != null">                          sex = #{sex},</if>
             <if test="idNumber != null">                     id_number = #{idNumber},</if>
+            <if test="status != null">                       status = #{status},</if>
             <if test="updateTime != null">                   update_time = #{updateTime},</if>
-            <if test="updateUser != null">                   update_user = #{updateUser},</if>
-            <if test="status != null">                       status = #{status}</if>
+            <if test="updateUser != null">                   update_user = #{updateUser}</if>
         </set>
         where id = #{id}
     </update>

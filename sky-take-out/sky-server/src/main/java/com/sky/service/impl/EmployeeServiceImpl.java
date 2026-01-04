@@ -78,9 +78,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setCreateUser(id);
         employee.setUpdateUser(id);
 
-        // 调用持久层方法新增用户
+        // 调用持久层方法新增员工
         employeeMapper.save(employee);
-
     }
 
 
@@ -115,6 +114,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDTO getById(Long id) {
         EmployeeDTO employeeDTO=new EmployeeDTO();
         Employee employee = employeeMapper.getById(id);
+
+        // 使用对象属性拷贝，将实体类数据拷贝到DTO中
         BeanUtils.copyProperties(employee,employeeDTO);
         return employeeDTO;
     }
@@ -124,7 +125,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void update(EmployeeDTO employeeDTO) {
         Employee employee=new Employee();
+
+        // 使用对象属性拷贝，将DTO数据拷贝到实体类中
         BeanUtils.copyProperties(employeeDTO,employee);
+
         employee.setUpdateTime(LocalDateTime.now());
         employee.setUpdateUser(BaseContext.getCurrentId());
         employeeMapper.update(employee);
