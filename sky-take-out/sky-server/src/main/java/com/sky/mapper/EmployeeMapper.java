@@ -25,4 +25,8 @@ public interface EmployeeMapper {
 
     // 员工分页查询
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+
+    // 为了修改的通用性，我们使用动态SQL编写更加通用的update方法：根据主键动态修改员工
+    void update(Employee employee);
 }

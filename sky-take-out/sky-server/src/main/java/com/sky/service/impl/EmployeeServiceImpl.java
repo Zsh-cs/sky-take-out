@@ -98,4 +98,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         return pageResult;
     }
 
+
+    // 启用禁用员工账号
+    @Override
+    public void changeStatus(Integer status, Long id) {
+        // 为了修改的通用性，我们不在持久层中单独编写changeStatus方法，而是使用动态SQL编写更加通用的update方法
+        Employee employee=new Employee();
+        employee.setStatus(status);
+        employee.setId(id);
+        employeeMapper.update(employee);
+    }
+
 }
