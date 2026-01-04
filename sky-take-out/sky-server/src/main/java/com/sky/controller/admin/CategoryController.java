@@ -56,4 +56,34 @@ public class CategoryController {
     }
 
 
+    // 根据id查询分类信息
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询分类信息")
+    public Result<CategoryDTO> getById(@PathVariable Long id){
+        log.info("查询id={}的分类信息",id);
+        CategoryDTO categoryDTO=categoryService.getById(id);
+        return Result.success(categoryDTO);
+    }
+
+
+    // 修改分类信息
+    @PutMapping
+    @ApiOperation("修改分类信息")
+    public Result update(@RequestBody CategoryDTO categoryDTO){
+        log.info("修改分类信息为：{}",categoryDTO);
+        categoryService.update(categoryDTO);
+        return Result.success();
+    }
+
+
+    // 根据id删除分类：逻辑删除
+    @DeleteMapping
+    @ApiOperation("根据id删除分类：逻辑删除")
+    public Result deleteById(Long id){
+        log.info("即将删除id={}的分类",id);
+        categoryService.deleteById(id);
+        return Result.success();
+    }
+
+
 }

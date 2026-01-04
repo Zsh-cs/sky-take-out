@@ -4,9 +4,11 @@
 <mapper namespace="com.sky.mapper.CategoryMapper">
 
     <!--分类分页查询：动态SQL-->
+    <!--Caution: 不要把已经逻辑删除的分类查询出来-->
     <select id="pageQuery" resultType="com.sky.entity.Category">
         select * from category
         <where>
+            deleted=0
             <if test="name!=null and name!=''">
                 and name like concat('%',#{name},'%')
             </if>
@@ -14,7 +16,7 @@
                 and type = #{type}
             </if>
         </where>
-        order by sort
+        order by sort asc, create_time desc
     </select>
 
     <!--根据主键修改分类：动态SQL-->
@@ -28,6 +30,7 @@
             <if test="updateTime != null">                   update_time = #{updateTime},</if>
             <if test="updateUser != null">                   update_user = #{updateUser}</if>
         </set>
+        where id = #{id}
     </update>
 
 </mapper>
