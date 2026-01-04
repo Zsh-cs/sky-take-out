@@ -33,7 +33,8 @@ sky:
   jwt:
     # 设置jwt签名加密时使用的秘钥
     admin-secret-key: itcast
-    #Caution: 设置jwt过期时间，尽量设得长一点，防止过几年运行项目令牌就过期报401！
-    admin-ttl: 72000000
+    #Caution: 设置jwt过期时间，尽量设得长一点，防止过没多久运行项目令牌就过期报401！
+    #Caution: 等项目上线后再改回来
+    admin-ttl: 720000000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
