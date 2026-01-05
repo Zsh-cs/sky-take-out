@@ -37,4 +37,7 @@ public interface CategoryMapper {
     @Update("update category set deleted=1 where id=#{id}")
     void deleteById(Long id);
 
+    // 根据类型查询分类信息：只查已启用的分类
+    @Select("select id,name,type,sort from category where type=#{type} and status=1")
+    Category getValidCategoryByType(Integer type);
 }

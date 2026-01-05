@@ -32,9 +32,15 @@ logging:
 sky:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: itcast
+    admin-secret-key: cszsh
     #Caution: 设置jwt过期时间，尽量设得长一点，防止过没多久运行项目令牌就过期报401！
     #Caution: 等项目上线后再改回来
     admin-ttl: 720000000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+  # 阿里云OSS
+  aliyun.oss:
+    endpoint: ${sky.aliyun.oss.endpoint}
+    access-key-id: ${sky.aliyun.oss.access-key-id}
+    access-key-secret: ${sky.aliyun.oss.access-key-secret}
+    bucket-name: ${sky.aliyun.oss.bucket-name}

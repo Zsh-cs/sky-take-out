@@ -22,4 +22,7 @@ public interface CategoryService {
 
     // 根据id删除分类：逻辑删除
     void deleteById(Long id);
+
+    // 根据类型查询分类信息：只查已启用的分类
+    CategoryDTO getValidCategoryByType(Integer type);
 }

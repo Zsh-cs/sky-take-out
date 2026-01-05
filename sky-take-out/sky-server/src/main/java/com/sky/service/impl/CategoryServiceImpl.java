@@ -114,4 +114,16 @@ public class CategoryServiceImpl implements CategoryService {
         // 若没有异常，则逻辑删除分类
         categoryMapper.deleteById(id);
     }
+
+
+    // 根据类型查询分类信息：只查已启用的分类
+    @Override
+    public CategoryDTO getValidCategoryByType(Integer type) {
+        CategoryDTO validCategoryDTO=new CategoryDTO();
+        Category validCategory=categoryMapper.getValidCategoryByType(type);
+
+        // 使用对象属性拷贝，将实体类数据拷贝到DTO中
+        BeanUtils.copyProperties(validCategory,validCategoryDTO);
+        return validCategoryDTO;
+    }
 }
