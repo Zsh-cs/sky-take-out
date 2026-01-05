@@ -69,14 +69,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         BeanUtils.copyProperties(employeeDTO,employee);
 
         // 设置实体类的其他属性，密码默认是123456，需要进行MD5加密
+        //Caution: 实体类的公共字段已经统一进行自动填充，此处不必额外赋值
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-
-        // 设置该记录的创建人id和修改人id为当前管理端的登录用户id
-        Long id= BaseContext.getCurrentId();
-        employee.setCreateUser(id);
-        employee.setUpdateUser(id);
 
         // 调用持久层方法新增员工
         employeeMapper.save(employee);
@@ -127,10 +121,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee=new Employee();
 
         // 使用对象属性拷贝，将DTO数据拷贝到实体类中
+        // 实体类的公共字段已经统一进行自动填充，此处不必额外赋值
         BeanUtils.copyProperties(employeeDTO,employee);
 
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
         employeeMapper.update(employee);
     }
 
