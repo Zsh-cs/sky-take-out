@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 分类管理模块
  */
@@ -90,7 +92,7 @@ public class CategoryController {
     // 根据类型查询分类信息：只查已启用的分类
     @GetMapping("/list")
     @ApiOperation("根据类型查询分类信息：只查已启用的分类")
-    public Result<CategoryDTO> getValidCategoryByType(Integer type) {
+    public Result<List<CategoryDTO>> getValidCategoriesByType(Integer type) {
         String msg;
         switch (type){
             case 1: msg="菜品"; break;
@@ -98,7 +100,7 @@ public class CategoryController {
             default: msg="未知";
         }
         log.info("查询已启用的{}分类信息", msg);
-        CategoryDTO validCategoryDTO = categoryService.getValidCategoryByType(type);
-        return Result.success(validCategoryDTO);
+        List<CategoryDTO> validCategoryDTOs = categoryService.getValidCategoriesByType(type);
+        return Result.success(validCategoryDTOs);
     }
 }

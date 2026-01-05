@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface CategoryMapper {
 
@@ -38,6 +40,6 @@ public interface CategoryMapper {
     void deleteById(Long id);
 
     // 根据类型查询分类信息：只查已启用的分类
-    @Select("select id,name,type,sort from category where type=#{type} and status=1")
-    Category getValidCategoryByType(Integer type);
+    @Select("select id,name,type,sort from category where type=#{type} and status=1 and deleted=0")
+    List<Category> getValidCategoriesByType(Integer type);
 }

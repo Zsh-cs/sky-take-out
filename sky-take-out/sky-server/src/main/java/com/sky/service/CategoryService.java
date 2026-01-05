@@ -4,6 +4,8 @@ import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.result.PageResult;
 
+import java.util.List;
+
 public interface CategoryService {
     // 新增分类
     void save(CategoryDTO categoryDTO);
@@ -24,5 +26,5 @@ public interface CategoryService {
     void deleteById(Long id);
 
     // 根据类型查询分类信息：只查已启用的分类
-    CategoryDTO getValidCategoryByType(Integer type);
+    List<CategoryDTO> getValidCategoriesByType(Integer type);
 }

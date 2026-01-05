@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -118,12 +120,17 @@ public class CategoryServiceImpl implements CategoryService {
 
     // 根据类型查询分类信息：只查已启用的分类
     @Override
-    public CategoryDTO getValidCategoryByType(Integer type) {
-        CategoryDTO validCategoryDTO=new CategoryDTO();
-        Category validCategory=categoryMapper.getValidCategoryByType(type);
+    public List<CategoryDTO> getValidCategoriesByType(Integer type) {
+        List<CategoryDTO> validCategoryDTOs=new ArrayList<>();
+        List<Category> validCategories = categoryMapper.getValidCategoriesByType(type);
 
         // 使用对象属性拷贝，将实体类数据拷贝到DTO中
-        BeanUtils.copyProperties(validCategory,validCategoryDTO);
-        return validCategoryDTO;
+        for (Category validCategory : validCategories) {
+            CategoryDTO validCategoryDTO=new CategoryDTO();
+            BeanUtils.copyProperties(validCategory,validCategoryDTO);
+            validCategoryDTOs.add(validCategoryDTO);
+        }
+
+        return validCategoryDTOs;
     }
 }

@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
             if (message.contains("employee")) {
                 return Result.error("用户名" + name + MessageConstant.ALREADY_EXISTS);
             } else if (message.contains("category")) {
-                name = name.split("-", 2)[0] + "\'";
+                name = name.substring(0, name.lastIndexOf("-")) + "\'";
                 return Result.error("分类名" + name + MessageConstant.ALREADY_EXISTS);
             } else {
                 return Result.error(name + MessageConstant.ALREADY_EXISTS);
