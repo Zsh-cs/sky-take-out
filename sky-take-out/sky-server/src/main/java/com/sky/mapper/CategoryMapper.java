@@ -2,9 +2,8 @@ package com.sky.mapper;
 
 import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
-import com.sky.dto.CategoryPageQueryDTO;
+import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.entity.Category;
-import com.sky.entity.Employee;
 import com.sky.enumeration.SqlOperationType;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,8 +25,7 @@ public interface CategoryMapper {
     // 分类分页查询
     Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
 
-    // 为了修改的通用性，我们使用动态SQL编写更加通用的update方法：根据主键动态修改分类
-    // 自动填充公共字段
+    // 根据主键动态修改分类
     @AutoFill(SqlOperationType.UPDATE)
     void update(Category category);
 

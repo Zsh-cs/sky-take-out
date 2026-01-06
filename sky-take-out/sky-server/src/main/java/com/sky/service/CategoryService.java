@@ -1,7 +1,7 @@
 package com.sky.service;
 
 import com.sky.dto.CategoryDTO;
-import com.sky.dto.CategoryPageQueryDTO;
+import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.result.PageResult;
 
 import java.util.List;

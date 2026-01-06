@@ -2,10 +2,8 @@ package com.sky.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.dto.DishDTO;
-import com.sky.dto.DishPageQueryDTO;
-import com.sky.entity.Category;
+import com.sky.dto.page.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.entity.DishFlavor;
 import com.sky.mapper.DishFlavorMapper;
@@ -25,18 +23,15 @@ public class DishServiceImpl implements DishService {
 
     @Autowired
     private DishMapper dishMapper;
-
     @Autowired
     private DishFlavorMapper dishFlavorMapper;
 
     // 新增菜品和对应的口味
-    @Transactional//Caution: 由于涉及多表操作，所以必须开启事务
+    //Caution: 由于涉及多表操作，所以必须开启事务
+    @Transactional
     @Override
     public void saveWithFlavor(DishDTO dishDTO) {
         Dish dish=new Dish();
-
-        // 使用对象属性拷贝，将DTO数据拷贝到实体类中
-        // 实体类的公共字段已经统一进行自动填充，此处不必额外赋值
         BeanUtils.copyProperties(dishDTO,dish);
 
         // 向菜品表插入一条数据
@@ -53,20 +48,14 @@ public class DishServiceImpl implements DishService {
             // 批量添加口味
             dishFlavorMapper.saveBatch(flavors);
         }
-
     }
 
 
     // 菜品分页查询
     @Override
     public PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO) {
-        // 开始分页查询，PageHelper会对我们的SQL语句动态拼接分页查询条件，它的底层是基于ThreadLocal实现的
         PageHelper.startPage(dishPageQueryDTO.getPage(),dishPageQueryDTO.getPageSize());
-
-        // 返回值遵循PageHelper规范
         Page<DishVO> page=dishMapper.pageQuery(dishPageQueryDTO);
-
-        // 提取出page的total和records属性，封装到PageResult中
         PageResult pageResult=new PageResult(page.getTotal(),page.getResult());
         return pageResult;
     }

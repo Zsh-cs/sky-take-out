@@ -14,6 +14,8 @@ import java.io.Serializable;
 public class UserLoginVO implements Serializable {
 
     private Long id;
+
+    // 微信用户唯一标识
     private String openid;
     private String token;
 

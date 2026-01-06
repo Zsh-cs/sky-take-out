@@ -9,6 +9,9 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import java.io.ByteArrayInputStream;
 
+/**
+ * 阿里云OSS工具类
+ */
 @Data
 @AllArgsConstructor
 @Slf4j
@@ -28,7 +31,7 @@ public class AliyunOssUtil {
      */
     public String upload(byte[] bytes, String objectName) {
 
-        // 创建OSSClient实例。
+        // 创建OSSClient实例
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 
         try {

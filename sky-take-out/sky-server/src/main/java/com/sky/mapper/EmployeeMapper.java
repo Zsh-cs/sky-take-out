@@ -2,7 +2,7 @@ package com.sky.mapper;
 
 import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
-import com.sky.dto.EmployeePageQueryDTO;
+import com.sky.dto.page.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import com.sky.enumeration.SqlOperationType;
 import org.apache.ibatis.annotations.Insert;
@@ -29,7 +29,7 @@ public interface EmployeeMapper {
 
     // 为了修改的通用性，我们使用动态SQL编写更加通用的update方法：根据主键动态修改员工
     // 自动填充公共字段
-    // Caution: 约定好如果要使用@AutoFill注解，那么实体对象必须作为方法的第一个入参
+    //Caution: 约定好如果要使用@AutoFill注解，那么实体对象必须作为方法的第一个入参
     @AutoFill(SqlOperationType.UPDATE)
     void update(Employee employee);
 

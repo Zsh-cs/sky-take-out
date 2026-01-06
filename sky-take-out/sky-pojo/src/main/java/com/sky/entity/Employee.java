@@ -19,27 +19,20 @@ public class Employee implements Serializable {
     private Long id;
 
     private String username;
-
     private String name;
-
     private String password;
-
     private String phone;
-
+    // 性别：0女，1男
     private String sex;
-
+    // 身份证号
     private String idNumber;
-
+    // 状态：0禁用，1启用
     private Integer status;
 
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    // 公共字段
     private LocalDateTime createTime;
-
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime;
-
     private Long createUser;
-
+    private LocalDateTime updateTime;
     private Long updateUser;
 
 }

@@ -1,7 +1,7 @@
 package com.sky.exception;
 
 /**
- * 套餐启用失败异常
+ * 套餐启用失败
  */
 public class SetmealEnableFailedException extends BaseException {
 

@@ -1,5 +1,8 @@
 package com.sky.exception;
 
+/**
+ * 用户未登录
+ */
 public class UserNotLoginException extends BaseException {
 
     public UserNotLoginException() {
