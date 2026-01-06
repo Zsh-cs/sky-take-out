@@ -130,6 +130,7 @@ public class CategoryServiceImpl implements CategoryService {
         LambdaQueryWrapper<Category> lqw=new LambdaQueryWrapper<>();
         lqw.eq(Category::getType,type).
             eq(Category::getStatus, StatusConstant.ENABLE);
+        lqw.orderByAsc(Category::getSort);
         List<Category> validCategories = categoryMapper.selectList(lqw);
 
         for (Category validCategory : validCategories) {

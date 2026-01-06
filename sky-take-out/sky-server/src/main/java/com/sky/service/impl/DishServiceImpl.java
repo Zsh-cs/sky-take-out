@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -151,6 +152,19 @@ public class DishServiceImpl implements DishService {
         dish.setStatus(status);
         dish.setId(id);
         dishMapper.update(dish);
+    }
+
+
+    // 根据分类id查询菜品信息
+    @Override
+    public List<Dish> getByCategoryId(Long categoryId) {
+
+        LambdaQueryWrapper<Dish> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Dish::getCategoryId,categoryId);
+        lqw.orderByAsc(Dish::getId);
+        List<Dish> dishes = dishMapper.selectList(lqw);
+
+        return dishes;
     }
 
 
