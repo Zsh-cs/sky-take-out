@@ -11,6 +11,7 @@ import java.util.List;
 public class SetmealDTO implements Serializable {
 
     private Long id;
+
     // 分类id
     private Long categoryId;
     // 套餐名称

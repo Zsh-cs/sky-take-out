@@ -3,4 +3,47 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sky.mapper.SetmealMapper">
 
+    <!--新增套餐-->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into setmeal (name, category_id, price, image, description, status, create_time, update_time, create_user, update_user)
+        values
+        (#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+
+    <!--套餐分页查询-->
+    <select id="pageQuery" resultType="com.sky.vo.SetmealVO">
+        select s.*, c.name as categoryName
+        from setmeal s
+        left join category c on s.category_id = c.id
+        <where>
+            s.deleted = 0
+            <if test="setmealPageQueryDTO.name != null and setmealPageQueryDTO.name != ''">
+                and s.name like concat('%', #{setmealPageQueryDTO.name}, '%')
+            </if>
+            <if test="setmealPageQueryDTO.categoryId != null">
+                and s.category_id = #{setmealPageQueryDTO.categoryId}
+            </if>
+            <if test="setmealPageQueryDTO.status != null">
+                and s.status = #{setmealPageQueryDTO.status}
+            </if>
+        </where>
+        order by s.id
+    </select>
+
+    <!--修改套餐信息-->
+    <update id="update" parameterType="com.sky.entity.Setmeal">
+        update setmeal
+        <set>
+            <if test="name != null and name != ''">  name = #{name},</if>
+            <if test="categoryId != null">           category_id = #{categoryId},</if>
+            <if test="price != null">                price = #{price},</if>
+            <if test="image != null">                image = #{image},</if>
+            <if test="description != null">          description = #{description},</if>
+            <if test="status != null">               status = #{status},</if>
+            <if test="updateTime != null">           update_time = #{updateTime},</if>
+            <if test="updateUser != null">           update_user = #{updateUser},</if>
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>

@@ -20,8 +20,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -169,7 +167,7 @@ public class DishServiceImpl implements DishService {
 
 
     /**
-     * 可复用方法：向菜品口味表插入多条数据
+     * 可复用方法：向菜品口味表插入多条记录
      *
      * @param dishId  菜品id
      * @param dishFlavors  菜品的所有口味
