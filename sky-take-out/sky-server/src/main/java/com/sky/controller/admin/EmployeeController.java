@@ -72,8 +72,8 @@ public class EmployeeController {
     // 新增员工
     @PostMapping
     @ApiOperation("新增员工")
-    public Result save(@RequestBody EmployeeDTO employeeDTO){
-        log.info("新增员工：{}",employeeDTO);
+    public Result save(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("新增员工：{}", employeeDTO);
         employeeService.save(employeeDTO);
         return Result.success();
     }
@@ -82,8 +82,8 @@ public class EmployeeController {
     // 员工分页查询
     @GetMapping("/page")
     @ApiOperation("员工分页查询")
-    public Result<PageResult> pageQuery(EmployeePageQueryDTO employeePageQueryDTO){
-        log.info("员工分页查询，参数为：{}\n",employeePageQueryDTO);
+    public Result<PageResult> pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
+        log.info("员工分页查询，参数为：{}\n", employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }
@@ -92,9 +92,9 @@ public class EmployeeController {
     // 启用禁用员工账号
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用员工账号")
-    public Result changeStatus(@PathVariable Integer status, Long id){
-        log.info("启用禁用员工账号，准备修改id={}的员工的账号状态至-->{}",id,status);
-        employeeService.changeStatus(status,id);
+    public Result changeStatus(@PathVariable Integer status, Long id) {
+        log.info("准备{}id={}的员工账号", status == 1 ? "启用" : "禁用", id);
+        employeeService.changeStatus(status, id);
         return Result.success();
     }
 
@@ -102,8 +102,8 @@ public class EmployeeController {
     // 根据id查询员工信息
     @GetMapping("/{id}")
     @ApiOperation("根据id查询员工信息")
-    public Result<EmployeeDTO> getById(@PathVariable Long id){
-        log.info("查询id={}的员工信息",id);
+    public Result<EmployeeDTO> getById(@PathVariable Long id) {
+        log.info("查询id={}的员工信息", id);
         EmployeeDTO employeeDTO = employeeService.getById(id);
         return Result.success(employeeDTO);
     }
@@ -112,8 +112,8 @@ public class EmployeeController {
     // 修改员工信息
     @PutMapping
     @ApiOperation("修改员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO){
-        log.info("修改员工信息为：{}",employeeDTO);
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("修改员工信息为：{}", employeeDTO);
         employeeService.update(employeeDTO);
         return Result.success();
     }

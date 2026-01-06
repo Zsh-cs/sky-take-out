@@ -45,7 +45,7 @@ public class DishServiceImpl implements DishService {
         dishMapper.save(dish);
 
         // 获取菜品id，向菜品口味表插入多条数据
-        saveFlavors(dishDTO.getId(), dishDTO.getFlavors());
+        saveFlavors(dish.getId(), dishDTO.getFlavors());
     }
 
 
@@ -141,6 +141,16 @@ public class DishServiceImpl implements DishService {
 
         // 3.重新插入该菜品的所有口味
         saveFlavors(dishId,dishDTO.getFlavors());
+    }
+
+
+    // 起售停售菜品
+    @Override
+    public void changeStatus(Integer status, Long id) {
+        Dish dish=new Dish();
+        dish.setStatus(status);
+        dish.setId(id);
+        dishMapper.update(dish);
     }
 
 
