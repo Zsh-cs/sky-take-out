@@ -44,17 +44,8 @@ public class DishServiceImpl implements DishService {
         // 向菜品表插入一条数据
         dishMapper.save(dish);
 
-        // 获取菜品id
-        Long id=dish.getId();
-
-        // 向菜品口味表插入多条数据
-        List<DishFlavor> flavors = dishDTO.getFlavors();
-        if(flavors!=null && flavors.size()>0){
-            // 遍历设置口味对应的菜品id
-            flavors.forEach(f->f.setDishId(id));
-            // 批量添加口味
-            dishFlavorMapper.saveBatch(flavors);
-        }
+        // 获取菜品id，向菜品口味表插入多条数据
+        saveFlavors(dishDTO.getId(), dishDTO.getFlavors());
     }
 
 
@@ -76,12 +67,14 @@ public class DishServiceImpl implements DishService {
      * 3.被套餐关联的菜品不能删除
      * 4.删除某个菜品后，其关联的菜品口味记录也需要删除掉
      *
-     * @param ids
+     * @param dishIds
      */
+    //Caution: 由于涉及多表操作，所以必须开启事务
+    @Transactional
     @Override
-    public void deleteBatch(List<Long> ids) {
-        // 1.该菜品是否正在起售中
-        for (Long id : ids) {
+    public void deleteBatch(List<Long> dishIds) {
+        // 1.菜品是否正在起售中
+        for (Long id : dishIds) {
             // 使用了MyBatis-Plus提供的方法，会自动排除已被逻辑删除的菜品
             Dish dish=dishMapper.selectById(id);
             if(dish.getStatus()== StatusConstant.ENABLE){
@@ -89,18 +82,82 @@ public class DishServiceImpl implements DishService {
             }
         }
 
-        // 2.该菜品是否被套餐关联
+        // 2.菜品是否被套餐关联
         LambdaQueryWrapper<SetmealDish> lqw=new LambdaQueryWrapper<>();
-        lqw.in(SetmealDish::getDishId,ids);
+        lqw.in(SetmealDish::getDishId,dishIds);
         lqw.select(SetmealDish::getSetmealId);
         Long count = setmealDishMapper.selectCount(lqw);
         if (count > 0) {
             throw new DeletionNotAllowedException(MessageConstant.DISH_RELATED_TO_SETMEAL);
         }
 
-        // 3.删除该菜品
+        // 3.删除菜品
+        for (Long dishId : dishIds) {
+            dishMapper.deleteById(dishId);
+            // 4.若菜品有关联的口味，则删除这些口味
+            LambdaQueryWrapper<DishFlavor> flavorLqw=new LambdaQueryWrapper<>();
+            flavorLqw.eq(DishFlavor::getDishId,dishId);
+            dishFlavorMapper.delete(flavorLqw);
+        }
+    }
 
-        // 4.若该菜品有关联的口味，则删除这些口味
 
+    // 根据id查询菜品信息
+    @Override
+    public DishVO getById(Long dishId) {
+        DishVO dishVO=new DishVO();
+
+        // 1.根据菜品id查询菜品信息
+        Dish dish=dishMapper.selectById(dishId);
+
+        // 2.根据菜品id查询口味信息
+        LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(DishFlavor::getDishId,dishId);
+        List<DishFlavor> dishFlavors=dishFlavorMapper.selectList(lqw);
+
+        // 3.将以上信息封装到DishVO对象中
+        BeanUtils.copyProperties(dish,dishVO);
+        dishVO.setFlavors(dishFlavors);
+        return dishVO;
+    }
+
+
+    // 修改菜品信息
+    //Caution: 由于涉及多表操作，所以必须开启事务
+    @Transactional
+    @Override
+    public void updateWithFlavor(DishDTO dishDTO) {
+
+        // 1.修改该菜品的信息
+        Dish dish=new Dish();
+        BeanUtils.copyProperties(dishDTO,dish);
+        dishMapper.update(dish);
+
+        // 2.删除该菜品的所有口味
+        Long dishId=dishDTO.getId();
+        LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(DishFlavor::getDishId,dishId);
+        dishFlavorMapper.delete(lqw);
+
+        // 3.重新插入该菜品的所有口味
+        saveFlavors(dishId,dishDTO.getFlavors());
+    }
+
+
+    /**
+     * 可复用方法：向菜品口味表插入多条数据
+     *
+     * @param dishId  菜品id
+     * @param dishFlavors  菜品的所有口味
+     */
+    private void saveFlavors(Long dishId, List<DishFlavor> dishFlavors){
+
+        if(dishFlavors!=null && dishFlavors.size()>0){
+            // 遍历设置口味对应的菜品id并添加口味
+            for (DishFlavor flavor : dishFlavors) {
+                flavor.setDishId(dishId);
+                dishFlavorMapper.insert(flavor);
+            }
+        }
     }
 }

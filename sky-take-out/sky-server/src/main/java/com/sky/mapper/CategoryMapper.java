@@ -1,7 +1,6 @@
 package com.sky.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
 import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.entity.Category;

@@ -9,7 +9,7 @@ import com.sky.enumeration.SqlOperationType;
 import com.sky.vo.DishVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 // 使用了MyBatis-Plus
 @Mapper
@@ -21,5 +21,9 @@ public interface DishMapper extends BaseMapper<Dish> {
 
     // 菜品分页查询
     Page<DishVO> pageQuery(Page<DishVO> page, @Param("dishPageQueryDTO") DishPageQueryDTO dishPageQueryDTO);
+
+    // 修改菜品信息
+    @AutoFill(SqlOperationType.UPDATE)
+    void update(Dish dish);
 
 }

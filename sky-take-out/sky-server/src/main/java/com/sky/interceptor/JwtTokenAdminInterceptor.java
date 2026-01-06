@@ -23,7 +23,6 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
     @Autowired
     private JwtProperties jwtProperties;
 
-    //Logic: 校验jwt
     //Caution: 注意令牌过期问题！
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 判断当前拦截到的是Controller的方法还是其他资源
