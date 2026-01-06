@@ -31,7 +31,4 @@ public interface CategoryMapper extends BaseMapper<Category> {
     @AutoFill(SqlOperationType.UPDATE)
     void update(Category category);
 
-    // 根据id逻辑删除分类
-    @Update("update category set deleted=1 where id=#{id}")
-    void deleteById(Long id);
 }

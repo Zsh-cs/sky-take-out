@@ -44,3 +44,11 @@ sky:
     access-key-id: ${sky.aliyun.oss.access-key-id}
     access-key-secret: ${sky.aliyun.oss.access-key-secret}
     bucket-name: ${sky.aliyun.oss.bucket-name}
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+

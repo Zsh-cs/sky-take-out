@@ -90,11 +90,12 @@ public class DishServiceImpl implements DishService {
         }
 
         // 2.该菜品是否被套餐关联
-        for (Long id : ids) {
-            LambdaQueryWrapper<SetmealDish> lqw=new LambdaQueryWrapper<>();
-            lqw.eq(SetmealDish::getDishId,id);
-            lqw.select(SetmealDish::getSetmealId);
-            List<SetmealDish> setmealIds=setmealDishMapper.selectList(lqw);
+        LambdaQueryWrapper<SetmealDish> lqw=new LambdaQueryWrapper<>();
+        lqw.in(SetmealDish::getDishId,ids);
+        lqw.select(SetmealDish::getSetmealId);
+        Long count = setmealDishMapper.selectCount(lqw);
+        if (count > 0) {
+            throw new DeletionNotAllowedException(MessageConstant.DISH_RELATED_TO_SETMEAL);
         }
 
         // 3.删除该菜品

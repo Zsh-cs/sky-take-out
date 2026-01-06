@@ -95,7 +95,7 @@ public class CategoryServiceImpl implements CategoryService {
             throw new DeletionNotAllowedException(MessageConstant.CATEGORY_RELATED_TO_SETMEAL);
         }
 
-        // 若没有异常，则逻辑删除分类
+        // 若没有异常，则逻辑删除分类，此处是调用MP提供的方法
         categoryMapper.deleteById(id);
     }
 
