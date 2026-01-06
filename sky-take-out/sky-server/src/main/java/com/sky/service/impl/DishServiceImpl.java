@@ -1,8 +1,7 @@
 package com.sky.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.dto.DishDTO;
@@ -62,10 +61,11 @@ public class DishServiceImpl implements DishService {
     // 菜品分页查询
     @Override
     public PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO) {
-        PageHelper.startPage(dishPageQueryDTO.getPage(),dishPageQueryDTO.getPageSize());
-        Page<DishVO> page=dishMapper.pageQuery(dishPageQueryDTO);
-        PageResult pageResult=new PageResult(page.getTotal(),page.getResult());
-        return pageResult;
+
+        // 使用MP进行分页查询，弃用PageHelper，MP会自动过滤已被逻辑删除的记录
+        Page<DishVO> page=new Page<>(dishPageQueryDTO.getPage(),dishPageQueryDTO.getPageSize());
+        Page<DishVO> dishVOPage = dishMapper.pageQuery(page, dishPageQueryDTO);
+        return new PageResult(dishVOPage.getTotal(),dishVOPage.getRecords());
     }
 
 

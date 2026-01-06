@@ -1,13 +1,14 @@
 package com.sky.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.entity.Category;
+import com.sky.entity.Dish;
+import com.sky.entity.Setmeal;
 import com.sky.exception.DeletionNotAllowedException;
 import com.sky.mapper.CategoryMapper;
 import com.sky.mapper.DishMapper;
@@ -43,10 +44,25 @@ public class CategoryServiceImpl implements CategoryService {
     // 分类分页查询
     @Override
     public PageResult pageQuery(CategoryPageQueryDTO categoryPageQueryDTO) {
-        PageHelper.startPage(categoryPageQueryDTO.getPage(),categoryPageQueryDTO.getPageSize());
-        Page<Category> page=categoryMapper.pageQuery(categoryPageQueryDTO);
-        PageResult pageResult=new PageResult(page.getTotal(),page.getResult());
-        return pageResult;
+
+            // 使用MP进行分页查询，弃用PageHelper，MP会自动过滤已被逻辑删除的记录
+            Page<Category> page = new Page<>(categoryPageQueryDTO.getPage(), categoryPageQueryDTO.getPageSize());
+            LambdaQueryWrapper<Category> lqw = new LambdaQueryWrapper<>();
+
+            String name = categoryPageQueryDTO.getName();
+            if (name != null && !name.isEmpty()) {
+                lqw.like(Category::getName, name);
+            }
+
+            Integer type = categoryPageQueryDTO.getType();
+            if (type != null) {
+                lqw.eq(Category::getType, type);
+            }
+
+            lqw.orderByAsc(Category::getSort).orderByDesc(Category::getCreateTime);
+
+            categoryMapper.selectPage(page,lqw);
+            return new PageResult(page.getTotal(), page.getRecords());
     }
 
 
@@ -83,13 +99,20 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteById(Long id) {
         // 查询当前分类下是否有菜品或套餐，若有就抛出业务异常
-        Integer count= dishMapper.countByCategoryId(id);
+
+        // 1.根据分类id查询菜品数量
+        LambdaQueryWrapper<Dish> dishLqw=new LambdaQueryWrapper<>();
+        dishLqw.eq(Dish::getCategoryId,id);
+        Long count = dishMapper.selectCount(dishLqw);
         if(count>0){
             // 当前分类下有菜品，不能删除
             throw new DeletionNotAllowedException(MessageConstant.CATEGORY_RELATED_TO_DISH);
         }
 
-        count= setmealMapper.countByCategoryId(id);
+        // 2.根据分类id查询套餐数量
+        LambdaQueryWrapper<Setmeal> setmealLqw=new LambdaQueryWrapper<>();
+        setmealLqw.eq(Setmeal::getCategoryId,id);
+        count = setmealMapper.selectCount(setmealLqw);
         if(count>0){
             // 当前分类下有套餐，不能删除
             throw new DeletionNotAllowedException(MessageConstant.CATEGORY_RELATED_TO_SETMEAL);

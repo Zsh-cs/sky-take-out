@@ -46,6 +46,9 @@ sky:
     bucket-name: ${sky.aliyun.oss.bucket-name}
 
 mybatis-plus:
+  # 开启MP的控制台日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       logic-delete-field: deleted

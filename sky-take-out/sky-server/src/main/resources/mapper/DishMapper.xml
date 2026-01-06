@@ -13,12 +13,18 @@
     <!--菜品分页查询-->
     <select id="pageQuery" resultType="com.sky.vo.DishVO">
         select dish.*,category.name as categoryName from
-            dish left join category on dish.category_id = category.id
+        dish left join category on dish.category_id = category.id
         <where>
             dish.deleted=0
-            <if test="name!=null and name!=''">  and dish.name like concat('%',#{name},'%')</if>
-            <if test="categoryId!=null">         and dish.category_id=#{categoryId}</if>
-            <if test="status!=null">             and dish.status=#{status}</if>
+            <if test="dishPageQueryDTO.name!=null and dishPageQueryDTO.name!=''">
+                and dish.name like concat('%',#{dishPageQueryDTO.name},'%')
+            </if>
+            <if test="dishPageQueryDTO.categoryId!=null">
+                and dish.category_id=#{dishPageQueryDTO.categoryId}
+            </if>
+            <if test="dishPageQueryDTO.status!=null">
+                and dish.status=#{dishPageQueryDTO.status}
+            </if>
         </where>
         order by dish.id
     </select>

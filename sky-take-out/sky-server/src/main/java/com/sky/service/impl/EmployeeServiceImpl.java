@@ -1,7 +1,8 @@
 package com.sky.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.github.pagehelper.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
@@ -20,6 +21,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -79,15 +81,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     // 员工分页查询
     @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
-        // 开始分页查询，PageHelper会对我们的SQL语句动态拼接分页查询条件，它的底层是基于ThreadLocal实现的
-        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
 
-        // 返回值遵循PageHelper规范
-        Page<Employee> page=employeeMapper.pageQuery(employeePageQueryDTO);
+        // 使用MP进行分页查询，弃用PageHelper，MP会自动过滤已被逻辑删除的记录
+        Page<Employee> page=new Page<>(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+        LambdaQueryWrapper<Employee> lqw=new LambdaQueryWrapper<>();
 
-        // 提取出page的total和records属性，封装到PageResult中
-        PageResult pageResult=new PageResult(page.getTotal(),page.getResult());
-        return pageResult;
+        String name=employeePageQueryDTO.getName();
+        if(name!=null && !name.isEmpty()){
+            lqw.like(Employee::getName,name);
+        }
+        lqw.orderByAsc(Employee::getId);
+
+        employeeMapper.selectPage(page, lqw);
+        return new PageResult(page.getTotal(),page.getRecords());
     }
 
 

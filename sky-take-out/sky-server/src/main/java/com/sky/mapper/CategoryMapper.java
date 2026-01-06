@@ -24,9 +24,6 @@ public interface CategoryMapper extends BaseMapper<Category> {
             "(#{type}, #{name}, #{sort}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})")
     void save(Category category);
 
-    // 分类分页查询
-    Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
-
     // 根据主键动态修改分类
     @AutoFill(SqlOperationType.UPDATE)
     void update(Category category);

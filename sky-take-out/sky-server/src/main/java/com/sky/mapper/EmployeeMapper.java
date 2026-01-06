@@ -21,9 +21,6 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
             "(#{name}, #{username}, #{password}, #{phone}, #{sex}, #{idNumber}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})")
     void save(Employee employee);
 
-    // 员工分页查询
-    Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
-
     // 为了修改的通用性，我们使用动态SQL编写更加通用的update方法：根据主键动态修改员工
     // 自动填充公共字段
     //Caution: 约定好如果要使用@AutoFill注解，那么实体对象必须作为方法的第一个入参
