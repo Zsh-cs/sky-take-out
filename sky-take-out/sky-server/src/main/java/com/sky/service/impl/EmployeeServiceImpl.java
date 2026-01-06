@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.sky.constant.MessageConstant;
@@ -31,8 +32,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         String username = employeeLoginDTO.getUsername();
         String password = employeeLoginDTO.getPassword();
 
-        // 1.根据用户名查询数据库中的数据
-        Employee employee = employeeMapper.getByUsername(username);
+        // 1.根据用户名查询数据库中的数据：使用了MyBatis-Plus提供的方法
+        LambdaQueryWrapper<Employee> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Employee::getUsername,username);
+        Employee employee = employeeMapper.selectOne(lqw);
 
         // 2.处理各种异常情况（用户名不存在、密码不对、账号被锁定）
         if (employee == null) {
@@ -46,7 +49,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             // 密码错误
             throw new PasswordErrorException(MessageConstant.PASSWORD_ERROR);
         }
-
         if (employee.getStatus() == StatusConstant.DISABLE) {
             // 账号被锁定
             throw new AccountLockedException(MessageConstant.ACCOUNT_LOCKED);
@@ -104,7 +106,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO getById(Long id) {
         EmployeeDTO employeeDTO=new EmployeeDTO();
-        Employee employee = employeeMapper.getById(id);
+
+        // 使用了MyBatis-Plus提供的方法
+        Employee employee = employeeMapper.selectById(id);
 
         // 使用对象属性拷贝，将实体类数据拷贝到DTO中
         BeanUtils.copyProperties(employee,employeeDTO);

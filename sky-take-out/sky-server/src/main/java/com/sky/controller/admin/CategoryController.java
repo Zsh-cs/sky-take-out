@@ -78,11 +78,11 @@ public class CategoryController {
     }
 
 
-    // 根据id删除分类：逻辑删除
+    // 根据id逻辑删除分类
     @DeleteMapping
-    @ApiOperation("根据id删除分类：逻辑删除")
+    @ApiOperation("根据id逻辑删除分类")
     public Result deleteById(Long id) {
-        log.info("即将删除id={}的分类", id);
+        log.info("即将逻辑删除id={}的分类", id);
         categoryService.deleteById(id);
         return Result.success();
     }

@@ -1,8 +1,10 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.sky.constant.MessageConstant;
+import com.sky.constant.StatusConstant;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.entity.Category;
@@ -62,7 +64,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDTO getById(Long id) {
         CategoryDTO categoryDTO=new CategoryDTO();
-        Category category=categoryMapper.getById(id);
+        Category category=categoryMapper.selectById(id);
         BeanUtils.copyProperties(category,categoryDTO);
         return categoryDTO;
     }
@@ -77,7 +79,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
-    // 根据id删除分类：逻辑删除
+    // 根据id逻辑删除分类
     @Override
     public void deleteById(Long id) {
         // 查询当前分类下是否有菜品或套餐，若有就抛出业务异常
@@ -102,9 +104,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryDTO> getValidCategoriesByType(Integer type) {
         List<CategoryDTO> validCategoryDTOs=new ArrayList<>();
-        List<Category> validCategories = categoryMapper.getValidCategoriesByType(type);
+        LambdaQueryWrapper<Category> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Category::getType,type).
+            eq(Category::getStatus, StatusConstant.ENABLE);
+        List<Category> validCategories = categoryMapper.selectList(lqw);
 
-        // 使用对象属性拷贝，将实体类数据拷贝到DTO中
         for (Category validCategory : validCategories) {
             CategoryDTO validCategoryDTO=new CategoryDTO();
             BeanUtils.copyProperties(validCategory,validCategoryDTO);

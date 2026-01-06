@@ -22,7 +22,7 @@ public interface CategoryService {
     // 修改分类信息
     void update(CategoryDTO categoryDTO);
 
-    // 根据id删除分类：逻辑删除
+    // 根据id逻辑删除分类
     void deleteById(Long id);
 
     // 根据类型查询分类信息：只查已启用的分类

@@ -1,13 +1,19 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.sky.constant.MessageConstant;
+import com.sky.constant.StatusConstant;
 import com.sky.dto.DishDTO;
 import com.sky.dto.page.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.entity.DishFlavor;
+import com.sky.entity.SetmealDish;
+import com.sky.exception.DeletionNotAllowedException;
 import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
+import com.sky.mapper.SetmealDishMapper;
 import com.sky.result.PageResult;
 import com.sky.service.DishService;
 import com.sky.vo.DishVO;
@@ -25,6 +31,8 @@ public class DishServiceImpl implements DishService {
     private DishMapper dishMapper;
     @Autowired
     private DishFlavorMapper dishFlavorMapper;
+    @Autowired
+    private SetmealDishMapper setmealDishMapper;
 
     // 新增菜品和对应的口味
     //Caution: 由于涉及多表操作，所以必须开启事务
@@ -58,5 +66,40 @@ public class DishServiceImpl implements DishService {
         Page<DishVO> page=dishMapper.pageQuery(dishPageQueryDTO);
         PageResult pageResult=new PageResult(page.getTotal(),page.getResult());
         return pageResult;
+    }
+
+
+    /**
+     * 删除菜品：
+     * 1.可以删除单个菜品，也可以批量删除菜品
+     * 2.起售中的菜品不能删除
+     * 3.被套餐关联的菜品不能删除
+     * 4.删除某个菜品后，其关联的菜品口味记录也需要删除掉
+     *
+     * @param ids
+     */
+    @Override
+    public void deleteBatch(List<Long> ids) {
+        // 1.该菜品是否正在起售中
+        for (Long id : ids) {
+            // 使用了MyBatis-Plus提供的方法，会自动排除已被逻辑删除的菜品
+            Dish dish=dishMapper.selectById(id);
+            if(dish.getStatus()== StatusConstant.ENABLE){
+                throw new DeletionNotAllowedException(MessageConstant.DISH_ON_SALE);
+            }
+        }
+
+        // 2.该菜品是否被套餐关联
+        for (Long id : ids) {
+            LambdaQueryWrapper<SetmealDish> lqw=new LambdaQueryWrapper<>();
+            lqw.eq(SetmealDish::getDishId,id);
+            lqw.select(SetmealDish::getSetmealId);
+            List<SetmealDish> setmealIds=setmealDishMapper.selectList(lqw);
+        }
+
+        // 3.删除该菜品
+
+        // 4.若该菜品有关联的口味，则删除这些口味
+
     }
 }
