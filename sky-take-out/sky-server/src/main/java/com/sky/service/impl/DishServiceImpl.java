@@ -44,7 +44,7 @@ public class DishServiceImpl implements DishService {
         dishMapper.save(dish);
 
         // 获取菜品id，向菜品口味表插入多条数据
-        saveFlavors(dish.getId(), dishDTO.getFlavors());
+        saveFlavorsByDishId(dish.getId(), dishDTO.getFlavors());
     }
 
 
@@ -93,10 +93,8 @@ public class DishServiceImpl implements DishService {
         // 3.删除菜品
         for (Long dishId : dishIds) {
             dishMapper.deleteById(dishId);
-            // 4.若菜品有关联的口味，则删除这些口味
-            LambdaQueryWrapper<DishFlavor> flavorLqw=new LambdaQueryWrapper<>();
-            flavorLqw.eq(DishFlavor::getDishId,dishId);
-            dishFlavorMapper.delete(flavorLqw);
+            // 4.若菜品有关联的口味，则在菜品口味表中删除这些口味
+            deleteFlavorsByDishId(dishId);
         }
     }
 
@@ -126,20 +124,14 @@ public class DishServiceImpl implements DishService {
     @Transactional
     @Override
     public void updateWithFlavor(DishDTO dishDTO) {
-
         // 1.修改该菜品的信息
         Dish dish=new Dish();
         BeanUtils.copyProperties(dishDTO,dish);
         dishMapper.update(dish);
-
         // 2.删除该菜品的所有口味
-        Long dishId=dishDTO.getId();
-        LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
-        lqw.eq(DishFlavor::getDishId,dishId);
-        dishFlavorMapper.delete(lqw);
-
+        deleteFlavorsByDishId(dish.getId());
         // 3.重新插入该菜品的所有口味
-        saveFlavors(dishId,dishDTO.getFlavors());
+        saveFlavorsByDishId(dish.getId(),dishDTO.getFlavors());
     }
 
 
@@ -156,7 +148,6 @@ public class DishServiceImpl implements DishService {
     // 根据分类id查询菜品信息
     @Override
     public List<Dish> getByCategoryId(Long categoryId) {
-
         LambdaQueryWrapper<Dish> lqw=new LambdaQueryWrapper<>();
         lqw.eq(Dish::getCategoryId,categoryId);
         lqw.orderByAsc(Dish::getId);
@@ -167,12 +158,11 @@ public class DishServiceImpl implements DishService {
 
 
     /**
-     * 可复用方法：向菜品口味表插入多条记录
-     *
+     * 可复用方法：根据菜品id向菜品口味表插入该菜品的所有口味
      * @param dishId  菜品id
-     * @param dishFlavors  菜品的所有口味
+     * @param dishFlavors  该菜品的所有口味
      */
-    private void saveFlavors(Long dishId, List<DishFlavor> dishFlavors){
+    private void saveFlavorsByDishId(Long dishId, List<DishFlavor> dishFlavors){
 
         if(dishFlavors!=null && dishFlavors.size()>0){
             // 遍历设置口味对应的菜品id并添加口味
@@ -181,5 +171,16 @@ public class DishServiceImpl implements DishService {
                 dishFlavorMapper.insert(flavor);
             }
         }
+    }
+
+
+    /**
+     * 可复用方法，根据菜品id删除菜品口味表中与该菜品关联的所有口味
+     * @param dishId
+     */
+    private void deleteFlavorsByDishId(Long dishId){
+        LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(DishFlavor::getDishId,dishId);
+        dishFlavorMapper.delete(lqw);
     }
 }

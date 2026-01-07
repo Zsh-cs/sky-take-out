@@ -89,7 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(name!=null && !name.isEmpty()){
             lqw.like(Employee::getName,name);
         }
-        lqw.orderByAsc(Employee::getId);
+        lqw.orderByDesc(Employee::getCreateTime);
 
         employeeMapper.selectPage(page, lqw);
         return new PageResult(page.getTotal(),page.getRecords());

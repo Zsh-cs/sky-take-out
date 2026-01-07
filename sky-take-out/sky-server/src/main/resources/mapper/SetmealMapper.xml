@@ -27,7 +27,7 @@
                 and s.status = #{setmealPageQueryDTO.status}
             </if>
         </where>
-        order by s.id
+        order by s.create_time desc
     </select>
 
     <!--修改套餐信息-->

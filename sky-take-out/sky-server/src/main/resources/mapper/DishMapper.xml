@@ -27,7 +27,7 @@
                 and d.status = #{dishPageQueryDTO.status}
             </if>
         </where>
-        order by d.id
+        order by d.create_time desc
     </select>
 
     <!--修改菜品信息-->
