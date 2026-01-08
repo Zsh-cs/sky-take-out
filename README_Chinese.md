@@ -4,7 +4,7 @@
 
 
 
-> 参考视频：【黑马程序员Java项目实战《苍穹外卖》，最适合新手的SpringBoot+SSM的企业级Java项目实战】https://www.bilibili.com/video/BV1TP411v7v6?p=51&vd_source=b7f14ba5e783353d06a99352d23ebca9
+> 参考视频：【黑马程序员Java项目实战《苍穹外卖》，最适合新手的SpringBoot+SSM的企业级Java项目实战】https://www.bilibili.com/video/BV1TP411v7v6?vd_source=b7f14ba5e783353d06a99352d23ebca9
 
 
 
