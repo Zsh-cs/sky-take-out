@@ -16,16 +16,23 @@
 #### 1.2 技术选型
 
 + **用户层**：`node.js`、`VUE.js`、`ElementUI`、微信小程序、`apache echarts`
-+ **网关层**：`Nginx`
++ **网关层**：`Nginx 1.20.2`
 + **应用层**：
-  + `Spring`系列：`SpringBoot`、`SpringMVC`、`SpringTask`、`SpringCache`
+  + `Spring`系列：`SpringBoot 2.7.3`、`SpringMVC`、`SpringTask`、`SpringCache`
   + 其他：`HttpCilent`、`JWT`、阿里云OSS、`POI`、`WebSocket`
-+ **持久层**：`MyBatis`、`MyBatis-Plus`、`Spring Data Redis`
-+ **数据库**：`MySQL`、`Redis`
++ **持久层**：`MyBatis-Plus 3.5.4`、`MyBatis`、`Spring Data Redis`
++ **数据库**：`MySQL 8.0.38`、`Redis 6.2.19(Docker)`
 
 #### 1.3 开发工具
 
-+ **集成开发环境**：`Intellij IDEA 2024.2.1`、`DataGrip 2025.3`
++ **操作系统**：Windows 11 家庭中文版 25H2
+
++ **集成开发环境**：`Intellij IDEA 2024.2.1`
+
++ **数据库图形化交互工具**：
+  + `MySQL`：`DataGrip 2025.3`
+
+  + `Redis`：`Another Redis Desktop Manager 1.7.1`
 
 + **项目管理**：`Maven`
 + **单元测试**：`JUnit`
@@ -40,8 +47,9 @@
 ### 2.启动项目的前置步骤
 
 1. 启动Nginx和Tomcat，其中Tomcat已集成在SpringBoot中。
-2. 修改`application-dev.yml`中的数据源，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
-3. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
+2. 启动MySQL，并通过Docker启动Redis。
+3. 修改`application-dev.yml`中的数据源，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
+4. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
 
 
 
