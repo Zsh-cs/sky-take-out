@@ -45,6 +45,6 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 1. Start Nginx and Tomcat, where Tomcat is already built into SpringBoot.
 2. Start MySQL, and start Redis by Docker.
-3. Modify the data source configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
+3. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
 4. Configure two system environment variables: `ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET`, and fill them with the AccessKey ID and secret of your own Alibaba Cloud OSS. Then modify the corresponding Alibaba Cloud OSS configuration items in `application-dev.yml` to match your personal OSS settings.
 

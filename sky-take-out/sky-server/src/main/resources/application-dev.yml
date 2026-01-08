@@ -6,6 +6,13 @@ sky:
     database: sky_take_out
     username: root
     password: 123456
+
+  redis:
+    # 无密码
+    host: localhost
+    port: 6379
+    database: 0 # 使用0号数据库（Redis默认为我们创建了16个数据库）
+
   aliyun.oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com
     #Caution: 调用Windows系统环境变量
