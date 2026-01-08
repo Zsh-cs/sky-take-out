@@ -31,7 +31,7 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 + **Operating System**: Windows 11 Home China Edition 25H2
 
-- **Integrated Development Environment**: `Intellij IDEA 2024.2.1`,
+- **Integrated Development Environment**: `Intellij IDEA 2024.2.1`
 - **Graphical Database Management Tool**: `DataGrip 2025.3`, `Another Redis Desktop Manager 1.7.1`
 - **Project Management**: `Maven`
 - **Unit Testing**: `JUnit`
