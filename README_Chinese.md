@@ -50,10 +50,12 @@
 
 ### 2.启动项目的前置步骤
 
-1. 启动Nginx和Tomcat，其中Tomcat已集成在SpringBoot中。
-2. 启动MySQL，并通过Docker启动Redis。
-3. 修改`application-dev.yml`中的数据库相关配置，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
-4. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
+1. 启动MySQL。
+2. 运行`start-redis-by-docker.bat`脚本，然后cmd会通过Docker启动Redis。注意：确保你的电脑已经安装了Docker Desktop并拉取了Redis 6.2.19。
+3. 双击`nginx-1.20.2/nginx.exe`，启动Nginx。
+4. 进入Intellij IDEA，启动SkyApplication。
+5. 修改`application-dev.yml`中的数据库相关配置，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
+6. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
 
 
 

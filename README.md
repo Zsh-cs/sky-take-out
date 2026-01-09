@@ -43,8 +43,10 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 ### 2.Pre-launch Preparation Steps
 
-1. Start Nginx and Tomcat, where Tomcat is already built into SpringBoot.
-2. Start MySQL, and start Redis by Docker.
-3. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
-4. Configure two system environment variables: `ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET`, and fill them with the AccessKey ID and secret of your own Alibaba Cloud OSS. Then modify the corresponding Alibaba Cloud OSS configuration items in `application-dev.yml` to match your personal OSS settings.
+1. Start MySQL.
+2. Run the `start-redis-by-docker.bat` script, and then the cmd will start Redis by Docker. **Note**: Make sure Docker Desktop is installed on your computer and the Redis 6.2.19 image has been pulled.
+3. Double-click `nginx-1.20.2/nginx.exe` to launch Nginx.
+4. Open IntelliJ IDEA and start SkyApplication.
+5. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
+6. Configure two system environment variables: `ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET`, and fill them with the AccessKey ID and secret of your own Alibaba Cloud OSS. Then modify the corresponding Alibaba Cloud OSS configuration items in `application-dev.yml` to match your personal OSS settings.
 

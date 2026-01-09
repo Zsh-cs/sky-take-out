@@ -94,6 +94,7 @@
                 <version>${jjwt}</version>
             </dependency>
 
+            <!--包含HttpClient-->
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
@@ -124,6 +125,7 @@
                 <artifactId>wechatpay-apache-httpclient</artifactId>
                 <version>${wechatpay}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>
