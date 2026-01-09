@@ -42,7 +42,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     // 通过knife4j生成接口文档
     // 管理端接口
-    @Bean
+    @Bean("adminDocket")
     public Docket adminDocket() {
         log.info("准备生成管理端接口文档...");
         ApiInfo apiInfo = new ApiInfoBuilder()
@@ -61,7 +61,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     }
 
     // 用户端接口
-    @Bean
+    @Bean("userDocket")
     public Docket userDocket() {
         log.info("准备生成用户端接口文档...");
         ApiInfo apiInfo = new ApiInfoBuilder()

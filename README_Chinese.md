@@ -19,7 +19,7 @@
 
 #### 1.2 技术选型
 
-+ **用户层**：`node.js`、`VUE.js`、`ElementUI`、微信小程序、`apache echarts`
++ **用户层**：`node.js`、`VUE.js`、`ElementUI`、微信小程序 2.25.4、`apache echarts`
 + **网关层**：`Nginx 1.20.2`
 + **应用层**：
   + `Spring`系列：`SpringBoot 2.7.3`、`SpringMVC`、`SpringTask`、`SpringCache`
@@ -31,7 +31,7 @@
 
 + **操作系统**：Windows 11 家庭中文版 25H2
 
-+ **集成开发环境**：`Intellij IDEA 2024.2.1`
++ **集成开发环境**：`Intellij IDEA 2024.2.1`、微信开发者工具 2.01.2510260
 
 + **数据库图形化交互工具**：
   + `MySQL`：`DataGrip 2025.3`
@@ -51,11 +51,12 @@
 ### 2.启动项目的前置步骤
 
 1. 启动MySQL。
-2. 运行`start-redis-by-docker.bat`脚本，然后cmd会通过Docker启动Redis。注意：确保你的电脑已经安装了Docker Desktop并拉取了Redis 6.2.19。
-3. 双击`nginx-1.20.2/nginx.exe`，启动Nginx。
-4. 进入Intellij IDEA，启动SkyApplication。
-5. 修改`application-dev.yml`中的数据库相关配置，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
-6. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
+2. 运行`start-redis-by-docker.bat`脚本，然后cmd会通过Docker启动Redis。**注意**：确保你的电脑已经安装了Docker Desktop并拉取了Redis 6.2.19。
+3. 双击`nginx-1.20.2/nginx.exe`，启动Nginx。**注意**：Nginx必须位于全英文路径下。
+4. 修改`application-dev.yml`中的数据库相关配置，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
+5. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
+6. 修改`application-dev.yml`中的微信小程序，替换成你自己的微信小程序配置信息。
+7. 进入Intellij IDEA，启动SkyApplication。
 
 
 

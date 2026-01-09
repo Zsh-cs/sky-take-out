@@ -13,9 +13,15 @@ sky:
     port: 6379
     database: 1 # 使用1号数据库（Redis默认为我们创建了16个数据库）
 
+  # 阿里云OSS
   aliyun.oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com
     #Caution: 调用Windows系统环境变量
     access-key-id: ${ALIYUN_OSS_ACCESS_KEY_ID}
     access-key-secret: ${ALIYUN_OSS_ACCESS_KEY_SECRET}
     bucket-name: sky-zsh-cs
+
+  # 微信小程序
+  wechat:
+    appid: ${SKY_TAKE_OUT_WECHAT_APP_ID}
+    secret: ${SKY_TAKE_OUT_WECHAT_APP_SECRET}

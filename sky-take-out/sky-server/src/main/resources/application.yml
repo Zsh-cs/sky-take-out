@@ -18,6 +18,7 @@ spring:
     port: ${sky.redis.port}
     database: ${sky.redis.database}
 
+
 mybatis:
   # mapper配置文件
   mapper-locations: classpath:mapper/*.xml
@@ -26,29 +27,6 @@ mybatis:
     # 开启驼峰命名
     map-underscore-to-camel-case: true
 
-logging:
-  level:
-    com:
-      sky:
-        mapper: debug
-        service: info
-        controller: info
-
-sky:
-  jwt:
-    # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: cszsh
-    #Caution: 设置jwt过期时间，尽量设得长一点，防止过没多久运行项目令牌就过期报401！
-    #Caution: 等项目上线后再改回来
-    admin-ttl: 720000000
-    # 设置前端传递过来的令牌名称
-    admin-token-name: token
-  # 阿里云OSS
-  aliyun.oss:
-    endpoint: ${sky.aliyun.oss.endpoint}
-    access-key-id: ${sky.aliyun.oss.access-key-id}
-    access-key-secret: ${sky.aliyun.oss.access-key-secret}
-    bucket-name: ${sky.aliyun.oss.bucket-name}
 
 mybatis-plus:
   # 开启MP的控制台日志
@@ -59,4 +37,40 @@ mybatis-plus:
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+
+
+sky:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: cszsh
+    #Caution: 设置jwt过期时间，尽量设得长一点，防止过没多久运行项目令牌就过期报401！
+    #Caution: 等项目上线后再改回来
+    admin-ttl: 720000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: itzsh
+    user-ttl: 720000000
+    user-token-name: authentication
+  # 阿里云OSS
+  aliyun.oss:
+    endpoint: ${sky.aliyun.oss.endpoint}
+    access-key-id: ${sky.aliyun.oss.access-key-id}
+    access-key-secret: ${sky.aliyun.oss.access-key-secret}
+    bucket-name: ${sky.aliyun.oss.bucket-name}
+  # 微信小程序
+  wechat:
+    appid: ${sky.wechat.appid}
+    secret: ${sky.wechat.secret}
+
+
+
 

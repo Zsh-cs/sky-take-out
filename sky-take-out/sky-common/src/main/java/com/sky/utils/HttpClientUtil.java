@@ -33,8 +33,9 @@ public class HttpClientUtil {
      * @param paramMap
      * @return
      */
-    public static String doGet(String url,Map<String,String> paramMap){
-        // 创建Httpclient对象
+    public static String doGet(String url, Map<String,String> paramMap){
+
+        // 创建HttpClient对象
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         String result = "";
@@ -73,6 +74,7 @@ public class HttpClientUtil {
         return result;
     }
 
+
     /**
      * 发送POST方式请求
      * @param url
@@ -81,13 +83,13 @@ public class HttpClientUtil {
      * @throws IOException
      */
     public static String doPost(String url, Map<String, String> paramMap) throws IOException {
-        // 创建Httpclient对象
+        // 创建HttpClient对象
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = null;
         String resultString = "";
 
         try {
-            // 创建Http Post请求
+            // 创建POST请求
             HttpPost httpPost = new HttpPost(url);
 
             // 创建参数列表
@@ -120,6 +122,7 @@ public class HttpClientUtil {
         return resultString;
     }
 
+
     /**
      * 发送POST方式请求
      * @param url
@@ -128,13 +131,13 @@ public class HttpClientUtil {
      * @throws IOException
      */
     public static String doPost4Json(String url, Map<String, String> paramMap) throws IOException {
-        // 创建Httpclient对象
+        // 创建HttpClient对象
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = null;
         String resultString = "";
 
         try {
-            // 创建Http Post请求
+            // 创建POST请求
             HttpPost httpPost = new HttpPost(url);
 
             if (paramMap != null) {
@@ -169,6 +172,8 @@ public class HttpClientUtil {
 
         return resultString;
     }
+
+
     private static RequestConfig builderRequestConfig() {
         return RequestConfig.custom()
                 .setConnectTimeout(TIMEOUT_MSEC)

@@ -15,8 +15,7 @@ public class UserLoginVO implements Serializable {
 
     private Long id;
 
-    // 微信用户唯一标识
-    private String openid;
+    private String openid;// 微信用户唯一标识
     private String token;
 
 }

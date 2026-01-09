@@ -19,7 +19,7 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 #### 1.2 Technology Stack
 
-- **User Layer**: `node.js`, `VUE.js`, `ElementUI`, WeChat Mini Program, `apache echarts`
+- **User Layer**: `node.js`, `VUE.js`, `ElementUI`, WeChat Mini Program 2.25.4, `apache echarts`
 - **Gateway Layer**: `Nginx 1.20.2`
 - **Application Layer**:
   - `Spring` Family: `SpringBoot 2.7.2`, `SpringMVC`, `SpringTask`, `SpringCache`
@@ -31,7 +31,7 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 + **Operating System**: Windows 11 Home China Edition 25H2
 
-- **Integrated Development Environment**: `Intellij IDEA 2024.2.1`
+- **Integrated Development Environment**: `Intellij IDEA 2024.2.1`, Wechat Devtool 2.01.2510260
 - **Graphical Database Management Tool**: `DataGrip 2025.3`, `Another Redis Desktop Manager 1.7.1`
 - **Project Management**: `Maven`
 - **Unit Testing**: `JUnit`
@@ -44,9 +44,10 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 ### 2.Pre-launch Preparation Steps
 
 1. Start MySQL.
-2. Run the `start-redis-by-docker.bat` script, and then the cmd will start Redis by Docker. **Note**: Make sure Docker Desktop is installed on your computer and the Redis 6.2.19 image has been pulled.
+2. Run the `start-redis-by-docker.bat` script, and then the cmd will start Redis by Docker. **Caution**: Make sure Docker Desktop is installed on your computer and the Redis 6.2.19 image has been pulled. **Caution**: Nginx must be located in a fully English path.
 3. Double-click `nginx-1.20.2/nginx.exe` to launch Nginx.
-4. Open IntelliJ IDEA and start SkyApplication.
-5. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
-6. Configure two system environment variables: `ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET`, and fill them with the AccessKey ID and secret of your own Alibaba Cloud OSS. Then modify the corresponding Alibaba Cloud OSS configuration items in `application-dev.yml` to match your personal OSS settings.
+4. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
+5. Configure two system environment variables: `ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET`, and fill them with the AccessKey ID and secret of your own Alibaba Cloud OSS. Then modify the corresponding Alibaba Cloud OSS configuration items in `application-dev.yml` to match your personal OSS settings.
+6. Modify the corresponding Wechat Mini Program configuration items in `application-dev.yml` to match your personal Wechat Mini Program settings.
+7. Open IntelliJ IDEA and start SkyApplication.
 
