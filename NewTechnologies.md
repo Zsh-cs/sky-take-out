@@ -241,11 +241,9 @@ Redis存储的是key-value结构的数据，其中key是字符串类型，value�
 
 
 
+#### 10.4 在Java中操作Redis
 
-
-#### 10.4 Redis的Java客户端
-
-##### 10.4.1 简介
+##### 10.4.1 Redis的Java客户端
 
 Redis的主流Java客户端有以下几个：
 
@@ -255,16 +253,118 @@ Redis的主流Java客户端有以下几个：
 
 其中，Spring Data Redis是Spring的一部分，对Redis底层开发包进行了高度封装。
 
+
+
 ##### 10.4.2 Spring Data Redis
 
-操作步骤：
+1. 导入Spring Data Redis的maven坐标：
 
-1. 导入Spring Data Redis的maven坐标。
-2. 配置Redis数据源。
-3. 编写配置类，创建RedisTemplate对象。
-4. 通过RedisTemplate对象操作Redis。
+   ```xml
+   <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-data-redis</artifactId>
+   </dependency>
+   ```
 
+2. 配置Redis数据源：
 
+   ```yml
+   spring:
+     redis:
+       # 无密码
+       host: 
+       port: 
+       database: 
+   ```
+
+3. 编写配置类，创建RedisTemplate对象：
+
+   ```java
+   /**
+    * Redis配置类
+    */
+   @Configuration
+   @Slf4j
+   public class RedisConfig {
+   
+       @Bean
+       public RedisTemplate redisTemplate(RedisConnectionFactory factory){
+           log.info("开始创建Redis模板对象...");
+           RedisTemplate redisTemplate=new RedisTemplate();
+   
+           // 设置Redis的连接工厂对象
+           redisTemplate.setConnectionFactory(factory);
+           // 设置Redis key的序列化器
+           redisTemplate.setKeySerializer(new StringRedisSerializer());
+   
+           return redisTemplate;
+       }
+   }
+   ```
+
+4. 通过RedisTemplate对象操作Redis：
+
+   ```java
+   @SpringBootTest
+   public class SpringDataRedisTest {
+   
+       @Autowired
+       private RedisTemplate redisTemplate;
+   
+       @Test
+       public void testRedisTemplate(){
+           System.out.println(redisTemplate);
+       }
+   
+   
+       // 操作字符串类型的数据
+       @Test
+       public void testString(){
+           ValueOperations ops = redisTemplate.opsForValue();
+   
+           // set
+           ops.set("city","Swatow");
+   
+           // get
+           String city = (String) ops.get("city");
+           System.out.println("city: "+city);
+   
+           // setex
+           ops.set("code","123456",30, TimeUnit.SECONDS);
+   
+           // setnx
+           ops.setIfAbsent("lock","1");
+           ops.setIfAbsent("lock","2");// 设置失败
+   
+       }
+   
+       
+       // 操作哈希类型的数据
+       @Test
+       public void testHash(){
+           HashOperations ops = redisTemplate.opsForHash();
+   
+           // hset
+           Object key="student";
+           ops.put(key,"name","zjl");
+           ops.put(key,"age","99");
+           ops.put(key,"sex","male");
+   
+           // hget
+           String name = (String) ops.get(key, "name");
+           System.out.println("name: "+name);
+   
+           // hdel
+           ops.delete(key,"age");
+   
+           // hkeys
+           System.out.println(ops.keys(key));
+   
+           // hvals
+           System.out.println(ops.values(key));
+       }
+   }
+   ```
 
 
 

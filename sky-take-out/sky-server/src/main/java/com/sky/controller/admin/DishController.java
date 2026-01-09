@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.sky.constant.StatusConstant;
 import com.sky.dto.DishDTO;
 import com.sky.dto.page.DishPageQueryDTO;
 import com.sky.entity.Dish;
@@ -30,8 +31,8 @@ public class DishController {
     // 新增菜品和对应的口味
     @PostMapping
     @ApiOperation("新增菜品和对应的口味")
-    public Result saveWithFlavor(@RequestBody DishDTO dishDTO){
-        log.info("新增菜品：{}",dishDTO);
+    public Result saveWithFlavor(@RequestBody DishDTO dishDTO) {
+        log.info("新增菜品：{}", dishDTO);
         dishService.saveWithFlavor(dishDTO);
         return Result.success();
     }
@@ -49,13 +50,14 @@ public class DishController {
 
     /**
      * 批量删除菜品
+     *
      * @param ids 前端使用一个字符串传入要删除的菜品id列表，加上@RequestParam注解后框架会自动转换成List<Long>
      * @return
      */
     @DeleteMapping
     @ApiOperation("批量删除菜品")
-    public Result deleteBatch(@RequestParam List<Long> ids){
-        log.info("要删除的菜品id列表：{}",ids);
+    public Result deleteBatch(@RequestParam List<Long> ids) {
+        log.info("要删除的菜品id列表：{}", ids);
         dishService.deleteBatch(ids);
         return Result.success();
     }
@@ -64,9 +66,9 @@ public class DishController {
     // 根据id查询菜品信息
     @GetMapping("/{id}")
     @ApiOperation("根据id查询菜品信息")
-    public Result<DishVO> getById(@PathVariable Long id){
+    public Result<DishVO> getById(@PathVariable Long id) {
         log.info("查询id={}的菜品信息", id);
-        DishVO dishVO=dishService.getById(id);
+        DishVO dishVO = dishService.getById(id);
         return Result.success(dishVO);
     }
 
@@ -74,7 +76,7 @@ public class DishController {
     // 修改菜品信息
     @PutMapping
     @ApiOperation("修改菜品信息")
-    public Result updateWithFlavor(@RequestBody DishDTO dishDTO){
+    public Result updateWithFlavor(@RequestBody DishDTO dishDTO) {
         log.info("修改菜品信息为：{}", dishDTO);
         dishService.updateWithFlavor(dishDTO);
         return Result.success();
@@ -84,9 +86,9 @@ public class DishController {
     // 起售停售菜品
     @PostMapping("/status/{status}")
     @ApiOperation("起售停售菜品")
-    public Result changeStatus(@PathVariable Integer status, Long id){
-        log.info("准备{}id={}的菜品", status == 1 ? "起售" : "停售", id);
-        dishService.changeStatus(status,id);
+    public Result changeStatus(@PathVariable Integer status, Long id) {
+        log.info("准备{}id={}的菜品", status.equals(StatusConstant.ENABLE) ? "起售" : "停售", id);
+        dishService.changeStatus(status, id);
         return Result.success();
     }
 
@@ -94,8 +96,8 @@ public class DishController {
     // 根据分类id查询菜品信息
     @GetMapping("/list")
     @ApiOperation("根据分类id查询菜品信息")
-    public Result<List<Dish>> getByCategoryId(Long categoryId){
-        List<Dish> dishes=dishService.getByCategoryId(categoryId);
+    public Result<List<Dish>> getByCategoryId(Long categoryId) {
+        List<Dish> dishes = dishService.getByCategoryId(categoryId);
         return Result.success(dishes);
     }
 

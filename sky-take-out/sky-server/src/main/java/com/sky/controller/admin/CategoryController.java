@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.sky.constant.StatusConstant;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.properties.JwtProperties;
@@ -52,7 +53,7 @@ public class CategoryController {
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用分类")
     public Result changeStatus(@PathVariable Integer status, Long id) {
-        log.info("准备{}id={}的分类", status == 1 ? "启用" : "禁用", id);
+        log.info("准备{}id={}的分类", status.equals(StatusConstant.ENABLE) ? "启用" : "禁用", id);
         categoryService.changeStatus(status, id);
         return Result.success();
     }

@@ -39,23 +39,46 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 .excludePathPatterns("/admin/employee/login");
     }
 
+
     // 通过knife4j生成接口文档
+    // 管理端接口
     @Bean
-    public Docket docket() {
-        log.info("准备生成接口文档...");
+    public Docket adminDocket() {
+        log.info("准备生成管理端接口文档...");
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("苍穹外卖项目接口文档")
                 .version("1.0")
                 .description("苍穹外卖项目接口文档")
                 .build();
-        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+        Docket adminDocket = new Docket(DocumentationType.SWAGGER_2)
+                .groupName("管理端接口")
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sky.controller"))// 指定生成接口需要扫描的包
+                .apis(RequestHandlerSelectors.basePackage("com.sky.controller.admin"))// 扫描管理端接口所在的包
                 .paths(PathSelectors.any())
                 .build();
-        return docket;
+        return adminDocket;
     }
+
+    // 用户端接口
+    @Bean
+    public Docket userDocket() {
+        log.info("准备生成用户端接口文档...");
+        ApiInfo apiInfo = new ApiInfoBuilder()
+                .title("苍穹外卖项目接口文档")
+                .version("1.0")
+                .description("苍穹外卖项目接口文档")
+                .build();
+        Docket userDocket = new Docket(DocumentationType.SWAGGER_2)
+                .groupName("用户端接口")
+                .apiInfo(apiInfo)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.sky.controller.user"))// 扫描用户端接口所在的包
+                .paths(PathSelectors.any())
+                .build();
+        return userDocket;
+    }
+
 
     // 设置静态资源映射
     @Override
@@ -64,6 +87,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
+
 
     // 扩展SpringMVC消息转换器，统一对日期时间类型进行格式化处理
     @Override

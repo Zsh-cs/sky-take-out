@@ -1,6 +1,7 @@
 package com.sky.controller.admin;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.constant.StatusConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.page.EmployeePageQueryDTO;
@@ -93,7 +94,7 @@ public class EmployeeController {
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用员工账号")
     public Result changeStatus(@PathVariable Integer status, Long id) {
-        log.info("准备{}id={}的员工账号", status == 1 ? "启用" : "禁用", id);
+        log.info("准备{}id={}的员工账号", status.equals(StatusConstant.ENABLE) ? "启用" : "禁用", id);
         employeeService.changeStatus(status, id);
         return Result.success();
     }

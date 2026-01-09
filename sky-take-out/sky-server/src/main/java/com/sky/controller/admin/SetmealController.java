@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.sky.constant.StatusConstant;
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.page.SetmealPageQueryDTO;
 import com.sky.result.PageResult;
@@ -77,7 +78,7 @@ public class SetmealController {
     @PostMapping("/status/{status}")
     @ApiOperation("起售停售套餐")
     public Result startOrStop(@PathVariable Integer status, Long id) {
-        log.info("准备{}id={}的套餐", status == 1 ? "起售" : "停售", id);
+        log.info("准备{}id={}的套餐", status.equals(StatusConstant.ENABLE) ? "起售" : "停售", id);
         setmealService.changeStatus(status, id);
         return Result.success();
     }
