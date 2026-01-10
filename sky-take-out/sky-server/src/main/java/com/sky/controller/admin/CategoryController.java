@@ -18,10 +18,10 @@ import java.util.List;
 /**
  * 分类管理模块
  */
-@RestController
+@RestController("adminCategoryController")
 @RequestMapping("/admin/category")
 @Slf4j
-@Api(tags = "分类相关接口")
+@Api(tags = "分类接口")
 public class CategoryController {
 
     @Autowired
@@ -61,9 +61,9 @@ public class CategoryController {
 
     // 根据id查询分类信息
     @GetMapping("/{id}")
-    @ApiOperation("根据id查询分类信息")
+    @ApiOperation("根据id查询分类")
     public Result<CategoryDTO> getById(@PathVariable Long id) {
-        log.info("查询id={}的分类信息", id);
+        log.info("查询id={}的分类", id);
         CategoryDTO categoryDTO = categoryService.getById(id);
         return Result.success(categoryDTO);
     }
@@ -91,7 +91,7 @@ public class CategoryController {
 
     // 根据类型查询分类信息：只查已启用的分类
     @GetMapping("/list")
-    @ApiOperation("根据类型查询分类信息：只查已启用的分类")
+    @ApiOperation("根据类型查询已启用的分类")
     public Result<List<CategoryDTO>> getValidCategoriesByType(Integer type) {
         String msg;
         switch (type){
@@ -99,7 +99,7 @@ public class CategoryController {
             case 2: msg="套餐"; break;
             default: msg="未知";
         }
-        log.info("查询已启用的{}分类信息", msg);
+        log.info("查询已启用的{}分类", msg);
         List<CategoryDTO> validCategoryDTOs = categoryService.getValidCategoriesByType(type);
         return Result.success(validCategoryDTOs);
     }

@@ -123,13 +123,15 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
-    // 根据类型查询分类信息：只查已启用的分类
+    // [根据type]查询分类信息：只查已启用的分类
     @Override
     public List<CategoryDTO> getValidCategoriesByType(Integer type) {
         List<CategoryDTO> validCategoryDTOs=new ArrayList<>();
         LambdaQueryWrapper<Category> lqw=new LambdaQueryWrapper<>();
-        lqw.eq(Category::getType,type).
-            eq(Category::getStatus, StatusConstant.ENABLE);
+        if(type!=null){
+            lqw.eq(Category::getType,type);
+        }
+        lqw.eq(Category::getStatus, StatusConstant.ENABLE);
         lqw.orderByAsc(Category::getSort);
         List<Category> validCategories = categoryMapper.selectList(lqw);
 

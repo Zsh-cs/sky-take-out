@@ -18,10 +18,10 @@ import java.util.List;
 /**
  * 套餐管理模块
  */
-@RestController
+@RestController("adminSetmealController")
 @RequestMapping("/admin/setmeal")
 @Slf4j
-@Api(tags = "套餐相关接口")
+@Api(tags = "套餐接口")
 public class SetmealController {
 
     @Autowired
@@ -58,12 +58,13 @@ public class SetmealController {
 
     // 根据id查询套餐信息
     @GetMapping("/{id}")
-    @ApiOperation("根据id查询套餐信息")
+    @ApiOperation("根据id查询套餐")
     public Result<SetmealVO> getById(@PathVariable Long id) {
-        log.info("查询id={}的套餐信息", id);
+        log.info("查询id={}的套餐", id);
         SetmealVO setmealVO = setmealService.getById(id);
         return Result.success(setmealVO);
     }
+
 
     // 修改套餐
     @PutMapping
@@ -73,6 +74,7 @@ public class SetmealController {
         setmealService.updateWithDish(setmealDTO);
         return Result.success();
     }
+
 
     // 起售停售套餐
     @PostMapping("/status/{status}")

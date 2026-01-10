@@ -21,12 +21,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 用户模块
+ * 用户端-用户接口
  */
 @RestController
 @RequestMapping("/user/user")
 @Slf4j
-@Api(tags = "用户相关接口")
+@Api(tags = "用户端-用户接口")
 public class UserController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class UserController {
     // 微信用户登录
     @PostMapping("/login")
     @ApiOperation("微信用户登录")
-    public Result<UserLoginVO> login(@RequestBody UserLoginDTO userLoginDTO){
+    public Result<UserLoginVO> wxLogin(@RequestBody UserLoginDTO userLoginDTO){
         log.info("微信用户登录：{}",userLoginDTO);
         User user = userService.wxLogin(userLoginDTO);
 

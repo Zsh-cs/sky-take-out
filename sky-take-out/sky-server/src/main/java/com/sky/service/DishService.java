@@ -19,8 +19,8 @@ public interface DishService {
     // 批量删除菜品
     void deleteBatch(List<Long> ids);
 
-    // 根据id查询菜品信息
-    DishVO getById(Long id);
+    // 根据id查询菜品及其关联的口味
+    DishVO getWithFlavorById(Long id);
 
     // 修改菜品信息
     void updateWithFlavor(DishDTO dishDTO);
@@ -30,4 +30,7 @@ public interface DishService {
 
     // 根据分类id查询菜品信息
     List<Dish> getByCategoryId(Long categoryId);
+
+    // 根据分类id查询菜品及其关联的口味
+    List<DishVO> getWithFlavorByCategoryId(Long categoryId);
 }

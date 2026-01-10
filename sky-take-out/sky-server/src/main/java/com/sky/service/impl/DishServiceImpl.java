@@ -20,6 +20,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -99,15 +101,15 @@ public class DishServiceImpl implements DishService {
     }
 
 
-    // 根据id查询菜品信息
+    // 根据id查询菜品
     @Override
-    public DishVO getById(Long dishId) {
+    public DishVO getWithFlavorById(Long dishId) {
         DishVO dishVO=new DishVO();
 
-        // 1.根据菜品id查询菜品信息
+        // 1.根据菜品id查询菜品
         Dish dish=dishMapper.selectById(dishId);
 
-        // 2.根据菜品id查询口味信息
+        // 2.根据菜品id查询口味
         LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
         lqw.eq(DishFlavor::getDishId,dishId);
         List<DishFlavor> dishFlavors=dishFlavorMapper.selectList(lqw);
@@ -154,6 +156,27 @@ public class DishServiceImpl implements DishService {
         List<Dish> dishes = dishMapper.selectList(lqw);
 
         return dishes;
+    }
+
+
+    // 根据分类id查询菜品及其关联的口味
+    @Override
+    public List<DishVO> getWithFlavorByCategoryId(Long categoryId) {
+        List<DishVO> dishVOs=new ArrayList<>();
+
+        // 1.根据分类id查询该分类下的所有菜品
+        LambdaQueryWrapper<Dish> dishLqw=new LambdaQueryWrapper<>();
+        dishLqw.eq(Dish::getCategoryId,categoryId);
+        List<Dish> dishes = dishMapper.selectList(dishLqw);
+
+        // 2.遍历菜品，根据菜品id查出该菜品关联的口味
+        for (Dish dish : dishes) {
+            // 3.将每一个菜品及其口味封装到一个DishVO中，添加进DishVOs
+            DishVO dishVO = getWithFlavorById(dish.getId());// 此处复用了getWithFlavorById()方法
+            dishVOs.add(dishVO);
+        }
+
+        return dishVOs;
     }
 
 

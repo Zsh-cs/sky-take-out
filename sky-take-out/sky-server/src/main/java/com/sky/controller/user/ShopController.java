@@ -11,12 +11,12 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 店铺营业状态模块（用户端）
+ * 用户端-店铺营业状态
  */
 @RestController("userShopController")// 手动指定bean名称，防止冲突
 @RequestMapping("/user/shop")
 @Slf4j
-@Api(tags = "店铺相关接口")
+@Api(tags = "用户端-店铺营业状态")
 public class ShopController {
 
     // 存入Redis的字符串的key名称

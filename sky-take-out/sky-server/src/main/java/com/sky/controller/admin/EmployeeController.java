@@ -27,7 +27,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin/employee")
 @Slf4j
-@Api(tags = "员工相关接口")
+@Api(tags = "员工接口")
 public class EmployeeController {
 
     @Autowired
@@ -101,9 +101,9 @@ public class EmployeeController {
 
     // 根据id查询员工信息
     @GetMapping("/{id}")
-    @ApiOperation("根据id查询员工信息")
+    @ApiOperation("根据id查询员工")
     public Result<EmployeeDTO> getById(@PathVariable Long id) {
-        log.info("查询id={}的员工信息", id);
+        log.info("查询id={}的员工", id);
         EmployeeDTO employeeDTO = employeeService.getById(id);
         return Result.success(employeeDTO);
     }

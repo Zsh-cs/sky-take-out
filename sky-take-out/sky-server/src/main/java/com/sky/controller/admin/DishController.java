@@ -19,10 +19,10 @@ import java.util.List;
 /**
  * 菜品管理模块
  */
-@RestController
+@RestController("adminDishController")
 @RequestMapping("/admin/dish")
 @Slf4j
-@Api(tags = "菜品相关接口")
+@Api(tags = "菜品接口")
 public class DishController {
 
     @Autowired
@@ -65,10 +65,10 @@ public class DishController {
 
     // 根据id查询菜品信息
     @GetMapping("/{id}")
-    @ApiOperation("根据id查询菜品信息")
+    @ApiOperation("根据id查询菜品")
     public Result<DishVO> getById(@PathVariable Long id) {
-        log.info("查询id={}的菜品信息", id);
-        DishVO dishVO = dishService.getById(id);
+        log.info("查询id={}的菜品", id);
+        DishVO dishVO = dishService.getWithFlavorById(id);
         return Result.success(dishVO);
     }
 
@@ -95,8 +95,9 @@ public class DishController {
 
     // 根据分类id查询菜品信息
     @GetMapping("/list")
-    @ApiOperation("根据分类id查询菜品信息")
+    @ApiOperation("根据分类id查询菜品")
     public Result<List<Dish>> getByCategoryId(Long categoryId) {
+        log.info("查询分类id={}的菜品",categoryId);
         List<Dish> dishes = dishService.getByCategoryId(categoryId);
         return Result.success(dishes);
     }
