@@ -79,7 +79,7 @@ public class SetmealServiceImpl implements SetmealService {
 
     // 根据id查询套餐
     @Override
-    public SetmealVO getById(Long setmealId) {
+    public SetmealVO getWithDishById(Long setmealId) {
         SetmealVO setmealVO=new SetmealVO();
 
         // 1.根据套餐id查询套餐信息
@@ -137,6 +137,17 @@ public class SetmealServiceImpl implements SetmealService {
         // 否则正常起售停售
         setmeal.setStatus(status);
         setmealMapper.update(setmeal);
+    }
+
+
+    // 根据分类id查询已启用的套餐
+    @Override
+    public List<Setmeal> getByCategoryId(Long categoryId) {
+        LambdaQueryWrapper<Setmeal> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Setmeal::getCategoryId,categoryId)
+            .eq(Setmeal::getStatus,StatusConstant.ENABLE);
+        List<Setmeal> setmeals = setmealMapper.selectList(lqw);
+        return setmeals;
     }
 
 

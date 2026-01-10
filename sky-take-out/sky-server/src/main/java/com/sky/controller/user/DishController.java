@@ -25,11 +25,11 @@ public class DishController {
     @Autowired
     private DishService dishService;
 
-    // 根据分类id查询菜品及其关联的口味
+    // 根据分类id查询已启用的菜品及其关联的口味
     @GetMapping("/list")
-    @ApiOperation("根据分类id查询菜品及其关联的口味")
+    @ApiOperation("根据分类id查询已启用的菜品及其关联的口味")
     public Result<List<DishVO>> getWithFlavorByCategoryId(Long categoryId){
-        log.info("查询分类id={}的菜品及其关联的口味",categoryId);
+        log.info("查询分类id={}的已启用的菜品及其关联的口味",categoryId);
         List<DishVO> dishVOs = dishService.getWithFlavorByCategoryId(categoryId);
         return Result.success(dishVOs);
     }

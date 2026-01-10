@@ -15,6 +15,7 @@ import com.sky.mapper.DishMapper;
 import com.sky.mapper.SetmealDishMapper;
 import com.sky.result.PageResult;
 import com.sky.service.DishService;
+import com.sky.vo.DishItemVO;
 import com.sky.vo.DishVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,14 +160,15 @@ public class DishServiceImpl implements DishService {
     }
 
 
-    // 根据分类id查询菜品及其关联的口味
+    // 根据分类id查询已启用的菜品及其关联的口味
     @Override
     public List<DishVO> getWithFlavorByCategoryId(Long categoryId) {
         List<DishVO> dishVOs=new ArrayList<>();
 
-        // 1.根据分类id查询该分类下的所有菜品
+        // 1.根据分类id查询该分类下的所有已启用的菜品
         LambdaQueryWrapper<Dish> dishLqw=new LambdaQueryWrapper<>();
-        dishLqw.eq(Dish::getCategoryId,categoryId);
+        dishLqw.eq(Dish::getCategoryId,categoryId)
+                .eq(Dish::getStatus,StatusConstant.ENABLE);
         List<Dish> dishes = dishMapper.selectList(dishLqw);
 
         // 2.遍历菜品，根据菜品id查出该菜品关联的口味
@@ -177,6 +179,35 @@ public class DishServiceImpl implements DishService {
         }
 
         return dishVOs;
+    }
+
+
+    // 根据套餐id查询套餐包含的菜品
+    @Override
+    public List<DishItemVO> getBySetmealId(Long setmealId) {
+        List<DishItemVO> dishItemVOs=new ArrayList<>();
+
+        LambdaQueryWrapper<SetmealDish> setmealDishLqw=new LambdaQueryWrapper<>();
+        setmealDishLqw.eq(SetmealDish::getSetmealId,setmealId)
+                      .orderByDesc(SetmealDish::getPrice);
+        List<SetmealDish> setmealDishes = setmealDishMapper.selectList(setmealDishLqw);
+
+        for (SetmealDish setmealDish : setmealDishes) {
+            LambdaQueryWrapper<Dish> lqw=new LambdaQueryWrapper<>();
+            lqw.eq(Dish::getId,setmealDish.getDishId());
+            Dish dish = dishMapper.selectOne(lqw);
+
+            // 将setmealDish和dish的部分信息封装到dishItemVO中
+            DishItemVO dishItemVO =DishItemVO.builder()
+                    .name(setmealDish.getName())
+                    .copies(setmealDish.getCopies())
+                    .image(dish.getImage())
+                    .description(dish.getDescription())
+                    .build();
+            dishItemVOs.add(dishItemVO);
+        }
+
+        return dishItemVOs;
     }
 
 
