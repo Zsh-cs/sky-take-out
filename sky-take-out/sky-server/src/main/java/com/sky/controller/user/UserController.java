@@ -37,25 +37,35 @@ public class UserController {
     // 微信用户登录
     @PostMapping("/login")
     @ApiOperation("微信用户登录")
-    public Result<UserLoginVO> wxLogin(@RequestBody UserLoginDTO userLoginDTO){
-        log.info("微信用户登录：{}",userLoginDTO);
+    public Result<UserLoginVO> wxLogin(@RequestBody UserLoginDTO userLoginDTO) {
+        log.info("微信用户登录：{}", userLoginDTO);
         User user = userService.wxLogin(userLoginDTO);
 
         // 登录成功后，生成jwt令牌
-        Map<String, Object> claims=new HashMap<>();
-        claims.put(JwtClaimsConstant.USER_ID,user.getId());
-        String token= JwtUtil.createJWT(
+        Map<String, Object> claims = new HashMap<>();
+        claims.put(JwtClaimsConstant.USER_ID, user.getId());
+        String token = JwtUtil.createJWT(
                 jwtProperties.getUserSecretKey(),
                 jwtProperties.getUserTtl(),
                 claims
         );
 
         // 构建UserLoginVO对象
-        UserLoginVO userLoginVO=UserLoginVO.builder()
+        UserLoginVO userLoginVO = UserLoginVO.builder()
                 .id(user.getId())
                 .openid(user.getOpenid())
                 .token(token)
                 .build();
         return Result.success(userLoginVO);
     }
+
+
+    // 微信用户退出登录
+    @PostMapping("/logout")
+    @ApiOperation("微信用户退出登录")
+    public Result wxLogout() {
+        return Result.success();
+    }
+
+
 }
