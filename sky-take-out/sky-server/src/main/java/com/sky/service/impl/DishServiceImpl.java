@@ -161,15 +161,17 @@ public class DishServiceImpl implements DishService {
 
 
     // 根据分类id查询已启用的菜品及其关联的口味
+    //Caution: 由于涉及多表操作，所以必须开启事务
+    @Transactional
     @Override
     public List<DishVO> getWithFlavorByCategoryId(Long categoryId) {
         List<DishVO> dishVOs=new ArrayList<>();
 
         // 1.根据分类id查询该分类下的所有已启用的菜品
-        LambdaQueryWrapper<Dish> dishLqw=new LambdaQueryWrapper<>();
-        dishLqw.eq(Dish::getCategoryId,categoryId)
+        LambdaQueryWrapper<Dish> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Dish::getCategoryId,categoryId)
                 .eq(Dish::getStatus,StatusConstant.ENABLE);
-        List<Dish> dishes = dishMapper.selectList(dishLqw);
+        List<Dish> dishes = dishMapper.selectList(lqw);
 
         // 2.遍历菜品，根据菜品id查出该菜品关联的口味
         for (Dish dish : dishes) {
@@ -183,6 +185,8 @@ public class DishServiceImpl implements DishService {
 
 
     // 根据套餐id查询套餐包含的菜品
+    //Caution: 由于涉及多表操作，所以必须开启事务
+    @Transactional
     @Override
     public List<DishItemVO> getBySetmealId(Long setmealId) {
         List<DishItemVO> dishItemVOs=new ArrayList<>();
