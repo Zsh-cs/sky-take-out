@@ -31,7 +31,7 @@ public class JwtTokenAdminInterceptor extends JwtTokenInterceptor {
     protected void checkToken(String token) {
         Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
         Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
-        log.info("当前登入苍穹外卖管理端系统的员工id: {}", empId);
+        log.info("id={}的员工登入苍穹外卖管理端\n", empId);
         BaseContext.setCurrentId(empId);
     }
 }

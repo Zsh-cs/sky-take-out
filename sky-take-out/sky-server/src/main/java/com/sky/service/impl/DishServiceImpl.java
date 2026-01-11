@@ -71,7 +71,6 @@ public class DishServiceImpl implements DishService {
      *
      * @param dishIds
      */
-    //Caution: 由于涉及多表操作，所以必须开启事务
     @Transactional
     @Override
     public void deleteBatch(List<Long> dishIds) {
@@ -104,6 +103,13 @@ public class DishServiceImpl implements DishService {
 
     // 根据id查询菜品
     @Override
+    public Dish getById(Long id) {
+        return dishMapper.selectById(id);
+    }
+
+
+    // 根据id查询菜品及其口味
+    @Override
     public DishVO getWithFlavorById(Long dishId) {
         DishVO dishVO=new DishVO();
 
@@ -123,7 +129,6 @@ public class DishServiceImpl implements DishService {
 
 
     // 修改菜品信息
-    //Caution: 由于涉及多表操作，所以必须开启事务
     @Transactional
     @Override
     public void updateWithFlavor(DishDTO dishDTO) {
@@ -161,7 +166,6 @@ public class DishServiceImpl implements DishService {
 
 
     // 根据分类id查询已启用的菜品及其关联的口味
-    //Caution: 由于涉及多表操作，所以必须开启事务
     @Transactional
     @Override
     public List<DishVO> getWithFlavorByCategoryId(Long categoryId) {
@@ -185,7 +189,6 @@ public class DishServiceImpl implements DishService {
 
 
     // 根据套餐id查询套餐包含的菜品
-    //Caution: 由于涉及多表操作，所以必须开启事务
     @Transactional
     @Override
     public List<DishItemVO> getBySetmealId(Long setmealId) {

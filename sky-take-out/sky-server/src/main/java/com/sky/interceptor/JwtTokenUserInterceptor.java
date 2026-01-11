@@ -27,7 +27,7 @@ public class JwtTokenUserInterceptor extends JwtTokenInterceptor{
     protected void checkToken(String token) {
         Claims claims = JwtUtil.parseJWT(jwtProperties.getUserSecretKey(), token);
         Long userId = Long.valueOf(claims.get(JwtClaimsConstant.USER_ID).toString());
-        log.info("id={}的用户登入", userId);
+        log.info("id={}的微信用户登入\n", userId);
         // BaseContext内部使用了ThreadLocal技术，它是线程隔离的
         // 不会与BaseContext.setCurrentId(empId);发生冲突
         BaseContext.setCurrentId(userId);
