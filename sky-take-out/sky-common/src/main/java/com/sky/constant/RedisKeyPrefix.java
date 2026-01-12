@@ -5,5 +5,6 @@ package com.sky.constant;
  */
 public class RedisKeyPrefix {
 
-    public static final String DISH_PREFIX="dish_";
+    public static final String DISH_PREFIX="dish::";
+    public static final String SETMEAL_PREFIX="setmeal";
 }

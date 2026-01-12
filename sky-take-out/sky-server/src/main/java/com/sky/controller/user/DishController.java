@@ -36,7 +36,7 @@ public class DishController {
     public Result<List<DishVO>> getWithFlavorByCategoryId(Long categoryId){
         log.info("查询分类id={}的已启用的菜品及其关联的口味",categoryId);
 
-        // 构造Redis中的key，key命名规则：dish_{categoryId}
+        // 构造Redis中的key，key命名规则：dish::{categoryId}
         String key= RedisKeyPrefix.DISH_PREFIX +categoryId;
 
         // 查询Redis中是否缓存了该分类id下的菜品及其关联的口味

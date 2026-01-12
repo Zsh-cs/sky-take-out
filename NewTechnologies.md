@@ -378,6 +378,12 @@ Redis的主流Java客户端有以下几个：
 
 
 
+---
+
+
+
+### 12.SpringCache
+
 
 
 
