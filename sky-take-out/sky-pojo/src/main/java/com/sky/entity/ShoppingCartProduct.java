@@ -1,5 +1,8 @@
 package com.sky.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,10 +19,12 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShoppingCart implements Serializable {
+@TableName("shopping_cart")
+public class ShoppingCartProduct implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     // 名称
@@ -34,7 +39,7 @@ public class ShoppingCart implements Serializable {
     private String dishFlavor;
     // 数量
     private Integer number;
-    // 金额
+    // 单价
     private BigDecimal amount;
     // 图片
     private String image;
