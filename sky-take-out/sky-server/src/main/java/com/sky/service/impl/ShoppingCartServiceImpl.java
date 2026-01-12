@@ -36,7 +36,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         // 判断该商品是否已经有同种类型存在于购物车中
         ShoppingCartProduct product = new ShoppingCartProduct();
         BeanUtils.copyProperties(shoppingCartProductDTO, product);
-        product.setUserId(BaseContext.getCurrentId());
         List<ShoppingCartProduct> list = getListIfExists(product);
 
         if(list !=null && list.size()>0){
@@ -87,20 +86,44 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
 
+    // 删除当前用户购物车中的一个商品
+    @Override
+    public void removeOneByUserId(ShoppingCartProductDTO shoppingCartProductDTO) {
+
+        // 获取购物车中该类商品
+        ShoppingCartProduct product = new ShoppingCartProduct();
+        BeanUtils.copyProperties(shoppingCartProductDTO, product);
+        ShoppingCartProduct productToRemove = getListIfExists(product).get(0);
+
+        Integer number = productToRemove.getNumber();
+        if(number>1){
+            // 若该类商品数量大于1，则只需要将该类商品的数量-1
+            productToRemove.setNumber(number-1);
+            shoppingCartMapper.updateById(productToRemove);
+        } else{
+            // 若该类商品数量等于1，则直接移出购物车
+            shoppingCartMapper.deleteById(productToRemove.getId());
+        }
+    }
+
+
     /**
      * 可复用方法：判断该商品是否已经有同种类型存在于购物车中
-     * @param shoppingCartProduct
+     * @param product
      * @return
      */
-    private List<ShoppingCartProduct> getListIfExists(ShoppingCartProduct shoppingCartProduct) {
+    private List<ShoppingCartProduct> getListIfExists(ShoppingCartProduct product) {
+
+        product.setUserId(BaseContext.getCurrentId());
+
         LambdaQueryWrapper<ShoppingCartProduct> lqw = new LambdaQueryWrapper<>();
-        Long userId = shoppingCartProduct.getUserId();
-        Long dishId = shoppingCartProduct.getDishId();
-        Long setmealId = shoppingCartProduct.getSetmealId();
-        String dishFlavor = shoppingCartProduct.getDishFlavor();
+        Long userId = product.getUserId();
+        Long dishId = product.getDishId();
+        Long setmealId = product.getSetmealId();
+        String dishFlavor = product.getDishFlavor();
 
         lqw.eq(userId != null, ShoppingCartProduct::getUserId, userId)
-                .eq(dishId != null, ShoppingCartProduct::getDishFlavor, dishId)
+                .eq(dishId != null, ShoppingCartProduct::getDishId, dishId)
                 .eq(setmealId != null, ShoppingCartProduct::getSetmealId, setmealId)
                 .eq(dishFlavor != null && !dishFlavor.isEmpty(), ShoppingCartProduct::getDishFlavor, dishFlavor);
 

@@ -56,6 +56,16 @@ public class ShoppingCartController {
         return Result.success();
     }
 
+
+    // 删除当前用户购物车中的一个商品
+    @PostMapping("/sub")
+    @ApiOperation("删除当前用户购物车中的一个商品")
+    public Result removeOneByUserId(@RequestBody ShoppingCartProductDTO shoppingCartProductDTO){
+        log.info("准备删除userId={}的用户购物车的一个商品，该商品为：{}",BaseContext.getCurrentId(),shoppingCartProductDTO);
+        shoppingCartService.removeOneByUserId(shoppingCartProductDTO);
+        return Result.success();
+    }
+
 }
 
 
