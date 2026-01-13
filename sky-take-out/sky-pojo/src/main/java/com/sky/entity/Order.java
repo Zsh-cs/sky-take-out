@@ -1,5 +1,8 @@
 package com.sky.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,27 +19,12 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName("orders")
 public class Order implements Serializable {
-
-    /**
-     * 订单状态：1待付款 2待接单 3已接单 4派送中 5已完成 6已取消
-     */
-    public static final Integer PENDING_PAYMENT = 1;
-    public static final Integer TO_BE_CONFIRMED = 2;
-    public static final Integer CONFIRMED = 3;
-    public static final Integer DELIVERY_IN_PROGRESS = 4;
-    public static final Integer COMPLETED = 5;
-    public static final Integer CANCELLED = 6;
-
-    /**
-     * 支付状态：0未支付 1已支付 2退款
-     */
-    public static final Integer UN_PAID = 0;
-    public static final Integer PAID = 1;
-    public static final Integer REFUND = 2;
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     // 订单号
@@ -59,6 +47,7 @@ public class Order implements Serializable {
     private BigDecimal amount;
     // 备注
     private String remark;
+
     // 用户名
     private String userName;
     // 手机号
@@ -67,6 +56,7 @@ public class Order implements Serializable {
     private String address;
     // 收货人
     private String consignee;
+
     // 订单取消原因
     private String cancelReason;
     // 订单拒绝原因

@@ -1,0 +1,21 @@
+package com.sky.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.sky.entity.OrderDetail;
+import com.sky.mapper.OrderDetailMapper;
+import com.sky.service.OrderDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderDetailServiceImpl implements OrderDetailService {
+
+    @Autowired
+    private OrderDetailMapper orderDetailMapper;
+
+    // 新增订单详情
+    @Override
+    public void save(OrderDetail orderDetail) {
+        orderDetailMapper.insert(orderDetail);
+    }
+}

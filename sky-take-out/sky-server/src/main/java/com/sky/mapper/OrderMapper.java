@@ -6,4 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface OrderMapper extends BaseMapper<Order> {
+
+    // 新增订单
+    void save(Order order);
 }
