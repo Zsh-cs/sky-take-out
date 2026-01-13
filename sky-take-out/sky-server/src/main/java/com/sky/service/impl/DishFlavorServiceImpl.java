@@ -6,6 +6,7 @@ import com.sky.mapper.DishFlavorMapper;
 import com.sky.service.DishFlavorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class DishFlavorServiceImpl implements DishFlavorService {
      * @param dishId  菜品id
      * @param dishFlavors  该菜品的所有口味
      */
+    //Caution: 遍历插入对应多条insert sql，需要开启事务
+    @Transactional
     @Override
     public void saveFlavorsByDishId(Long dishId, List<DishFlavor> dishFlavors) {
         if(dishFlavors!=null && dishFlavors.size()>0){

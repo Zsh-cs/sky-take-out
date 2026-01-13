@@ -8,6 +8,7 @@ import com.sky.mapper.SetmealDishMapper;
 import com.sky.service.SetmealDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class SetmealDishServiceImpl implements SetmealDishService {
 
 
     // 根据套餐id向套餐菜品表插入该套餐的所有关联菜品
+    @Transactional
     @Override
     public void saveDishesBySetmealId(Long setmealId, List<SetmealDish> setmealDishes) {
         if(setmealDishes!=null && setmealDishes.size()>0){

@@ -80,7 +80,7 @@ public class DishServiceImpl implements DishService {
         for (Long id : dishIds) {
             // 使用了MyBatis-Plus提供的方法，会自动排除已被逻辑删除的菜品
             Dish dish=dishMapper.selectById(id);
-            if(dish.getStatus()== StatusConstant.ENABLE){
+            if(dish.getStatus().equals(StatusConstant.ENABLE)){
                 throw new DeletionNotAllowedException(MessageConstant.DISH_ON_SALE);
             }
         }
