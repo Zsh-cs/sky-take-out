@@ -1705,3 +1705,4 @@
 127.0.0.1 - - [12/Jan/2026:16:37:19 +0800] "PUT /api/setmeal HTTP/1.1" 200 44 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 127.0.0.1 - - [12/Jan/2026:16:37:20 +0800] "GET /api/category/list?type=2 HTTP/1.1" 200 194 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 127.0.0.1 - - [12/Jan/2026:16:37:20 +0800] "GET /api/setmeal/page?page=1&pageSize=10&status= HTTP/1.1" 200 1485 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+127.0.0.1 - - [12/Jan/2026:23:00:29 +0800] "GET /api/order/conditionSearch?page=1&pageSize=10 HTTP/1.1" 502 494 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"

@@ -1,4 +1,4 @@
-package com.sky.dto;
+package com.sky.dto.order;
 
 import com.sky.entity.OrderDetail;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class OrdersDTO implements Serializable {
+public class OrderDTO implements Serializable {
 
     private Long id;
 

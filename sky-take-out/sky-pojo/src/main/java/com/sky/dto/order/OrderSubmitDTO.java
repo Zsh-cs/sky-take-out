@@ -1,4 +1,4 @@
-package com.sky.dto;
+package com.sky.dto.order;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-public class OrdersSubmitDTO implements Serializable {
+public class OrderSubmitDTO implements Serializable {
 
     // 地址簿id
     private Long addressBookId;
@@ -23,7 +23,7 @@ public class OrdersSubmitDTO implements Serializable {
     private Integer deliveryStatus;
     // 餐具数量
     private Integer tablewareNumber;
-    // 餐具数量状态：1按餐量提供 ，0选择具体数量
+    // 餐具数量状态：1按餐量提供，0选择具体数量
     private Integer tablewareStatus;
     // 打包费
     private Integer packAmount;

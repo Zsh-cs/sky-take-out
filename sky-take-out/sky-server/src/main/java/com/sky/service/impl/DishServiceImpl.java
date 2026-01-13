@@ -14,7 +14,9 @@ import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
 import com.sky.mapper.SetmealDishMapper;
 import com.sky.result.PageResult;
+import com.sky.service.DishFlavorService;
 import com.sky.service.DishService;
+import com.sky.service.SetmealDishService;
 import com.sky.vo.DishItemVO;
 import com.sky.vo.DishVO;
 import org.springframework.beans.BeanUtils;
@@ -31,9 +33,9 @@ public class DishServiceImpl implements DishService {
     @Autowired
     private DishMapper dishMapper;
     @Autowired
-    private DishFlavorMapper dishFlavorMapper;
+    private DishFlavorService dishFlavorService;
     @Autowired
-    private SetmealDishMapper setmealDishMapper;
+    private SetmealDishService setmealDishService;
 
     // 新增菜品和对应的口味
     //Caution: 由于涉及多表操作，所以必须开启事务
@@ -47,7 +49,7 @@ public class DishServiceImpl implements DishService {
         dishMapper.save(dish);
 
         // 获取菜品id，向菜品口味表插入多条数据
-        saveFlavorsByDishId(dish.getId(), dishDTO.getFlavors());
+        dishFlavorService.saveFlavorsByDishId(dish.getId(), dishDTO.getFlavors());
     }
 
 
@@ -84,19 +86,13 @@ public class DishServiceImpl implements DishService {
         }
 
         // 2.菜品是否被套餐关联
-        LambdaQueryWrapper<SetmealDish> lqw=new LambdaQueryWrapper<>();
-        lqw.in(SetmealDish::getDishId,dishIds);
-        lqw.select(SetmealDish::getSetmealId);
-        Long count = setmealDishMapper.selectCount(lqw);
-        if (count > 0) {
-            throw new DeletionNotAllowedException(MessageConstant.DISH_RELATED_TO_SETMEAL);
-        }
+        setmealDishService.checkIfAnyDishRelatedToSetmeal(dishIds);
 
         // 3.删除菜品
         for (Long dishId : dishIds) {
             dishMapper.deleteById(dishId);
             // 4.若菜品有关联的口味，则在菜品口味表中删除这些口味
-            deleteFlavorsByDishId(dishId);
+            dishFlavorService.deleteFlavorsByDishId(dishId);
         }
     }
 
@@ -115,12 +111,8 @@ public class DishServiceImpl implements DishService {
 
         // 1.根据菜品id查询菜品
         Dish dish=dishMapper.selectById(dishId);
-
         // 2.根据菜品id查询口味
-        LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
-        lqw.eq(DishFlavor::getDishId,dishId);
-        List<DishFlavor> dishFlavors=dishFlavorMapper.selectList(lqw);
-
+        List<DishFlavor> dishFlavors = dishFlavorService.getByDishId(dishId);
         // 3.将以上信息封装到DishVO对象中
         BeanUtils.copyProperties(dish,dishVO);
         dishVO.setFlavors(dishFlavors);
@@ -137,9 +129,9 @@ public class DishServiceImpl implements DishService {
         BeanUtils.copyProperties(dishDTO,dish);
         dishMapper.update(dish);
         // 2.删除该菜品的所有口味
-        deleteFlavorsByDishId(dish.getId());
+        dishFlavorService.deleteFlavorsByDishId(dish.getId());
         // 3.重新插入该菜品的所有口味
-        saveFlavorsByDishId(dish.getId(),dishDTO.getFlavors());
+        dishFlavorService.saveFlavorsByDishId(dish.getId(),dishDTO.getFlavors());
     }
 
 
@@ -194,10 +186,7 @@ public class DishServiceImpl implements DishService {
     public List<DishItemVO> getBySetmealId(Long setmealId) {
         List<DishItemVO> dishItemVOs=new ArrayList<>();
 
-        LambdaQueryWrapper<SetmealDish> setmealDishLqw=new LambdaQueryWrapper<>();
-        setmealDishLqw.eq(SetmealDish::getSetmealId,setmealId)
-                      .orderByDesc(SetmealDish::getPrice);
-        List<SetmealDish> setmealDishes = setmealDishMapper.selectList(setmealDishLqw);
+        List<SetmealDish> setmealDishes = setmealDishService.getBySetmealId(setmealId);
 
         for (SetmealDish setmealDish : setmealDishes) {
             LambdaQueryWrapper<Dish> lqw=new LambdaQueryWrapper<>();
@@ -218,30 +207,13 @@ public class DishServiceImpl implements DishService {
     }
 
 
-    /**
-     * 可复用方法：根据菜品id向菜品口味表插入该菜品的所有口味
-     * @param dishId  菜品id
-     * @param dishFlavors  该菜品的所有口味
-     */
-    private void saveFlavorsByDishId(Long dishId, List<DishFlavor> dishFlavors){
-
-        if(dishFlavors!=null && dishFlavors.size()>0){
-            // 遍历设置口味对应的菜品id并添加口味
-            for (DishFlavor flavor : dishFlavors) {
-                flavor.setDishId(dishId);
-                dishFlavorMapper.insert(flavor);
-            }
-        }
+    // 根据分类id查询菜品数量
+    @Override
+    public Long getCountByCategoryId(Long categoryId) {
+        LambdaQueryWrapper<Dish> dishLqw=new LambdaQueryWrapper<>();
+        dishLqw.eq(Dish::getCategoryId,categoryId);
+        Long count = dishMapper.selectCount(dishLqw);
+        return count;
     }
 
-
-    /**
-     * 可复用方法，根据菜品id删除菜品口味表中与该菜品关联的所有口味
-     * @param dishId
-     */
-    private void deleteFlavorsByDishId(Long dishId){
-        LambdaQueryWrapper<DishFlavor> lqw=new LambdaQueryWrapper<>();
-        lqw.eq(DishFlavor::getDishId,dishId);
-        dishFlavorMapper.delete(lqw);
-    }
 }

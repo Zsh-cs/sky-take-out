@@ -7,14 +7,12 @@ import com.sky.constant.StatusConstant;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.page.CategoryPageQueryDTO;
 import com.sky.entity.Category;
-import com.sky.entity.Dish;
-import com.sky.entity.Setmeal;
 import com.sky.exception.DeletionNotAllowedException;
 import com.sky.mapper.CategoryMapper;
-import com.sky.mapper.DishMapper;
-import com.sky.mapper.SetmealMapper;
 import com.sky.result.PageResult;
 import com.sky.service.CategoryService;
+import com.sky.service.DishService;
+import com.sky.service.SetmealService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +26,9 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
     @Autowired
-    private DishMapper dishMapper;
+    private DishService dishService;
     @Autowired
-    private SetmealMapper setmealMapper;
+    private SetmealService setmealService;
 
     // 新增分类
     @Override
@@ -101,18 +99,14 @@ public class CategoryServiceImpl implements CategoryService {
         // 查询当前分类下是否有菜品或套餐，若有就抛出业务异常
 
         // 1.根据分类id查询菜品数量
-        LambdaQueryWrapper<Dish> dishLqw=new LambdaQueryWrapper<>();
-        dishLqw.eq(Dish::getCategoryId,id);
-        Long count = dishMapper.selectCount(dishLqw);
+        Long count = dishService.getCountByCategoryId(id);
         if(count>0){
             // 当前分类下有菜品，不能删除
             throw new DeletionNotAllowedException(MessageConstant.CATEGORY_RELATED_TO_DISH);
         }
 
         // 2.根据分类id查询套餐数量
-        LambdaQueryWrapper<Setmeal> setmealLqw=new LambdaQueryWrapper<>();
-        setmealLqw.eq(Setmeal::getCategoryId,id);
-        count = setmealMapper.selectCount(setmealLqw);
+        count= setmealService.getCountByCategoryId(id);
         if(count>0){
             // 当前分类下有套餐，不能删除
             throw new DeletionNotAllowedException(MessageConstant.CATEGORY_RELATED_TO_SETMEAL);

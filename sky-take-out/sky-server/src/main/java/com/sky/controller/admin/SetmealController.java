@@ -65,7 +65,7 @@ public class SetmealController {
     @ApiOperation("根据id查询套餐")
     public Result<SetmealVO> getById(@PathVariable Long id) {
         log.info("查询id={}的套餐", id);
-        SetmealVO setmealVO = setmealService.getWithDishById(id);
+        SetmealVO setmealVO = setmealService.getWithDishesById(id);
         return Result.success(setmealVO);
     }
 
@@ -76,7 +76,7 @@ public class SetmealController {
     @CacheEvict(cacheNames = RedisKeyPrefix.SETMEAL_PREFIX, allEntries = true)// 清理全部缓存
     public Result update(@RequestBody SetmealDTO setmealDTO) {
         log.info("修改套餐信息为：{}", setmealDTO);
-        setmealService.updateWithDish(setmealDTO);
+        setmealService.updateWithDishes(setmealDTO);
         return Result.success();
     }
 

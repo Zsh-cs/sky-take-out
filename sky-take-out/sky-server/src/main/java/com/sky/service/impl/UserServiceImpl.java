@@ -36,6 +36,8 @@ public class UserServiceImpl implements UserService {
     public User wxLogin(UserLoginDTO userLoginDTO) {
 
         // 1.调用微信接口服务，获取当前微信用户的openid
+        //Caution: 微信的openid与appid是强绑定的，一个appid对应一个openid，
+        //  每次前端传来变化的code而非直接传来openid只是为了增强安全性，避免他人截货并冒用openid发送请求
         Map<String, String> map=new HashMap<>();
         map.put("appid",weChatProperties.getAppid());
         map.put("secret",weChatProperties.getSecret());

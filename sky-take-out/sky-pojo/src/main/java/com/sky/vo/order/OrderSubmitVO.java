@@ -1,4 +1,4 @@
-package com.sky.vo;
+package com.sky.vo.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +20,7 @@ public class OrderSubmitVO implements Serializable {
     // 订单号
     private String orderNumber;
     // 订单金额
-    private BigDecimal orderAmount;
+    private BigDecimal orderPrice;
     // 下单时间
     private LocalDateTime orderTime;
 }

@@ -16,6 +16,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -60,14 +61,14 @@ public class HttpClientUtil {
             if(response.getStatusLine().getStatusCode() == 200){
                 result = EntityUtils.toString(response.getEntity(),"UTF-8");
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (IOException | URISyntaxException e){
+            throw new RuntimeException(e);
         }finally {
             try {
                 response.close();
                 httpClient.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
 

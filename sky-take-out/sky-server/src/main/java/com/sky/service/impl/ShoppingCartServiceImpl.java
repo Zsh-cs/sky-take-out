@@ -9,6 +9,8 @@ import com.sky.entity.ShoppingCartProduct;
 import com.sky.mapper.DishMapper;
 import com.sky.mapper.SetmealMapper;
 import com.sky.mapper.ShoppingCartMapper;
+import com.sky.service.DishService;
+import com.sky.service.SetmealService;
 import com.sky.service.ShoppingCartService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Autowired
     private ShoppingCartMapper shoppingCartMapper;
     @Autowired
-    private DishMapper dishMapper;
+    private DishService dishService;
     @Autowired
-    private SetmealMapper setmealMapper;
+    private SetmealService setmealService;
 
     // 添加当前用户的购物车
     @Transactional
@@ -49,13 +51,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             Long dishId= shoppingCartProductDTO.getDishId();
             if(dishId!=null){
                 // 该商品是菜品
-                Dish dish = dishMapper.selectById(dishId);
+                Dish dish = dishService.getById(dishId);
                 product.setName(dish.getName());
                 product.setImage(dish.getImage());
                 product.setAmount(dish.getPrice());
             }else{
                 // 该商品是套餐
-                Setmeal setmeal = setmealMapper.selectById(shoppingCartProductDTO.getSetmealId());
+                Setmeal setmeal = setmealService.getById(shoppingCartProductDTO.getSetmealId());
                 product.setName(setmeal.getName());
                 product.setImage(setmeal.getImage());
                 product.setAmount(setmeal.getPrice());

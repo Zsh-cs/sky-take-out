@@ -41,4 +41,7 @@ public interface DishService {
 
     // 根据套餐id查询套餐包含的菜品
     List<DishItemVO> getBySetmealId(Long setmealId);
+
+    // 根据分类id查询菜品数量
+    Long getCountByCategoryId(Long categoryId);
 }

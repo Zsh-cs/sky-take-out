@@ -1,11 +1,11 @@
-package com.sky.dto;
+package com.sky.dto.order;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class OrdersRejectionDTO implements Serializable {
+public class OrderRejectionDTO implements Serializable {
 
     private Long id;
     // 订单拒绝原因
