@@ -8,6 +8,7 @@ import com.sky.mapper.AddressBookMapper;
 import com.sky.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -60,9 +61,19 @@ public class AddressBookServiceImpl implements AddressBookService {
     }
 
 
-    // 设置默认地址
+    // 设置默认地址：需要先清除原有默认地址
+    @Transactional
     @Override
     public void setDefault(Address address) {
+
+        // 先清除原有默认地址
+        LambdaQueryWrapper<Address> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Address::getIsDefault,DefaultConstant.DEFAULT);
+        Address defaultAddress = addressBookMapper.selectOne(lqw);
+        defaultAddress.setIsDefault(DefaultConstant.NOT_DEFAULT);
+        addressBookMapper.updateById(defaultAddress);
+
+        // 再设置新的默认地址
         address.setIsDefault(DefaultConstant.DEFAULT);
         addressBookMapper.updateById(address);
     }

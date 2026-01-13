@@ -20,7 +20,7 @@ public interface AddressBookService {
     // 查询当前用户的所有地址
     List<Address> list();
 
-    // 设置默认地址
+    // 设置默认地址：需要先清除原有默认地址
     void setDefault(Address address);
 
     // 查询默认地址
