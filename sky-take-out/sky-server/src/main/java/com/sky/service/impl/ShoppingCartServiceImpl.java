@@ -109,6 +109,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
 
+    // 新增商品
+    @Override
+    public void save(ShoppingCartProduct product) {
+        shoppingCartMapper.insert(product);
+    }
+
+
     /**
      * 可复用方法：判断该商品是否已经有同种类型存在于购物车中
      * @param product

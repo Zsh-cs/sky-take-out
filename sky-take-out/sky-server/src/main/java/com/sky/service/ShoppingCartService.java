@@ -18,4 +18,7 @@ public interface ShoppingCartService {
 
     // 删除当前用户购物车中的一个商品
     void removeOneByUserId(ShoppingCartProductDTO shoppingCartProductDTO);
+
+    // 新增商品
+    void save(ShoppingCartProduct product);
 }

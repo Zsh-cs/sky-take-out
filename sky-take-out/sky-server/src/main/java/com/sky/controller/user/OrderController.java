@@ -7,6 +7,7 @@ import com.sky.dto.page.HistoryOrderPageQueryDTO;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.OrderService;
+import com.sky.vo.order.HistoryOrderVO;
 import com.sky.vo.order.OrderPaymentVO;
 import com.sky.vo.order.OrderSubmitVO;
 import io.swagger.annotations.Api;
@@ -57,6 +58,36 @@ public class OrderController {
         log.info("当前用户进行历史订单分页查询，参数：{}",dto);
         PageResult pageResult=orderService.pageQueryForHistoryOrders(dto);
         return Result.success(pageResult);
+    }
+
+
+    // 查询历史订单详情
+    @GetMapping("/orderDetail/{id}")
+    @ApiOperation("查询历史订单详情")
+    public Result<HistoryOrderVO> getDetailsForHistoryOrder(@PathVariable Long id){
+        log.info("查询id={}的历史订单详情",id);
+        HistoryOrderVO historyOrderVO=orderService.getDetailsForHistoryOrder(id);
+        return Result.success(historyOrderVO);
+    }
+
+
+    // 用户取消订单
+    @PutMapping("/cancel/{id}")
+    @ApiOperation("用户取消订单")
+    public Result cancel(@PathVariable Long id){
+        log.info("用户取消了id={}的订单",id);
+        orderService.cancel(id);
+        return Result.success();
+    }
+
+
+    // 再来一单：将原订单中的商品重新加入到购物车中
+    @PostMapping("/repetition/{id}")
+    @ApiOperation("再来一单")
+    public Result oneMore(@PathVariable Long id){
+        log.info("用户想要再来一单，与id={}的订单商品保持一致",id);
+        orderService.oneMore(id);
+        return Result.success();
     }
 
 

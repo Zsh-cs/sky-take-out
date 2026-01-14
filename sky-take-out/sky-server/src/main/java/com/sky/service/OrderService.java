@@ -7,10 +7,7 @@ import com.sky.dto.order.OrderSubmitDTO;
 import com.sky.dto.page.HistoryOrderPageQueryDTO;
 import com.sky.dto.page.OrderPageQueryDTO;
 import com.sky.result.PageResult;
-import com.sky.vo.order.OrderPaymentVO;
-import com.sky.vo.order.OrderStatisticsVO;
-import com.sky.vo.order.OrderSubmitVO;
-import com.sky.vo.order.OrderVO;
+import com.sky.vo.order.*;
 
 public interface OrderService {
 
@@ -29,7 +26,7 @@ public interface OrderService {
     // 拒单
     void reject(OrderRejectionDTO orderRejectionDTO);
 
-    // 取消订单
+    // 商家取消订单
     void cancel(OrderCancelDTO orderCancelDTO);
 
     // 根据订单id派送订单
@@ -52,4 +49,13 @@ public interface OrderService {
 
     // 当前用户的历史订单分页查询
     PageResult pageQueryForHistoryOrders(HistoryOrderPageQueryDTO dto);
+
+    // 查询历史订单详情
+    HistoryOrderVO getDetailsForHistoryOrder(Long id);
+
+    // 用户取消订单
+    void cancel(Long id);
+
+    // 再来一单：将原订单中的商品重新加入到购物车中
+    void oneMore(Long id);
 }

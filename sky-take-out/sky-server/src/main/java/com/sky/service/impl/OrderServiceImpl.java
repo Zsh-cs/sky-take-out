@@ -170,7 +170,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-    // 取消订单
+    // 商家取消订单
     @Override
     public void cancel(OrderCancelDTO orderCancelDTO) {
         Order order = orderMapper.selectById(orderCancelDTO.getId());
@@ -294,6 +294,50 @@ public class OrderServiceImpl implements OrderService {
 
         // 将historyOrderVOs作为records返回
         return new PageResult(orderPage.getTotal(), historyOrderVOs);
+    }
+
+
+    // 查询历史订单详情
+    @Override
+    public HistoryOrderVO getDetailsForHistoryOrder(Long id) {
+        HistoryOrderVO historyOrderVO = new HistoryOrderVO();
+        Order order = orderMapper.selectById(id);
+        BeanUtils.copyProperties(order, historyOrderVO);
+
+        List<OrderDetail> orderDetails = orderDetailService.getByOrderId(id);
+        historyOrderVO.setOrderDetailList(orderDetails);
+
+        return historyOrderVO;
+    }
+
+
+    // 用户取消订单
+    @Override
+    public void cancel(Long id) {
+        Order order = orderMapper.selectById(id);
+        order.setStatus(OrderStatus.CANCELLED);
+        order.setCancelTime(LocalDateTime.now());
+        orderMapper.updateById(order);
+    }
+
+
+    // 再来一单：将原订单中的商品重新加入到购物车中
+    @Override
+    public void oneMore(Long id) {
+        Long userId = BaseContext.getCurrentId();
+
+        // 根据订单id查询订单详情
+        List<OrderDetail> orderDetails = orderDetailService.getByOrderId(id);
+
+        // 遍历订单详情，依次拷贝到对应的购物车商品中，然后保存到数据库中
+        List<ShoppingCartProduct> products=new ArrayList<>();
+        for (OrderDetail orderDetail : orderDetails) {
+            ShoppingCartProduct product=new ShoppingCartProduct();
+            BeanUtils.copyProperties(orderDetail,product);
+            product.setUserId(userId);
+            product.setCreateTime(LocalDateTime.now());
+            shoppingCartService.save(product);
+        }
     }
 
 }

@@ -49,11 +49,11 @@ public class OrderController {
     }
 
 
-    // 取消订单
+    // 商家取消订单
     @PutMapping("/cancel")
-    @ApiOperation("取消订单")
+    @ApiOperation("商家取消订单")
     public Result cancel(@RequestBody OrderCancelDTO orderCancelDTO){
-        log.info("取消订单：{}",orderCancelDTO);
+        log.info("商家取消订单：{}",orderCancelDTO);
         orderService.cancel(orderCancelDTO);
         return Result.success();
     }
