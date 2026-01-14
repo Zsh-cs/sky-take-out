@@ -87,6 +87,16 @@ public class AddressBookServiceImpl implements AddressBookService {
         Address address = addressBookMapper.selectOne(lqw);
         return address;
     }
+
+
+    // 将省名、市民、区名、详细地址拼接起来组成完全地址
+    @Override
+    public String getFullAddressById(Long id) {
+        Address address = getById(id);
+        String fullAddress=
+                address.getProvinceName()+address.getCityName()+address.getDistrictName()+address.getDetail();
+        return fullAddress;
+    }
 }
 
 

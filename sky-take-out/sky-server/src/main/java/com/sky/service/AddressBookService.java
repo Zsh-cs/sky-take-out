@@ -25,4 +25,7 @@ public interface AddressBookService {
 
     // 查询默认地址
     Address getDefault();
+
+    // 将省名、市民、区名、详细地址拼接起来组成完全地址
+    String getFullAddressById(Long id);
 }

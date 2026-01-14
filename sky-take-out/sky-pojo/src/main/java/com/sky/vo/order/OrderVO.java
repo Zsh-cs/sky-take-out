@@ -13,7 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderVO extends Order implements Serializable {
 
-    // 订单菜品信息
+    // 订单食物信息（包括菜品和套餐）
+    //Caution: 根据前端要求，此变量必须叫做orderDishes，否则前端展示不出来！
     private String orderDishes;
     // 订单详情
     private List<OrderDetail> orderDetailList;
