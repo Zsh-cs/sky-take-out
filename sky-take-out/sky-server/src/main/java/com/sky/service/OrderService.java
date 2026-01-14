@@ -4,6 +4,7 @@ import com.sky.dto.order.OrderCancelDTO;
 import com.sky.dto.order.OrderPaymentDTO;
 import com.sky.dto.order.OrderRejectionDTO;
 import com.sky.dto.order.OrderSubmitDTO;
+import com.sky.dto.page.HistoryOrderPageQueryDTO;
 import com.sky.dto.page.OrderPageQueryDTO;
 import com.sky.result.PageResult;
 import com.sky.vo.order.OrderPaymentVO;
@@ -48,4 +49,7 @@ public interface OrderService {
 
     // 根据订单id查询订单详情
     OrderVO getDetails(Long id);
+
+    // 当前用户的历史订单分页查询
+    PageResult pageQueryForHistoryOrders(HistoryOrderPageQueryDTO dto);
 }

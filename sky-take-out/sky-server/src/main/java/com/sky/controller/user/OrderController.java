@@ -3,6 +3,8 @@ package com.sky.controller.user;
 import com.sky.context.BaseContext;
 import com.sky.dto.order.OrderPaymentDTO;
 import com.sky.dto.order.OrderSubmitDTO;
+import com.sky.dto.page.HistoryOrderPageQueryDTO;
+import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.OrderService;
 import com.sky.vo.order.OrderPaymentVO;
@@ -48,6 +50,14 @@ public class OrderController {
     }
 
 
+    // 当前用户的历史订单分页查询
+    @GetMapping("/historyOrders")
+    @ApiOperation("当前用户的历史订单分页查询")
+    public Result<PageResult> pageQueryForHistoryOrders(HistoryOrderPageQueryDTO dto){
+        log.info("当前用户进行历史订单分页查询，参数：{}",dto);
+        PageResult pageResult=orderService.pageQueryForHistoryOrders(dto);
+        return Result.success(pageResult);
+    }
 
 
 }

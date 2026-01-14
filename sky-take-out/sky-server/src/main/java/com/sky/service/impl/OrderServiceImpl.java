@@ -11,6 +11,7 @@ import com.sky.dto.order.OrderCancelDTO;
 import com.sky.dto.order.OrderPaymentDTO;
 import com.sky.dto.order.OrderRejectionDTO;
 import com.sky.dto.order.OrderSubmitDTO;
+import com.sky.dto.page.HistoryOrderPageQueryDTO;
 import com.sky.dto.page.OrderPageQueryDTO;
 import com.sky.entity.*;
 import com.sky.exception.AddressBookBusinessException;
@@ -20,10 +21,7 @@ import com.sky.mapper.OrderMapper;
 import com.sky.result.PageResult;
 import com.sky.service.*;
 import com.sky.utils.WeChatPayUtil;
-import com.sky.vo.order.OrderPaymentVO;
-import com.sky.vo.order.OrderStatisticsVO;
-import com.sky.vo.order.OrderSubmitVO;
-import com.sky.vo.order.OrderVO;
+import com.sky.vo.order.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -226,7 +225,7 @@ public class OrderServiceImpl implements OrderService {
     public PageResult pageQuery(OrderPageQueryDTO dto) {
 
         Page<Order> page = new Page<>(dto.getPage(), dto.getPageSize());
-        Page<OrderVO> orderVOPage=orderMapper.pageQuery(page,dto);
+        Page<OrderVO> orderVOPage = orderMapper.pageQuery(page, dto);
         List<OrderVO> orderVOs = orderVOPage.getRecords();
 
         // 遍历orderVOs，设置每一个orderVO的订单详情列表和订单食物信息
@@ -236,7 +235,7 @@ public class OrderServiceImpl implements OrderService {
 
             // 若备注为空，则展示给前端备注为“无”
             String remark = orderVO.getRemark();
-            if(remark==null || remark.isEmpty()){
+            if (remark == null || remark.isEmpty()) {
                 orderVO.setRemark("无");
             }
 
@@ -256,9 +255,9 @@ public class OrderServiceImpl implements OrderService {
     // 根据订单id查询订单详情
     @Override
     public OrderVO getDetails(Long id) {
-        OrderVO orderVO=new OrderVO();
-        Order order=orderMapper.selectById(id);
-        BeanUtils.copyProperties(order,orderVO);
+        OrderVO orderVO = new OrderVO();
+        Order order = orderMapper.selectById(id);
+        BeanUtils.copyProperties(order, orderVO);
 
         List<OrderDetail> orderDetails = orderDetailService.getByOrderId(id);
         orderVO.setOrderDetailList(orderDetails);
@@ -267,6 +266,34 @@ public class OrderServiceImpl implements OrderService {
         orderVO.setOrderDishes(orderDishes);
 
         return orderVO;
+    }
+
+
+    // 当前用户的历史订单分页查询
+    @Override
+    public PageResult pageQueryForHistoryOrders(HistoryOrderPageQueryDTO dto) {
+        Page<Order> page = new Page<>(dto.getPage(), dto.getPageSize());
+
+        LambdaQueryWrapper<Order> lqw = new LambdaQueryWrapper<>();
+        Integer status = dto.getStatus();
+        lqw.eq(status != null, Order::getStatus, status);
+        lqw.eq(Order::getUserId, BaseContext.getCurrentId());// 只查询当前用户的历史订单
+
+        Page<Order> orderPage = orderMapper.selectPage(page, lqw);
+
+        List<HistoryOrderVO> historyOrderVOs = new ArrayList<>();
+        List<Order> orders = orderPage.getRecords();
+        for (Order order : orders) {
+            HistoryOrderVO historyOrderVO = new HistoryOrderVO();
+            BeanUtils.copyProperties(order, historyOrderVO);
+            List<OrderDetail> orderDetails = orderDetailService.getByOrderId(order.getId());
+            historyOrderVO.setOrderDetailList(orderDetails);
+
+            historyOrderVOs.add(historyOrderVO);
+        }
+
+        // 将historyOrderVOs作为records返回
+        return new PageResult(orderPage.getTotal(), historyOrderVOs);
     }
 
 }
