@@ -25,3 +25,11 @@ sky:
   wechat:
     appid: ${SKY_TAKE_OUT_WECHAT_APP_ID}
     secret: ${SKY_TAKE_OUT_WECHAT_APP_SECRET}
+    mchid: 1561414331
+    mch-serial-no: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
+    private-key-file-path: xxx
+    api-v3-key: CZBK51236435wxpay435434323FFDuv3
+    wechat-pay-cert-file-path: xxx
+    notify-url: xxx
+    refund-notify-url: xxx
+

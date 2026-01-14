@@ -7,4 +7,7 @@ public interface UserService {
 
     // 微信用户登录
     User wxLogin(UserLoginDTO userLoginDTO);
+
+    // 根据id查询用户
+    User getById(Long id);
 }

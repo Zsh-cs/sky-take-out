@@ -70,4 +70,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+
+    // 根据id查询用户
+    @Override
+    public User getById(Long id) {
+        return userMapper.selectById(id);
+    }
+
 }
