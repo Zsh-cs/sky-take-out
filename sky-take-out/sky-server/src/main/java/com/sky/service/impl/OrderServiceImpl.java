@@ -177,6 +177,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderMapper.selectById(orderCancelDTO.getId());
         order.setStatus(OrderStatus.CANCELLED);
         order.setCancelReason(orderCancelDTO.getCancelReason());
+        order.setCancelTime(LocalDateTime.now());
         orderMapper.updateById(order);
     }
 
@@ -195,6 +196,7 @@ public class OrderServiceImpl implements OrderService {
     public void completeById(Long orderId) {
         Order order = orderMapper.selectById(orderId);
         order.setStatus(OrderStatus.COMPLETED);
+        order.setDeliveryTime(LocalDateTime.now());// 设置订单送达时间
         orderMapper.updateById(order);
     }
 
@@ -232,6 +234,12 @@ public class OrderServiceImpl implements OrderService {
 
             Long orderId = orderVO.getId();
 
+            // 若备注为空，则展示给前端备注为“无”
+            String remark = orderVO.getRemark();
+            if(remark==null || remark.isEmpty()){
+                orderVO.setRemark("无");
+            }
+
             // 设置orderVO的订单详情列表
             List<OrderDetail> orderDetails = orderDetailService.getByOrderId(orderId);
             orderVO.setOrderDetailList(orderDetails);
@@ -242,6 +250,23 @@ public class OrderServiceImpl implements OrderService {
 
         return new PageResult(orderVOPage.getTotal(), orderVOs);
 
+    }
+
+
+    // 根据订单id查询订单详情
+    @Override
+    public OrderVO getDetails(Long id) {
+        OrderVO orderVO=new OrderVO();
+        Order order=orderMapper.selectById(id);
+        BeanUtils.copyProperties(order,orderVO);
+
+        List<OrderDetail> orderDetails = orderDetailService.getByOrderId(id);
+        orderVO.setOrderDetailList(orderDetails);
+
+        String orderDishes = orderDetailService.getFoodsInfoByOrderId(id);
+        orderVO.setOrderDishes(orderDishes);
+
+        return orderVO;
     }
 
 }

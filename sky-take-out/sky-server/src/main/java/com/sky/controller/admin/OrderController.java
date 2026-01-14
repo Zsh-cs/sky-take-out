@@ -8,6 +8,7 @@ import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.OrderService;
 import com.sky.vo.order.OrderStatisticsVO;
+import com.sky.vo.order.OrderVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
@@ -95,6 +96,16 @@ public class OrderController {
         log.info("订单分页查询，参数为：{}\n",orderPageQueryDTO);
         PageResult pageResult = orderService.pageQuery(orderPageQueryDTO);
         return Result.success(pageResult);
+    }
+
+
+    // 根据订单id查询订单详情
+    @GetMapping("/details/{id}")
+    @ApiOperation("根据订单id查询订单详情")
+    public Result<OrderVO> getDetails(@PathVariable Long id){
+        log.info("查询id={}的订单详情",id);
+        OrderVO orderVO=orderService.getDetails(id);
+        return Result.success(orderVO);
     }
 
 }
