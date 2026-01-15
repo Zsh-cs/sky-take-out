@@ -412,7 +412,7 @@ Redis的主流Java客户端有以下几个：
 
 
 
-### 15.WebSocket
+### 15.WebSocket协议
 
 
 

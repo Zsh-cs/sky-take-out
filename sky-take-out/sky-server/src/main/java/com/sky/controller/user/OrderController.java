@@ -93,6 +93,15 @@ public class OrderController {
     }
 
 
+    // 用户催单
+    @GetMapping("/reminder/{id}")
+    @ApiOperation("用户催单")
+    public Result chase(@PathVariable Long id){
+        orderService.chase(id);
+        return Result.success();
+    }
+
+
 }
 
 

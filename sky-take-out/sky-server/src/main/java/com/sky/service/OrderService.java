@@ -67,4 +67,7 @@ public interface OrderService {
 
     // 自动完成一直在派送中的订单
     void completeDeliveryOrders();
+
+    // 用户催单
+    void chase(Long id);
 }

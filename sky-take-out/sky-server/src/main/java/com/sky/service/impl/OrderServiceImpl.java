@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,6 +23,7 @@ import com.sky.result.PageResult;
 import com.sky.service.*;
 import com.sky.utils.WeChatPayUtil;
 import com.sky.vo.order.*;
+import com.sky.websocket.WebSocketServer;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -48,6 +52,8 @@ public class OrderServiceImpl implements OrderService {
     private UserService userService;
     @Autowired
     private WeChatPayUtil weChatPayUtil;
+    @Autowired
+    private WebSocketServer webSocketServer;
 
 
     // 用户下单
@@ -108,8 +114,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderPaymentVO pay(OrderPaymentDTO orderPaymentDTO) throws Exception {
 
-        Long userId = BaseContext.getCurrentId();
-        User user = userService.getById(userId);
+//        Long userId = BaseContext.getCurrentId();
+//        User user = userService.getById(userId);
 
         // 调用微信支付接口，生成预支付交易单
 //        JSONObject jsonObject = weChatPayUtil.pay(
@@ -151,6 +157,14 @@ public class OrderServiceImpl implements OrderService {
                 .checkoutTime(LocalDateTime.now())
                 .build();
         orderMapper.updateById(order);
+
+        // 支付成功后，通过WebSocket向客户端浏览器推送消息
+        Map map=new HashMap();
+        map.put("type",WebSocketServer.NEW_ORDER);
+        map.put("orderId",order.getId());
+        map.put("content","订单号："+outTradeNo);
+        webSocketServer.sendToAllClients(JSON.toJSONString(map));
+
     }
 
 
@@ -380,5 +394,19 @@ public class OrderServiceImpl implements OrderService {
                 orderMapper.updateById(order);
             }
         }
+    }
+
+
+    // 用户催单
+    @Override
+    public void chase(Long id) {
+        Order order = orderMapper.selectById(id);
+
+        // 支付成功后，如果用户催单，就通过WebSocket向客户端浏览器推送消息
+        Map map=new HashMap();
+        map.put("type",WebSocketServer.CHASE_ORDER);
+        map.put("orderId",id);
+        map.put("content","订单号："+order.getNumber());
+        webSocketServer.sendToAllClients(JSON.toJSONString(map));
     }
 }
