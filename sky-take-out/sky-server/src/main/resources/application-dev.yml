@@ -27,9 +27,11 @@ sky:
     secret: ${SKY_TAKE_OUT_WECHAT_APP_SECRET}
     mchid: 1561414331
     mch-serial-no: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
-    private-key-file-path: xxx
+    # private-key-file-path:
+    # wechat-pay-cert-file-path:
     api-v3-key: CZBK51236435wxpay435434323FFDuv3
-    wechat-pay-cert-file-path: xxx
-    notify-url: xxx
-    refund-notify-url: xxx
+    # 支付成功回调：内网临时穿透域名+/notify/paySuccess
+    notify-url: https://59557efb.r36.cpolar.top/notify/paySuccess
+    # 退款成功回调：内网临时穿透域名+/notify/refundSuccess
+    refund-notify-url: https://59557efb.r36.cpolar.top/notify/refundSuccess
 

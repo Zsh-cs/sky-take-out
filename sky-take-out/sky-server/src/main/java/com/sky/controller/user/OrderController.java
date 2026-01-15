@@ -44,10 +44,12 @@ public class OrderController {
     //   在微信小程序中，点击确认支付后虽然没有任何反应，但其实已经支付成功
     @PutMapping("/payment")
     @ApiOperation("订单支付")
-    public Result<OrderPaymentVO> pay(@RequestBody OrderPaymentDTO orderPaymentDTO) {
+    public Result<OrderPaymentVO> pay(@RequestBody OrderPaymentDTO orderPaymentDTO) throws Exception {
         log.info("订单支付：{}",orderPaymentDTO);
+        OrderPaymentVO orderPaymentVO = orderService.pay(orderPaymentDTO);
+        log.info("生成预支付交易单：{}",orderPaymentVO);
         orderService.paySuccess(orderPaymentDTO.getOrderNumber());
-        return Result.success(null);
+        return Result.success(orderPaymentVO);
     }
 
 

@@ -111,12 +111,14 @@ public class OrderServiceImpl implements OrderService {
         User user = userService.getById(userId);
 
         // 调用微信支付接口，生成预支付交易单
-        JSONObject jsonObject = weChatPayUtil.pay(
-                orderPaymentDTO.getOrderNumber(),// 订单号
-                new BigDecimal(0.01),// 支付金额为0.01元
-                "苍穹外卖订单",// 订单描述
-                user.getOpenid()// 微信用户的openid
-        );
+//        JSONObject jsonObject = weChatPayUtil.pay(
+//                orderPaymentDTO.getOrderNumber(),// 订单号
+//                new BigDecimal(0.01),// 支付金额为0.01元
+//                "苍穹外卖订单",// 订单描述
+//                user.getOpenid()// 微信用户的openid
+//        );
+
+        JSONObject jsonObject=new JSONObject();
 
         String code = jsonObject.getString("code");
         if (code != null && code.equals("ORDERPAID")) {
@@ -334,6 +336,7 @@ public class OrderServiceImpl implements OrderService {
         for (OrderDetail orderDetail : orderDetails) {
             ShoppingCartProduct product=new ShoppingCartProduct();
             BeanUtils.copyProperties(orderDetail,product);
+            product.setId(orderDetail.getId()+1);
             product.setUserId(userId);
             product.setCreateTime(LocalDateTime.now());
             shoppingCartService.save(product);
