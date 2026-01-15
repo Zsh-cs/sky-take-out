@@ -22,6 +22,7 @@ import com.sky.result.PageResult;
 import com.sky.service.*;
 import com.sky.utils.WeChatPayUtil;
 import com.sky.vo.order.*;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -318,6 +319,7 @@ public class OrderServiceImpl implements OrderService {
     public void cancel(Long id) {
         Order order = orderMapper.selectById(id);
         order.setStatus(OrderStatus.CANCELLED);
+        order.setCancelReason(MessageConstant.ORDER_CANCELED_BY_USER);
         order.setCancelTime(LocalDateTime.now());
         orderMapper.updateById(order);
     }
@@ -336,10 +338,47 @@ public class OrderServiceImpl implements OrderService {
         for (OrderDetail orderDetail : orderDetails) {
             ShoppingCartProduct product=new ShoppingCartProduct();
             BeanUtils.copyProperties(orderDetail,product);
+            product.setId(null);// 将id设为null，以便数据库自动生成新的id，防止主键冲突
             product.setUserId(userId);
             product.setCreateTime(LocalDateTime.now());
             shoppingCartService.save(product);
         }
     }
 
+
+    // 自动取消超时未付款的订单
+    @Override
+    public void cancelTimeoutOrders() {
+        LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Order::getStatus,OrderStatus.PENDING_PAYMENT);
+        // order_time < now-3分钟 ==> 该订单已超时未付款
+        lqw.lt(Order::getOrderTime,LocalDateTime.now().plusMinutes(-3));
+        List<Order> orders = orderMapper.selectList(lqw);
+
+        if(orders!=null && !orders.isEmpty()){
+            for (Order order : orders) {
+                order.setStatus(OrderStatus.CANCELLED);
+                order.setCancelReason(MessageConstant.ORDER_TIMEOUT);
+                order.setCancelTime(LocalDateTime.now());
+                orderMapper.updateById(order);
+            }
+        }
+    }
+
+
+    // 自动完成一直在派送中的订单
+    @Override
+    public void completeDeliveryOrders() {
+        LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Order::getStatus,OrderStatus.DELIVERY_IN_PROGRESS);
+        List<Order> orders = orderMapper.selectList(lqw);
+
+        if(orders!=null && !orders.isEmpty()){
+            for (Order order : orders) {
+                order.setStatus(OrderStatus.COMPLETED);
+                order.setDeliveryTime(LocalDateTime.now());
+                orderMapper.updateById(order);
+            }
+        }
+    }
 }

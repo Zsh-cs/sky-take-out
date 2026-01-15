@@ -25,5 +25,7 @@ public class MessageConstant {
     public static final String ORDER_STATUS_ERROR = "该订单状态错误";
     public static final String ORDER_NOT_FOUND = "该订单不存在";
     public static final String ORDER_PAID = "该订单已支付";
+    public static final String ORDER_TIMEOUT = "该订单超时未付款，已自动取消";
+    public static final String ORDER_CANCELED_BY_USER = "用户取消订单";
 
 }

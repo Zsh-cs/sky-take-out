@@ -6,8 +6,11 @@ import com.sky.dto.order.OrderRejectionDTO;
 import com.sky.dto.order.OrderSubmitDTO;
 import com.sky.dto.page.HistoryOrderPageQueryDTO;
 import com.sky.dto.page.OrderPageQueryDTO;
+import com.sky.entity.Order;
 import com.sky.result.PageResult;
 import com.sky.vo.order.*;
+
+import java.util.List;
 
 public interface OrderService {
 
@@ -58,4 +61,10 @@ public interface OrderService {
 
     // 再来一单：将原订单中的商品重新加入到购物车中
     void oneMore(Long id);
+
+    // 自动取消超时未付款的订单
+    void cancelTimeoutOrders();
+
+    // 自动完成一直在派送中的订单
+    void completeDeliveryOrders();
 }
