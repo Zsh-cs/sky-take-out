@@ -271,8 +271,8 @@ var _api = __webpack_require__(/*! @/pages/api/api.js */ 24);function ownKeys(ob
     runTimeBack: function runTimeBack() {
       var end = Date.parse(this.orderDataInfo.orderTime.replace(/-/g, "/"));
       var now = Date.parse(new Date());
-      var m15 = 15 * 60 * 1000;
-      var msec = m15 - (now - end);
+      var m3 = 3 * 60 * 1000;
+      var msec = m3 - (now - end);
       if (msec < 0) {
         this.timeout = true;
         clearTimeout(this.times);
