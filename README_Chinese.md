@@ -52,7 +52,7 @@
 
 ### 2.启动项目的前置步骤
 
-1. 启动MySQL。
+1. 启动MySQL并执行`database/sky.sql`。
 2. 运行`start-redis-by-docker.bat`脚本，然后cmd会通过Docker启动Redis。**注意**：确保你的电脑已经安装了Docker Desktop并拉取了Redis 6.2.19。
 3. 双击`nginx-1.20.2/nginx.exe`，启动Nginx。**注意**：Nginx必须位于全英文路径下。
 4. 修改`application-dev.yml`中的数据库相关配置，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。

@@ -336,7 +336,6 @@ public class OrderServiceImpl implements OrderService {
         for (OrderDetail orderDetail : orderDetails) {
             ShoppingCartProduct product=new ShoppingCartProduct();
             BeanUtils.copyProperties(orderDetail,product);
-            product.setId(orderDetail.getId()+1);
             product.setUserId(userId);
             product.setCreateTime(LocalDateTime.now());
             shoppingCartService.save(product);

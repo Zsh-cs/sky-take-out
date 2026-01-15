@@ -44,7 +44,7 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 ### 2.Pre-launch Preparation Steps
 
-1. Start MySQL.
+1. Start MySQL and execute `database/sky.sql`.
 2. Run the `start-redis-by-docker.bat` script, and then the cmd will start Redis by Docker. **Caution**: Make sure Docker Desktop is installed on your computer and the Redis 6.2.19 image has been pulled. **Caution**: Nginx must be located in a fully English path.
 3. Double-click `nginx-1.20.2/nginx.exe` to launch Nginx.
 4. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.

@@ -240,3 +240,14 @@ CREATE TABLE `user` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='用户信息';
+
+
+alter table category add deleted int default 0 not null comment '逻辑删除字段';
+alter table category drop index idx_category_name;
+create unique index uk_category_name_deleted on category(name,deleted);
+alter table dish add deleted int default 0 not null comment '逻辑删除字段';
+alter table dish drop index idx_dish_name;
+create unique index uk_dish_name_deleted on dish(name,deleted);
+alter table setmeal add deleted int default 0 not null comment '逻辑删除字段';
+alter table setmeal drop index idx_setmeal_name;
+create unique index uk_setmeal_name_deleted on setmeal(name,deleted);
