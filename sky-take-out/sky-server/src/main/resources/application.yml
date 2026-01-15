@@ -30,8 +30,8 @@ mybatis:
 
 mybatis-plus:
   # 开启MP的控制台日志
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       logic-delete-field: deleted
@@ -39,13 +39,13 @@ mybatis-plus:
       logic-not-delete-value: 0
 
 
-logging:
-  level:
-    com:
-      sky:
-        mapper: debug
-        service: info
-        controller: info
+#logging:
+#  level:
+#    com:
+#      sky:
+#        mapper: debug
+#        service: info
+#        controller: info
 
 
 sky:
