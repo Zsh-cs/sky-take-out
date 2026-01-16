@@ -921,7 +921,7 @@
                 "span",
                 [
                   a("router-link", { attrs: { to: "/order" } }, [
-                    t._v("订单明细"),
+                    t._v("订单管理"),
                   ]),
                 ],
                 1,
