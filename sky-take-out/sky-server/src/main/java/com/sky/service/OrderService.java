@@ -73,4 +73,10 @@ public interface OrderService {
 
     // 根据日期统计当天营业额
     BigDecimal countTurnoverByDate(LocalDate date);
+
+    // 根据日期统计当天有效订单数
+    Integer countValidOrderByDate(LocalDate date);
+
+    // 根据日期统计当天总订单数
+    Integer countOrderByDate(LocalDate date);
 }

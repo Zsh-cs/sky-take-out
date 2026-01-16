@@ -436,4 +436,29 @@ public class OrderServiceImpl implements OrderService {
         }
 
     }
+
+
+    // 根据日期统计当天有效订单数
+    @Override
+    public Integer countValidOrderByDate(LocalDate date) {
+        LocalDateTime startOfDay = LocalDateTime.of(date, LocalTime.MIN);
+        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+
+        LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Order::getStatus,OrderStatus.COMPLETED);
+        lqw.between(Order::getOrderTime,startOfDay,endOfDay);
+        return Math.toIntExact(orderMapper.selectCount(lqw));
+    }
+
+
+    // 根据日期统计当天总订单数
+    @Override
+    public Integer countOrderByDate(LocalDate date) {
+        LocalDateTime startOfDay = LocalDateTime.of(date, LocalTime.MIN);
+        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+
+        LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
+        lqw.between(Order::getOrderTime,startOfDay,endOfDay);
+        return Math.toIntExact(orderMapper.selectCount(lqw));
+    }
 }

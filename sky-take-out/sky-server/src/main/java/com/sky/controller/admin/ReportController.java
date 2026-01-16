@@ -3,6 +3,8 @@ package com.sky.controller.admin;
 import com.sky.result.Result;
 import com.sky.service.ReportService;
 import com.sky.vo.TurnoverReportVO;
+import com.sky.vo.UserReportVO;
+import com.sky.vo.order.OrderReportVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -37,5 +39,31 @@ public class ReportController {
         TurnoverReportVO turnoverReportVO = reportService.countTurnovers(begin, end);
         log.info("营业额列表：{}",turnoverReportVO.getTurnoverList());
         return Result.success(turnoverReportVO);
+    }
+
+
+    // 用户统计：新增用户数和总用户数
+    @GetMapping("/userStatistics")
+    @ApiOperation("用户统计")
+    public Result<UserReportVO> countUsers(
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end
+    ){
+        log.info("统计{}到{}之间的新增用户数和总用户数",begin,end);
+        UserReportVO userReportVO=reportService.countUsers(begin,end);
+        return Result.success(userReportVO);
+    }
+
+
+    // 订单统计：有效订单是指已完成订单
+    @GetMapping("/ordersStatistics")
+    @ApiOperation("订单统计")
+    public Result<OrderReportVO> countOrders(
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end
+    ){
+        log.info("统计{}到{}之间的订单",begin,end);
+        OrderReportVO orderReportVO=reportService.countOrders(begin,end);
+        return Result.success(orderReportVO);
     }
 }

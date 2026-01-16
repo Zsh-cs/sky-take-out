@@ -15,7 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,4 +79,26 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectById(id);
     }
 
+
+    // 根据日期统计当天新增用户数
+    @Override
+    public Integer countNewUsersByDate(LocalDate date) {
+        LocalDateTime startOfDay = LocalDateTime.of(date, LocalTime.MIN);
+        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+
+        LambdaQueryWrapper<User> lqw=new LambdaQueryWrapper<>();
+        lqw.between(User::getCreateTime,startOfDay,endOfDay);
+        return Math.toIntExact(userMapper.selectCount(lqw));
+    }
+
+
+    // 根据日期统计当天总用户数
+    @Override
+    public Integer countTotalUsersByDate(LocalDate date) {
+        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+
+        LambdaQueryWrapper<User> lqw=new LambdaQueryWrapper<>();
+        lqw.le(User::getCreateTime,endOfDay);
+        return Math.toIntExact(userMapper.selectCount(lqw));
+    }
 }
