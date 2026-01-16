@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.OrderStatus;
@@ -31,7 +32,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -125,7 +128,7 @@ public class OrderServiceImpl implements OrderService {
 //                user.getOpenid()// 微信用户的openid
 //        );
 
-        JSONObject jsonObject=new JSONObject();
+        JSONObject jsonObject = new JSONObject();
 
         String code = jsonObject.getString("code");
         if (code != null && code.equals("ORDERPAID")) {
@@ -159,10 +162,10 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.updateById(order);
 
         // 支付成功后，通过WebSocket向客户端浏览器推送消息
-        Map map=new HashMap();
-        map.put("type",WebSocketServer.NEW_ORDER);
-        map.put("orderId",order.getId());
-        map.put("content","订单号："+outTradeNo);
+        Map map = new HashMap();
+        map.put("type", WebSocketServer.NEW_ORDER);
+        map.put("orderId", order.getId());
+        map.put("content", "订单号：" + outTradeNo);
         webSocketServer.sendToAllClients(JSON.toJSONString(map));
 
     }
@@ -348,10 +351,10 @@ public class OrderServiceImpl implements OrderService {
         List<OrderDetail> orderDetails = orderDetailService.getByOrderId(id);
 
         // 遍历订单详情，依次拷贝到对应的购物车商品中，然后保存到数据库中
-        List<ShoppingCartProduct> products=new ArrayList<>();
+        List<ShoppingCartProduct> products = new ArrayList<>();
         for (OrderDetail orderDetail : orderDetails) {
-            ShoppingCartProduct product=new ShoppingCartProduct();
-            BeanUtils.copyProperties(orderDetail,product);
+            ShoppingCartProduct product = new ShoppingCartProduct();
+            BeanUtils.copyProperties(orderDetail, product);
             product.setId(null);// 将id设为null，以便数据库自动生成新的id，防止主键冲突
             product.setUserId(userId);
             product.setCreateTime(LocalDateTime.now());
@@ -363,13 +366,13 @@ public class OrderServiceImpl implements OrderService {
     // 自动取消超时未付款的订单
     @Override
     public void cancelTimeoutOrders() {
-        LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
-        lqw.eq(Order::getStatus,OrderStatus.PENDING_PAYMENT);
+        LambdaQueryWrapper<Order> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Order::getStatus, OrderStatus.PENDING_PAYMENT);
         // order_time < now-3分钟 ==> 该订单已超时未付款
-        lqw.lt(Order::getOrderTime,LocalDateTime.now().plusMinutes(-3));
+        lqw.lt(Order::getOrderTime, LocalDateTime.now().plusMinutes(-3));
         List<Order> orders = orderMapper.selectList(lqw);
 
-        if(orders!=null && !orders.isEmpty()){
+        if (orders != null && !orders.isEmpty()) {
             for (Order order : orders) {
                 order.setStatus(OrderStatus.CANCELLED);
                 order.setCancelReason(MessageConstant.ORDER_TIMEOUT);
@@ -383,11 +386,11 @@ public class OrderServiceImpl implements OrderService {
     // 自动完成一直在派送中的订单
     @Override
     public void completeDeliveryOrders() {
-        LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
-        lqw.eq(Order::getStatus,OrderStatus.DELIVERY_IN_PROGRESS);
+        LambdaQueryWrapper<Order> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Order::getStatus, OrderStatus.DELIVERY_IN_PROGRESS);
         List<Order> orders = orderMapper.selectList(lqw);
 
-        if(orders!=null && !orders.isEmpty()){
+        if (orders != null && !orders.isEmpty()) {
             for (Order order : orders) {
                 order.setStatus(OrderStatus.COMPLETED);
                 order.setDeliveryTime(LocalDateTime.now());
@@ -403,10 +406,34 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderMapper.selectById(id);
 
         // 支付成功后，如果用户催单，就通过WebSocket向客户端浏览器推送消息
-        Map map=new HashMap();
-        map.put("type",WebSocketServer.CHASE_ORDER);
-        map.put("orderId",id);
-        map.put("content","订单号："+order.getNumber());
+        Map map = new HashMap();
+        map.put("type", WebSocketServer.CHASE_ORDER);
+        map.put("orderId", id);
+        map.put("content", "订单号：" + order.getNumber());
         webSocketServer.sendToAllClients(JSON.toJSONString(map));
+    }
+
+
+    // 根据日期统计当天营业额
+    @Override
+    public BigDecimal countTurnoverByDate(LocalDate date) {
+        LocalDateTime startOfDay = LocalDateTime.of(date, LocalTime.MIN);
+        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+
+        QueryWrapper<Order> qw = new QueryWrapper<>();
+        qw.eq("status", OrderStatus.COMPLETED);
+        qw.between("delivery_time", startOfDay, endOfDay);
+        // 直接在select中使用SQL的SUM聚合函数
+        qw.select("sum(amount) as turnover");
+
+        List<Object> resultList = orderMapper.selectObjs(qw);
+        Object result = resultList.get(0);
+        // 如果当天没有任何已完成订单，就返回0
+        if (result == null) {
+            return BigDecimal.ZERO;
+        } else {
+            return (BigDecimal) result;
+        }
+
     }
 }

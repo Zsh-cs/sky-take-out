@@ -19,11 +19,11 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 #### 1.2 Technology Stack
 
-- **User Layer**: `node.js`, `VUE.js`, `ElementUI`, WeChat Mini Program 2.25.4, `apache echarts`
+- **User Layer**: `node.js`, `VUE.js`, `ElementUI`, WeChat Mini Program 2.25.4, `Apache ECharts`
 - **Gateway Layer**: `Nginx 1.20.2`
 - **Application Layer**:
   - `Spring` Family: `SpringBoot 2.7.2`, `SpringMVC`, `SpringTask`, `SpringCache`
-  - Others: `HttpCilent`, `JWT`, Alibaba Cloud OSS, `POI`, `WebSocket`
+  - Others: `HttpCilent`, `JWT`, Alibaba Cloud OSS, `Apache POI`, `WebSocket`
 - **Persistence Layer**: `MyBatis-Plus 3.5.4`, `MyBatis`, `Spring Data Redis`
 - **Database**: `MySQL 8.0.38`, `Redis 6.2.19(Docker)`
 

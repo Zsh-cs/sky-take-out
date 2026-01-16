@@ -6,11 +6,11 @@ import com.sky.dto.order.OrderRejectionDTO;
 import com.sky.dto.order.OrderSubmitDTO;
 import com.sky.dto.page.HistoryOrderPageQueryDTO;
 import com.sky.dto.page.OrderPageQueryDTO;
-import com.sky.entity.Order;
 import com.sky.result.PageResult;
 import com.sky.vo.order.*;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public interface OrderService {
 
@@ -70,4 +70,7 @@ public interface OrderService {
 
     // 用户催单
     void chase(Long id);
+
+    // 根据日期统计当天营业额
+    BigDecimal countTurnoverByDate(LocalDate date);
 }

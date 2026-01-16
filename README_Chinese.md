@@ -19,11 +19,11 @@
 
 #### 1.2 技术选型
 
-+ **用户层**：`node.js`、`VUE.js`、`ElementUI`、微信小程序 2.25.4、`apache echarts`
++ **用户层**：`node.js`、`VUE.js`、`ElementUI`、微信小程序 2.25.4、`Apache ECharts`
 + **网关层**：`Nginx 1.20.2`
 + **应用层**：
   + `Spring`系列：`SpringBoot 2.7.3`、`SpringMVC`、`SpringTask`、`SpringCache`
-  + 其他：`HttpCilent`、`JWT`、阿里云OSS、`POI`、`WebSocket`
+  + 其他：`HttpCilent`、`JWT`、阿里云OSS、`Apache POI`、`WebSocket`
 + **持久层**：`MyBatis-Plus 3.5.4`、`MyBatis`、`Spring Data Redis`
 + **数据库**：`MySQL 8.0.38`、`Redis 6.2.19(Docker)`
 
