@@ -44,4 +44,7 @@ public interface DishService {
 
     // 根据分类id查询菜品数量
     Long getCountByCategoryId(Long categoryId);
+
+    // 统计起售和停售的菜品数量
+    Integer countByStatus(Integer status);
 }

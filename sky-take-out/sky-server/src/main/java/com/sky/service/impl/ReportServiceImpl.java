@@ -35,10 +35,10 @@ public class ReportServiceImpl implements ReportService {
         List<LocalDate> dateList = getDateList(begin, end);
         String dateListStr = StringUtils.join(dateList, ",");
 
-        // 创建一个BigDecimal集合，用于存放从begin到end范围内每天的营业额
-        List<BigDecimal> turnoverList=new ArrayList<>();
+        // 创建一个Double集合，用于存放从begin到end范围内每天的营业额
+        List<Double> turnoverList=new ArrayList<>();
         for (LocalDate date : dateList) {
-            BigDecimal turnover = orderService.countTurnoverByDate(date);
+            Double turnover = orderService.countTurnoverByDate(date);
             turnoverList.add(turnover);
         }
         String turnoverListStr = StringUtils.join(turnoverList, ",");

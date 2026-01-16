@@ -72,11 +72,14 @@ public interface OrderService {
     void chase(Long id);
 
     // 根据日期统计当天营业额
-    BigDecimal countTurnoverByDate(LocalDate date);
+    Double countTurnoverByDate(LocalDate date);
 
     // 根据日期统计当天有效订单数
     Integer countValidOrderByDate(LocalDate date);
 
     // 根据日期统计当天总订单数
     Integer countOrderByDate(LocalDate date);
+
+    // 统计全部订单数量
+    Integer countAllOrders();
 }

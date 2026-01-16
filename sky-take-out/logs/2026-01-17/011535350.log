@@ -1,0 +1,493 @@
+2026-01-17 01:15:35.425 [main] INFO  com.sky.SkyApplication - Starting SkyApplication using Java 17.0.12 on Zsh with PID 10616 (D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out\sky-server\target\classes started by asus in D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out)
+2026-01-17 01:15:35.426 [main] INFO  com.sky.SkyApplication - The following 1 profile is active: "dev"
+2026-01-17 01:15:36.066 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-17 01:15:36.068 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-17 01:15:36.091 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2026-01-17 01:15:36.685 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-01-17 01:15:36.686 [main] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2026-01-17 01:15:36.686 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2026-01-17 01:15:36.686 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2026-01-17 01:15:36.690 [main] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2026-01-17 01:15:36.697 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-17 01:15:36.697 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2026-01-17 01:15:36.792 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-17 01:15:36.792 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1329 ms
+2026-01-17 01:15:36.854 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-01-17 01:15:36.953 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-01-17 01:15:36.999 [main] INFO  com.sky.config.MyBatisPlusConfig - 开始注册MyBatis-Plus的拦截器...
+2026-01-17 01:15:37.107 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.CategoryMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 01:15:37.149 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.DishMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 01:15:37.165 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.EmployeeMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 01:15:37.208 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.SetmealMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 01:15:37.338 [main] INFO  com.sky.config.AliyunOssConfig - 开始创建阿里云OSS文件上传工具对象...
+2026-01-17 01:15:37.478 [main] INFO  com.sky.config.RedisConfig - 开始创建Redis模板对象...
+2026-01-17 01:15:37.783 [main] INFO  com.sky.config.WebMvcConfig - 开始注册自定义拦截器...
+2026-01-17 01:15:37.856 [main] INFO  com.sky.config.WebMvcConfig - 准备生成管理端接口文档...
+2026-01-17 01:15:37.861 [main] INFO  com.sky.config.WebMvcConfig - 准备生成用户端接口文档...
+2026-01-17 01:15:37.887 [main] INFO  com.sky.config.WebMvcConfig - 扩展消息转换器...
+2026-01-17 01:15:37.892 [main] INFO  com.sky.config.WebMvcConfig - 开始设置静态资源映射...
+2026-01-17 01:15:38.269 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2026-01-17 01:15:38.635 [main] INFO  com.sky.SkyApplication - Started SkyApplication in 3.563 seconds (JVM running for 4.028)
+2026-01-17 01:15:38.636 [main] INFO  com.sky.SkyApplication - server starts ...
+2026-01-17 01:15:42.202 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-17 01:15:42.203 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-17 01:15:42.204 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-01-17 01:15:42.217 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.217 [http-nio-8080-exec-1] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.217 [http-nio-8080-exec-4] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.263 [http-nio-8080-exec-1] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.263 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.263 [http-nio-8080-exec-4] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.285 [http-nio-8080-exec-4] INFO  com.sky.controller.admin.OrderController - 订单分页查询，参数为：OrderPageQueryDTO(page=1, pageSize=10, number=null, phone=null, status=2, beginTime=null, endTime=null, userId=null)
+
+2026-01-17 01:15:42.457 [http-nio-8080-exec-6] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.457 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.457 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.458 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.458 [http-nio-8080-exec-6] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.458 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.483 [http-nio-8080-exec-5] INFO  com.sky.websocket.WebSocketServer - 客户端c0g3yvnaa54与服务端建立连接
+
+2026-01-17 01:15:42.496 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM orders WHERE status = ?
+2026-01-17 01:15:42.496 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:15:42.499 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.504 [http-nio-8080-exec-6] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM setmeal WHERE deleted=0 AND (status = ?)
+2026-01-17 01:15:42.508 [http-nio-8080-exec-8] DEBUG com.sky.mapper.DishMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM dish WHERE deleted=0 AND (status = ?)
+2026-01-17 01:15:42.530 [http-nio-8080-exec-6] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==> Parameters: 1(Integer)
+2026-01-17 01:15:42.530 [http-nio-8080-exec-8] DEBUG com.sky.mapper.DishMapper.selectCount - ==> Parameters: 1(Integer)
+2026-01-17 01:15:42.530 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==> Parameters: 2(Integer)
+2026-01-17 01:15:42.530 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:15:42.530 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:15:42.555 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:15:42.555 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.555 [http-nio-8080-exec-8] DEBUG com.sky.mapper.DishMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.555 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - <==      Total: 1
+2026-01-17 01:15:42.555 [http-nio-8080-exec-6] DEBUG com.sky.mapper.SetmealMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.558 [http-nio-8080-exec-8] DEBUG com.sky.mapper.DishMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM dish WHERE deleted=0 AND (status = ?)
+2026-01-17 01:15:42.558 [http-nio-8080-exec-6] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM setmeal WHERE deleted=0 AND (status = ?)
+2026-01-17 01:15:42.559 [http-nio-8080-exec-6] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==> Parameters: 0(Integer)
+2026-01-17 01:15:42.559 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.559 [http-nio-8080-exec-8] DEBUG com.sky.mapper.DishMapper.selectCount - ==> Parameters: 0(Integer)
+2026-01-17 01:15:42.559 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:15:42.559 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:15:42.560 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:15:42.560 [http-nio-8080-exec-8] DEBUG com.sky.mapper.DishMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.560 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.560 [http-nio-8080-exec-6] DEBUG com.sky.mapper.SetmealMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.560 [http-nio-8080-exec-8] INFO  com.sky.controller.admin.WorkspaceController - 菜品总览：起售25，停售1
+2026-01-17 01:15:42.560 [http-nio-8080-exec-6] INFO  com.sky.controller.admin.WorkspaceController - 套餐总览：起售4，停售1
+2026-01-17 01:15:42.561 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.561 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer)
+2026-01-17 01:15:42.561 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.562 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.563 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:15:42.563 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.563 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 6(Integer)
+2026-01-17 01:15:42.563 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:15:42.564 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.564 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.565 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders
+2026-01-17 01:15:42.565 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 
+2026-01-17 01:15:42.565 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:15:42.566 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:15:42.566 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.566 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.567 [http-nio-8080-exec-2] INFO  com.sky.controller.admin.WorkspaceController - 查询今日运营数据：BusinessDataVO(turnover=296.0, validOrderCount=5, orderCompletionRate=0.8333333333333334, unitPrice=59.2, newUsers=0)
+2026-01-17 01:15:42.567 [http-nio-8080-exec-3] INFO  com.sky.controller.admin.WorkspaceController - 查询订单管理数据：OrderOverViewVO(waitingOrders=0, deliveredOrders=0, completedOrders=23, cancelledOrders=3, allOrders=26)
+2026-01-17 01:15:42.597 [http-nio-8080-exec-7] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:42.598 [http-nio-8080-exec-7] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:42.598 [http-nio-8080-exec-7] INFO  com.sky.controller.admin.OrderController - 统计各个状态的订单数量
+2026-01-17 01:15:42.599 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.599 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:15:42.600 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.602 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.603 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:15:42.604 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.606 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:42.606 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 4(Integer)
+2026-01-17 01:15:42.607 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:42.685 [http-nio-8080-exec-1] INFO  com.sky.controller.admin.ShopController - 管理端获取店铺营业状态为：营业中
+2026-01-17 01:15:52.220 [http-nio-8080-exec-9] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:52.220 [http-nio-8080-exec-9] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:52.221 [http-nio-8080-exec-9] INFO  com.sky.controller.admin.OrderController - 订单分页查询，参数为：OrderPageQueryDTO(page=1, pageSize=10, number=null, phone=null, status=null, beginTime=null, endTime=null, userId=null)
+
+2026-01-17 01:15:52.222 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM orders
+2026-01-17 01:15:52.222 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==> Parameters: 
+2026-01-17 01:15:52.224 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - <==      Total: 1
+2026-01-17 01:15:52.228 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.pageQuery - ==>  Preparing: select * from orders order by order_time desc LIMIT ?
+2026-01-17 01:15:52.228 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.pageQuery - ==> Parameters: 10(Long)
+2026-01-17 01:15:52.235 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.pageQuery - <==      Total: 10
+2026-01-17 01:15:52.238 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.238 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 39(Long)
+2026-01-17 01:15:52.239 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.240 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.241 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 39(Long)
+2026-01-17 01:15:52.242 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.243 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.243 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 38(Long)
+2026-01-17 01:15:52.244 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.244 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.245 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 38(Long)
+2026-01-17 01:15:52.246 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.248 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.248 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 37(Long)
+2026-01-17 01:15:52.250 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 6
+2026-01-17 01:15:52.250 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.251 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 37(Long)
+2026-01-17 01:15:52.253 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 6
+2026-01-17 01:15:52.254 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.254 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 36(Long)
+2026-01-17 01:15:52.255 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 3
+2026-01-17 01:15:52.255 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.255 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 36(Long)
+2026-01-17 01:15:52.256 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 3
+2026-01-17 01:15:52.257 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.258 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 35(Long)
+2026-01-17 01:15:52.258 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.259 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.259 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 35(Long)
+2026-01-17 01:15:52.260 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.260 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.261 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 34(Long)
+2026-01-17 01:15:52.261 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.262 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.263 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 34(Long)
+2026-01-17 01:15:52.264 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 2
+2026-01-17 01:15:52.266 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.266 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 33(Long)
+2026-01-17 01:15:52.267 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 3
+2026-01-17 01:15:52.268 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.268 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 33(Long)
+2026-01-17 01:15:52.269 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 3
+2026-01-17 01:15:52.270 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.270 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 32(Long)
+2026-01-17 01:15:52.271 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 3
+2026-01-17 01:15:52.272 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.272 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 32(Long)
+2026-01-17 01:15:52.272 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 3
+2026-01-17 01:15:52.273 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.273 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 31(Long)
+2026-01-17 01:15:52.273 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 1
+2026-01-17 01:15:52.274 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.274 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 31(Long)
+2026-01-17 01:15:52.275 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 1
+2026-01-17 01:15:52.275 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.275 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 30(Long)
+2026-01-17 01:15:52.276 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 1
+2026-01-17 01:15:52.276 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==>  Preparing: SELECT id,name,order_id,dish_id,setmeal_id,dish_flavor,number,amount,image FROM order_detail WHERE (order_id = ?)
+2026-01-17 01:15:52.277 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - ==> Parameters: 30(Long)
+2026-01-17 01:15:52.277 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderDetailMapper.selectList - <==      Total: 1
+2026-01-17 01:15:52.315 [http-nio-8080-exec-10] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:15:52.316 [http-nio-8080-exec-10] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:15:52.316 [http-nio-8080-exec-10] INFO  com.sky.controller.admin.OrderController - 统计各个状态的订单数量
+2026-01-17 01:15:52.317 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:52.317 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:15:52.318 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:52.318 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:52.318 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:15:52.319 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:15:52.320 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:15:52.320 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 4(Integer)
+2026-01-17 01:15:52.321 [http-nio-8080-exec-10] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:00.016 [scheduling-1] INFO  com.sky.task.OrderTask - 每分钟定时处理超时未付款的订单：2026-01-17T01:16:00.016899400
+2026-01-17 01:16:00.017 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==>  Preparing: SELECT id,number,status,user_id,address_book_id,order_time,checkout_time,pay_method,pay_status,amount,remark,user_name,phone,address,consignee,cancel_reason,rejection_reason,cancel_time,estimated_delivery_time,delivery_status,delivery_time,pack_amount,tableware_number,tableware_status FROM orders WHERE (status = ? AND order_time < ?)
+2026-01-17 01:16:00.017 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==> Parameters: 1(Integer), 2026-01-17T01:13:00.016899400(LocalDateTime)
+2026-01-17 01:16:00.018 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - <==      Total: 0
+2026-01-17 01:16:50.322 [http-nio-8080-exec-5] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:16:50.323 [http-nio-8080-exec-5] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:16:50.324 [http-nio-8080-exec-5] INFO  com.sky.controller.admin.OrderController - 订单分页查询，参数为：OrderPageQueryDTO(page=1, pageSize=10, number=null, phone=null, status=2, beginTime=null, endTime=null, userId=null)
+
+2026-01-17 01:16:50.326 [http-nio-8080-exec-5] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM orders WHERE status = ?
+2026-01-17 01:16:50.326 [http-nio-8080-exec-5] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==> Parameters: 2(Integer)
+2026-01-17 01:16:50.327 [http-nio-8080-exec-5] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - <==      Total: 1
+2026-01-17 01:16:50.332 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:16:50.332 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:16:50.333 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:16:50.333 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:16:50.334 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:16:50.335 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:16:50.336 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:16:50.337 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.338 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:16:50.338 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:16:50.339 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.339 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:16:50.339 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:16:50.340 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.340 [http-nio-8080-exec-2] INFO  com.sky.controller.admin.WorkspaceController - 查询今日运营数据：BusinessDataVO(turnover=296.0, validOrderCount=5, orderCompletionRate=0.8333333333333334, unitPrice=59.2, newUsers=0)
+2026-01-17 01:16:50.345 [http-nio-8080-exec-6] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:16:50.346 [http-nio-8080-exec-6] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:16:50.347 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.347 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:16:50.348 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.348 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.348 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:16:50.349 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.350 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.350 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer)
+2026-01-17 01:16:50.350 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.351 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.351 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 6(Integer)
+2026-01-17 01:16:50.352 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.352 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders
+2026-01-17 01:16:50.352 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 
+2026-01-17 01:16:50.355 [http-nio-8080-exec-6] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.355 [http-nio-8080-exec-6] INFO  com.sky.controller.admin.WorkspaceController - 查询订单管理数据：OrderOverViewVO(waitingOrders=0, deliveredOrders=0, completedOrders=23, cancelledOrders=3, allOrders=26)
+2026-01-17 01:16:50.359 [http-nio-8080-exec-4] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:16:50.359 [http-nio-8080-exec-4] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:16:50.360 [http-nio-8080-exec-4] DEBUG com.sky.mapper.DishMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM dish WHERE deleted=0 AND (status = ?)
+2026-01-17 01:16:50.360 [http-nio-8080-exec-4] DEBUG com.sky.mapper.DishMapper.selectCount - ==> Parameters: 1(Integer)
+2026-01-17 01:16:50.361 [http-nio-8080-exec-4] DEBUG com.sky.mapper.DishMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.361 [http-nio-8080-exec-4] DEBUG com.sky.mapper.DishMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM dish WHERE deleted=0 AND (status = ?)
+2026-01-17 01:16:50.361 [http-nio-8080-exec-4] DEBUG com.sky.mapper.DishMapper.selectCount - ==> Parameters: 0(Integer)
+2026-01-17 01:16:50.362 [http-nio-8080-exec-4] DEBUG com.sky.mapper.DishMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.362 [http-nio-8080-exec-4] INFO  com.sky.controller.admin.WorkspaceController - 菜品总览：起售25，停售1
+2026-01-17 01:16:50.367 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:16:50.367 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:16:50.368 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM setmeal WHERE deleted=0 AND (status = ?)
+2026-01-17 01:16:50.368 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==> Parameters: 1(Integer)
+2026-01-17 01:16:50.369 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.370 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM setmeal WHERE deleted=0 AND (status = ?)
+2026-01-17 01:16:50.370 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==> Parameters: 0(Integer)
+2026-01-17 01:16:50.371 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.371 [http-nio-8080-exec-8] INFO  com.sky.controller.admin.WorkspaceController - 套餐总览：起售4，停售1
+2026-01-17 01:16:50.374 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:16:50.375 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:16:50.375 [http-nio-8080-exec-3] INFO  com.sky.controller.admin.OrderController - 统计各个状态的订单数量
+2026-01-17 01:16:50.376 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.376 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:16:50.376 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.377 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.377 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:16:50.378 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:16:50.378 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:16:50.379 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 4(Integer)
+2026-01-17 01:16:50.380 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.009 [scheduling-1] INFO  com.sky.task.OrderTask - 每分钟定时处理超时未付款的订单：2026-01-17T01:17:00.009867700
+2026-01-17 01:17:00.010 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==>  Preparing: SELECT id,number,status,user_id,address_book_id,order_time,checkout_time,pay_method,pay_status,amount,remark,user_name,phone,address,consignee,cancel_reason,rejection_reason,cancel_time,estimated_delivery_time,delivery_status,delivery_time,pack_amount,tableware_number,tableware_status FROM orders WHERE (status = ? AND order_time < ?)
+2026-01-17 01:17:00.011 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==> Parameters: 1(Integer), 2026-01-17T01:14:00.010481200(LocalDateTime)
+2026-01-17 01:17:00.012 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - <==      Total: 0
+2026-01-17 01:17:00.702 [http-nio-8080-exec-1] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:00.702 [http-nio-8080-exec-7] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:00.703 [http-nio-8080-exec-7] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:00.703 [http-nio-8080-exec-1] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:00.703 [http-nio-8080-exec-9] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:00.703 [http-nio-8080-exec-10] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:00.704 [http-nio-8080-exec-10] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:00.704 [http-nio-8080-exec-9] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:00.708 [http-nio-8080-exec-1] INFO  com.sky.controller.admin.ReportController - 统计2026-01-10到2026-01-16之间的销量前十的商品
+2026-01-17 01:17:00.708 [http-nio-8080-exec-9] INFO  com.sky.controller.admin.ReportController - 统计2026-01-10到2026-01-16之间的营业额
+2026-01-17 01:17:00.708 [http-nio-8080-exec-7] INFO  com.sky.controller.admin.ReportController - 统计2026-01-10到2026-01-16之间的订单
+2026-01-17 01:17:00.708 [http-nio-8080-exec-10] INFO  com.sky.controller.admin.ReportController - 统计2026-01-10到2026-01-16之间的新增用户数和总用户数
+2026-01-17 01:17:00.708 [http-nio-8080-exec-1] DEBUG com.sky.mapper.OrderDetailMapper.getTop10Sales - ==>  Preparing: # Caution: 此处sum(od.number)的别名必须是number，否则无法封装到GoodsSalesDTO中 select od.name, sum(od.number) as number from order_detail od, orders o where od.order_id=o.id and o.status=5 and o.order_time between ? and ? group by od.name order by number desc limit 10
+2026-01-17 01:17:00.708 [http-nio-8080-exec-1] DEBUG com.sky.mapper.OrderDetailMapper.getTop10Sales - ==> Parameters: 2026-01-10T00:00(LocalDateTime), 2026-01-16T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.711 [http-nio-8080-exec-1] DEBUG com.sky.mapper.OrderDetailMapper.getTop10Sales - <==      Total: 10
+2026-01-17 01:17:00.715 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.715 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-10T00:00(LocalDateTime), 2026-01-10T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.717 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.718 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.718 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-11T00:00(LocalDateTime), 2026-01-11T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.719 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.720 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.720 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-12T00:00(LocalDateTime), 2026-01-12T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.720 [http-nio-8080-exec-10] ERROR com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, lastPacketReceivedIdleMillis : 78144
+2026-01-17 01:17:00.720 [http-nio-8080-exec-7] ERROR com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, lastPacketReceivedIdleMillis : 78150
+2026-01-17 01:17:00.721 [http-nio-8080-exec-10] ERROR com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, lastPacketReceivedIdleMillis : 78161
+2026-01-17 01:17:00.721 [http-nio-8080-exec-7] ERROR com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, jdbcUrl : jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true, lastPacketReceivedIdleMillis : 78178
+2026-01-17 01:17:00.721 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.721 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.721 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-10T00:00(LocalDateTime), 2026-01-10T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.723 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.723 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.723 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-10T00:00(LocalDateTime), 2026-01-10T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.724 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.724 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.725 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-13T00:00(LocalDateTime), 2026-01-13T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.725 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.726 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.726 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-10T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.726 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.726 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.727 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.727 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-10T00:00(LocalDateTime), 2026-01-10T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.727 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-14T00:00(LocalDateTime), 2026-01-14T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.727 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.728 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.728 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.728 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-11T00:00(LocalDateTime), 2026-01-11T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.728 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.729 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-11T00:00(LocalDateTime), 2026-01-11T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.729 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.729 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.729 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-15T00:00(LocalDateTime), 2026-01-15T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.729 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.730 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.730 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-11T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.731 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.731 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.731 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-11T00:00(LocalDateTime), 2026-01-11T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.731 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.731 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-16T00:00(LocalDateTime), 2026-01-16T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.731 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.732 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.732 [http-nio-8080-exec-9] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:00.732 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-12T00:00(LocalDateTime), 2026-01-12T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.732 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.732 [http-nio-8080-exec-9] INFO  com.sky.controller.admin.ReportController - 营业额列表：0.0,0.0,0.0,0.0,480.0,78.0,285.0
+2026-01-17 01:17:00.732 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.732 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.732 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-12T00:00(LocalDateTime), 2026-01-12T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.732 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.733 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-12T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.733 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.734 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.734 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.734 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-12T00:00(LocalDateTime), 2026-01-12T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.734 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.734 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-13T00:00(LocalDateTime), 2026-01-13T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.735 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.735 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.736 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.736 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.736 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-13T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.736 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-13T00:00(LocalDateTime), 2026-01-13T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.736 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.736 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.737 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.737 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.737 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-14T00:00(LocalDateTime), 2026-01-14T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.737 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-13T00:00(LocalDateTime), 2026-01-13T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.738 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.738 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.739 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.739 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.739 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-14T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.739 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-14T00:00(LocalDateTime), 2026-01-14T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.740 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.740 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.740 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.740 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.741 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-15T00:00(LocalDateTime), 2026-01-15T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.741 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-14T00:00(LocalDateTime), 2026-01-14T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.741 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.741 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.742 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.742 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.742 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-15T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.742 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-15T00:00(LocalDateTime), 2026-01-15T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.743 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.743 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.744 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.744 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.744 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-15T00:00(LocalDateTime), 2026-01-15T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.744 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-16T00:00(LocalDateTime), 2026-01-16T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.745 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.745 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.747 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time <= ?)
+2026-01-17 01:17:00.747 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.747 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-16T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.747 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-16T00:00(LocalDateTime), 2026-01-16T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.747 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.747 [http-nio-8080-exec-10] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:00.749 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:00.749 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-16T00:00(LocalDateTime), 2026-01-16T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:00.750 [http-nio-8080-exec-7] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.620 [http-nio-8080-exec-5] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:05.620 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:05.621 [http-nio-8080-exec-5] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:05.620 [http-nio-8080-exec-4] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:05.620 [http-nio-8080-exec-6] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:05.622 [http-nio-8080-exec-4] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:05.622 [http-nio-8080-exec-6] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:05.623 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.623 [http-nio-8080-exec-6] DEBUG com.sky.mapper.DishMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM dish WHERE deleted=0 AND (status = ?)
+2026-01-17 01:17:05.623 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:17:05.623 [http-nio-8080-exec-6] DEBUG com.sky.mapper.DishMapper.selectCount - ==> Parameters: 1(Integer)
+2026-01-17 01:17:05.623 [http-nio-8080-exec-5] INFO  com.sky.controller.admin.OrderController - 订单分页查询，参数为：OrderPageQueryDTO(page=1, pageSize=10, number=null, phone=null, status=2, beginTime=null, endTime=null, userId=null)
+
+2026-01-17 01:17:05.621 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:05.623 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:05.624 [http-nio-8080-exec-6] DEBUG com.sky.mapper.DishMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.624 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 01:17:05.624 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:05.624 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:05.624 [http-nio-8080-exec-6] DEBUG com.sky.mapper.DishMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM dish WHERE deleted=0 AND (status = ?)
+2026-01-17 01:17:05.624 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.624 [http-nio-8080-exec-6] DEBUG com.sky.mapper.DishMapper.selectCount - ==> Parameters: 0(Integer)
+2026-01-17 01:17:05.625 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.625 [http-nio-8080-exec-6] DEBUG com.sky.mapper.DishMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.625 [http-nio-8080-exec-6] INFO  com.sky.controller.admin.WorkspaceController - 菜品总览：起售25，停售1
+2026-01-17 01:17:05.625 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 01:17:05.625 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM setmeal WHERE deleted=0 AND (status = ?)
+2026-01-17 01:17:05.626 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:17:05.626 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==> Parameters: 1(Integer)
+2026-01-17 01:17:05.627 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 01:17:05.627 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:05.627 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.627 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.628 [http-nio-8080-exec-5] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM orders WHERE status = ?
+2026-01-17 01:17:05.628 [http-nio-8080-exec-5] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==> Parameters: 2(Integer)
+2026-01-17 01:17:05.628 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM setmeal WHERE deleted=0 AND (status = ?)
+2026-01-17 01:17:05.628 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.628 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - ==> Parameters: 0(Integer)
+2026-01-17 01:17:05.628 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.628 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer)
+2026-01-17 01:17:05.629 [http-nio-8080-exec-5] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - <==      Total: 1
+2026-01-17 01:17:05.629 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 01:17:05.629 [http-nio-8080-exec-8] DEBUG com.sky.mapper.SetmealMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.629 [http-nio-8080-exec-8] INFO  com.sky.controller.admin.WorkspaceController - 套餐总览：起售4，停售1
+2026-01-17 01:17:05.629 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:05.630 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.631 [http-nio-8080-exec-2] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.631 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.631 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 6(Integer)
+2026-01-17 01:17:05.631 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 01:17:05.631 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 01:17:05.632 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.632 [http-nio-8080-exec-2] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.632 [http-nio-8080-exec-2] INFO  com.sky.controller.admin.WorkspaceController - 查询今日运营数据：BusinessDataVO(turnover=296.0, validOrderCount=5, orderCompletionRate=0.8333333333333334, unitPrice=59.2, newUsers=0)
+2026-01-17 01:17:05.633 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders
+2026-01-17 01:17:05.633 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 
+2026-01-17 01:17:05.635 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.635 [http-nio-8080-exec-4] INFO  com.sky.controller.admin.WorkspaceController - 查询订单管理数据：OrderOverViewVO(waitingOrders=0, deliveredOrders=0, completedOrders=23, cancelledOrders=3, allOrders=26)
+2026-01-17 01:17:05.641 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5MzAwOTMyfQ.p5cPmVx_L3f_RQdfhzpCdIZGsB1J19gO3QIzIgArcYo
+2026-01-17 01:17:05.642 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 01:17:05.642 [http-nio-8080-exec-3] INFO  com.sky.controller.admin.OrderController - 统计各个状态的订单数量
+2026-01-17 01:17:05.642 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.643 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2(Integer)
+2026-01-17 01:17:05.643 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.644 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.644 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 3(Integer)
+2026-01-17 01:17:05.645 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:05.645 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ?)
+2026-01-17 01:17:05.646 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 4(Integer)
+2026-01-17 01:17:05.646 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 01:17:22.310 [SpringApplicationShutdownHook] INFO  com.sky.websocket.WebSocketServer - 客户端c0g3yvnaa54与服务端断开连接
+
+2026-01-17 01:17:22.445 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-01-17 01:17:22.447 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

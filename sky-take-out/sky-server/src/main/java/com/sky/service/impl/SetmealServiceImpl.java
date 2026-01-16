@@ -11,8 +11,6 @@ import com.sky.entity.Setmeal;
 import com.sky.entity.SetmealDish;
 import com.sky.exception.DeletionNotAllowedException;
 import com.sky.exception.SetmealEnableFailedException;
-import com.sky.mapper.DishMapper;
-import com.sky.mapper.SetmealDishMapper;
 import com.sky.mapper.SetmealMapper;
 import com.sky.result.PageResult;
 import com.sky.service.DishService;
@@ -160,6 +158,15 @@ public class SetmealServiceImpl implements SetmealService {
     public Setmeal getById(Long setmealId) {
         Setmeal setmeal = setmealMapper.selectById(setmealId);
         return setmeal;
+    }
+
+
+    // 统计起售和停售的套餐数量
+    @Override
+    public Integer countByStatus(Integer status) {
+        LambdaQueryWrapper<Setmeal> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Setmeal::getStatus,status);
+        return Math.toIntExact(setmealMapper.selectCount(lqw));
     }
 
 }

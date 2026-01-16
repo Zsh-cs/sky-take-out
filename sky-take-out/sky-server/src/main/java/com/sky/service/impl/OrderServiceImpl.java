@@ -416,7 +416,7 @@ public class OrderServiceImpl implements OrderService {
 
     // 根据日期统计当天营业额
     @Override
-    public BigDecimal countTurnoverByDate(LocalDate date) {
+    public Double countTurnoverByDate(LocalDate date) {
         LocalDateTime startOfDay = LocalDateTime.of(date, LocalTime.MIN);
         LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
 
@@ -426,15 +426,14 @@ public class OrderServiceImpl implements OrderService {
         // 直接在select中使用SQL的SUM聚合函数
         qw.select("sum(amount) as turnover");
 
-        List<Object> resultList = orderMapper.selectObjs(qw);
-        Object result = resultList.get(0);
+        List<BigDecimal> resultList = orderMapper.selectObjs(qw);
+        BigDecimal result = resultList.get(0);
         // 如果当天没有任何已完成订单，就返回0
         if (result == null) {
-            return BigDecimal.ZERO;
+            return 0.0;
         } else {
-            return (BigDecimal) result;
+            return result.doubleValue();
         }
-
     }
 
 
@@ -460,5 +459,12 @@ public class OrderServiceImpl implements OrderService {
         LambdaQueryWrapper<Order> lqw=new LambdaQueryWrapper<>();
         lqw.between(Order::getOrderTime,startOfDay,endOfDay);
         return Math.toIntExact(orderMapper.selectCount(lqw));
+    }
+
+
+    // 统计全部订单数量
+    @Override
+    public Integer countAllOrders() {
+        return Math.toIntExact(orderMapper.selectCount(null));
     }
 }

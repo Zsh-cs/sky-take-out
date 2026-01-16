@@ -84,8 +84,7 @@ public class AddressBookServiceImpl implements AddressBookService {
     public Address getDefault() {
         LambdaQueryWrapper<Address> lqw=new LambdaQueryWrapper<>();
         lqw.eq(Address::getIsDefault,DefaultConstant.DEFAULT);
-        Address address = addressBookMapper.selectOne(lqw);
-        return address;
+        return addressBookMapper.selectOne(lqw);
     }
 
 

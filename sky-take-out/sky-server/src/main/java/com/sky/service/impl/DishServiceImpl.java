@@ -216,4 +216,13 @@ public class DishServiceImpl implements DishService {
         return count;
     }
 
+
+    // 统计起售和停售的菜品数量
+    @Override
+    public Integer countByStatus(Integer status) {
+        LambdaQueryWrapper<Dish> lqw=new LambdaQueryWrapper<>();
+        lqw.eq(Dish::getStatus,status);
+        return Math.toIntExact(dishMapper.selectCount(lqw));
+    }
+
 }

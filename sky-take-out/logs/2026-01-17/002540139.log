@@ -1,0 +1,83 @@
+2026-01-17 00:25:40.238 [main] INFO  com.sky.SkyApplication - Starting SkyApplication using Java 17.0.12 on Zsh with PID 4720 (D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out\sky-server\target\classes started by asus in D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out)
+2026-01-17 00:25:40.239 [main] INFO  com.sky.SkyApplication - The following 1 profile is active: "dev"
+2026-01-17 00:25:40.993 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-17 00:25:40.996 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-17 00:25:41.027 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+2026-01-17 00:25:41.712 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-01-17 00:25:41.713 [main] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2026-01-17 00:25:41.713 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2026-01-17 00:25:41.713 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2026-01-17 00:25:41.717 [main] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2026-01-17 00:25:41.725 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-17 00:25:41.725 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2026-01-17 00:25:41.838 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-17 00:25:41.839 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1560 ms
+2026-01-17 00:25:41.909 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-01-17 00:25:42.020 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-01-17 00:25:42.068 [main] INFO  com.sky.config.MyBatisPlusConfig - 开始注册MyBatis-Plus的拦截器...
+2026-01-17 00:25:42.198 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.CategoryMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 00:25:42.253 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.DishMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 00:25:42.272 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.EmployeeMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 00:25:42.317 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.SetmealMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 00:25:42.480 [main] INFO  com.sky.config.AliyunOssConfig - 开始创建阿里云OSS文件上传工具对象...
+2026-01-17 00:25:42.656 [main] INFO  com.sky.config.RedisConfig - 开始创建Redis模板对象...
+2026-01-17 00:25:43.007 [main] INFO  com.sky.config.WebMvcConfig - 开始注册自定义拦截器...
+2026-01-17 00:25:43.084 [main] INFO  com.sky.config.WebMvcConfig - 准备生成管理端接口文档...
+2026-01-17 00:25:43.088 [main] INFO  com.sky.config.WebMvcConfig - 准备生成用户端接口文档...
+2026-01-17 00:25:43.119 [main] INFO  com.sky.config.WebMvcConfig - 扩展消息转换器...
+2026-01-17 00:25:43.123 [main] INFO  com.sky.config.WebMvcConfig - 开始设置静态资源映射...
+2026-01-17 00:25:43.545 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2026-01-17 00:25:43.936 [main] INFO  com.sky.SkyApplication - Started SkyApplication in 4.107 seconds (JVM running for 5.014)
+2026-01-17 00:25:43.938 [main] INFO  com.sky.SkyApplication - server starts ...
+2026-01-17 00:25:48.488 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-17 00:25:48.489 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-17 00:25:48.490 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-01-17 00:25:48.505 [http-nio-8080-exec-1] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5Mjk5NTk3fQ.lC_KRGpvrV0yvjhvrTQer_gukpnDZgL12UYRux_jliQ
+2026-01-17 00:25:48.505 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5Mjk5NTk3fQ.lC_KRGpvrV0yvjhvrTQer_gukpnDZgL12UYRux_jliQ
+2026-01-17 00:25:48.557 [http-nio-8080-exec-2] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 00:25:48.557 [http-nio-8080-exec-1] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 00:25:48.574 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5Mjk5NTk3fQ.lC_KRGpvrV0yvjhvrTQer_gukpnDZgL12UYRux_jliQ
+2026-01-17 00:25:48.575 [http-nio-8080-exec-3] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 00:25:48.581 [http-nio-8080-exec-1] INFO  com.sky.controller.admin.OrderController - 订单分页查询，参数为：OrderPageQueryDTO(page=1, pageSize=10, number=null, phone=null, status=2, beginTime=null, endTime=null, userId=null)
+
+2026-01-17 00:26:35.879 [scheduling-1] INFO  com.sky.task.OrderTask - 每分钟定时处理超时未付款的订单：2026-01-17T00:26:35.879506500
+2026-01-17 00:26:35.888 [http-nio-8080-exec-6] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /admin/workspace/overviewDishes
+2026-01-17 00:26:35.888 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /admin/workspace/overviewSetmeals
+2026-01-17 00:26:35.888 [http-nio-8080-exec-5] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /admin/workspace/overviewOrders
+2026-01-17 00:26:35.936 [http-nio-8080-exec-7] INFO  com.sky.websocket.WebSocketServer - 客户端rczvovslxy与服务端建立连接
+
+2026-01-17 00:26:35.945 [http-nio-8080-exec-7] INFO  com.sky.websocket.WebSocketServer - 客户端rczvovslxy与服务端断开连接
+
+2026-01-17 00:26:36.097 [http-nio-8080-exec-1] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM orders WHERE status = ?
+2026-01-17 00:26:36.097 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==>  Preparing: SELECT id,number,status,user_id,address_book_id,order_time,checkout_time,pay_method,pay_status,amount,remark,user_name,phone,address,consignee,cancel_reason,rejection_reason,cancel_time,estimated_delivery_time,delivery_status,delivery_time,pack_amount,tableware_number,tableware_status FROM orders WHERE (status = ? AND order_time < ?)
+2026-01-17 00:26:36.097 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==>  Preparing: SELECT sum(amount) as turnover FROM orders WHERE (status = ? AND delivery_time BETWEEN ? AND ?)
+2026-01-17 00:26:36.121 [http-nio-8080-exec-1] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - ==> Parameters: 2(Integer)
+2026-01-17 00:26:36.121 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==> Parameters: 1(Integer), 2026-01-17T00:23:35.906298900(LocalDateTime)
+2026-01-17 00:26:36.121 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectObjs - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 00:26:36.139 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - <==      Total: 0
+2026-01-17 00:26:36.140 [http-nio-8080-exec-1] DEBUG com.sky.mapper.OrderMapper.pageQuery_mpCount - <==      Total: 1
+2026-01-17 00:26:36.140 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectObjs - <==      Total: 1
+2026-01-17 00:26:44.414 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (status = ? AND order_time BETWEEN ? AND ?)
+2026-01-17 00:26:44.417 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 5(Integer), 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 00:26:44.420 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 00:26:45.821 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM orders WHERE (order_time BETWEEN ? AND ?)
+2026-01-17 00:26:45.823 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 00:26:45.825 [http-nio-8080-exec-3] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
+2026-01-17 00:26:57.051 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenInterceptor - jwt校验: eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjoxNzY5Mjk5NTk3fQ.lC_KRGpvrV0yvjhvrTQer_gukpnDZgL12UYRux_jliQ
+2026-01-17 00:26:57.052 [http-nio-8080-exec-8] INFO  com.sky.interceptor.JwtTokenAdminInterceptor - id=1的员工登入苍穹外卖管理端
+
+2026-01-17 00:26:57.056 [http-nio-8080-exec-3] DEBUG com.sky.mapper.UserMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM user WHERE (create_time BETWEEN ? AND ?)
+2026-01-17 00:26:57.058 [http-nio-8080-exec-3] DEBUG com.sky.mapper.UserMapper.selectCount - ==> Parameters: 2026-01-17T00:00(LocalDateTime), 2026-01-17T23:59:59.999999999(LocalDateTime)
+2026-01-17 00:26:57.060 [http-nio-8080-exec-3] DEBUG com.sky.mapper.UserMapper.selectCount - <==      Total: 1
+2026-01-17 00:27:00.568 [scheduling-1] INFO  com.sky.task.OrderTask - 每分钟定时处理超时未付款的订单：2026-01-17T00:27:00.568917400
+2026-01-17 00:27:07.465 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==>  Preparing: SELECT id,number,status,user_id,address_book_id,order_time,checkout_time,pay_method,pay_status,amount,remark,user_name,phone,address,consignee,cancel_reason,rejection_reason,cancel_time,estimated_delivery_time,delivery_status,delivery_time,pack_amount,tableware_number,tableware_status FROM orders WHERE (status = ? AND order_time < ?)
+2026-01-17 00:27:07.467 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - ==> Parameters: 1(Integer), 2026-01-17T00:24:00.570919(LocalDateTime)
+2026-01-17 00:27:09.734 [scheduling-1] DEBUG com.sky.mapper.OrderMapper.selectList - <==      Total: 0
+2026-01-17 00:27:09.735 [http-nio-8080-exec-3] INFO  com.sky.controller.admin.WorkspaceController - 查询今日运营数据：BusinessDataVO(turnover=0.0, validOrderCount=0, orderCompletionRate=NaN, unitPrice=NaN, newUsers=0)
+2026-01-17 00:27:09.808 [http-nio-8080-exec-2] INFO  com.sky.controller.admin.ShopController - 管理端获取店铺营业状态为：营业中
+2026-01-17 00:27:09.808 [http-nio-8080-exec-8] INFO  com.sky.controller.admin.ShopController - 管理端获取店铺营业状态为：营业中
+2026-01-17 00:27:10.054 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-01-17 00:27:10.065 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

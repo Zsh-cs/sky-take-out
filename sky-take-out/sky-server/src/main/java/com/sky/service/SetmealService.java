@@ -36,4 +36,7 @@ public interface SetmealService {
 
     // 根据id查询套餐
     Setmeal getById(Long setmealId);
+
+    // 统计起售和停售的套餐数量
+    Integer countByStatus(Integer enable);
 }
