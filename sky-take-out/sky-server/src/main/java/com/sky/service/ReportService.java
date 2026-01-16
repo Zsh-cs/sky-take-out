@@ -1,5 +1,6 @@
 package com.sky.service;
 
+import com.sky.vo.SalesTop10ReportVO;
 import com.sky.vo.TurnoverReportVO;
 import com.sky.vo.UserReportVO;
 import com.sky.vo.order.OrderReportVO;
@@ -16,4 +17,8 @@ public interface ReportService {
 
     // 订单统计：有效订单是指已完成订单
     OrderReportVO countOrders(LocalDate begin, LocalDate end);
+
+
+    // 获取销量TOP10的商品
+    SalesTop10ReportVO getTop10Sales(LocalDate begin, LocalDate end);
 }

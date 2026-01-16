@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.OrderDetailMapper">
+
+    <!--获取销量TOP10的商品-->
+    <select id="getTop10Sales" resultType="com.sky.dto.GoodsSalesDTO">
+        # Caution: 此处sum(od.number)的别名必须是number，否则无法封装到GoodsSalesDTO中
+        select od.name, sum(od.number) as number
+        from order_detail od, orders o
+        where od.order_id=o.id and o.status=5 and o.order_time between #{begin} and #{end}
+        group by od.name
+        order by number desc
+        limit 10
+    </select>
+
+</mapper>

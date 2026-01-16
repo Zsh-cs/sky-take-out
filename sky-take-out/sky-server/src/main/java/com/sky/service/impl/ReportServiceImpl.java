@@ -1,8 +1,11 @@
 package com.sky.service.impl;
 
+import com.sky.dto.GoodsSalesDTO;
+import com.sky.service.OrderDetailService;
 import com.sky.service.OrderService;
 import com.sky.service.ReportService;
 import com.sky.service.UserService;
+import com.sky.vo.SalesTop10ReportVO;
 import com.sky.vo.TurnoverReportVO;
 import com.sky.vo.UserReportVO;
 import com.sky.vo.order.OrderReportVO;
@@ -23,6 +26,8 @@ public class ReportServiceImpl implements ReportService {
     private OrderService orderService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderDetailService orderDetailService;
 
     // 营业额统计：营业额是指已完成的所有订单实收金额的总和
     @Override
@@ -50,7 +55,6 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public UserReportVO countUsers(LocalDate begin, LocalDate end) {
         List<LocalDate> dateList = getDateList(begin, end);
-        String dateListStr = StringUtils.join(dateList, ",");
 
         List<Integer> newUserList=new ArrayList<>();
         List<Integer> totalUserList=new ArrayList<>();
@@ -58,13 +62,11 @@ public class ReportServiceImpl implements ReportService {
             newUserList.add(userService.countNewUsersByDate(date));
             totalUserList.add(userService.countTotalUsersByDate(date));
         }
-        String newUserListStr = StringUtils.join(newUserList, ",");
-        String totalUserListStr = StringUtils.join(totalUserList, ",");
 
         return UserReportVO.builder()
-                .dateList(dateListStr)
-                .newUserList(newUserListStr)
-                .totalUserList(totalUserListStr)
+                .dateList(StringUtils.join(dateList, ","))
+                .newUserList(StringUtils.join(newUserList, ","))
+                .totalUserList(StringUtils.join(totalUserList, ","))
                 .build();
     }
 
@@ -73,7 +75,6 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public OrderReportVO countOrders(LocalDate begin, LocalDate end) {
         List<LocalDate> dateList = getDateList(begin, end);
-        String dateListStr = StringUtils.join(dateList, ",");
 
         List<Integer> validOrderList=new ArrayList<>();
         List<Integer> orderList=new ArrayList<>();
@@ -89,12 +90,35 @@ public class ReportServiceImpl implements ReportService {
         }
 
         return OrderReportVO.builder()
-                .dateList(dateListStr)
+                .dateList(StringUtils.join(dateList, ","))
                 .validOrderCountList(StringUtils.join(validOrderList, ","))
                 .orderCountList(StringUtils.join(orderList,","))
                 .validOrderCount(validOrderCount)
                 .totalOrderCount(totalOrderCount)
                 .orderCompletionRate((double)validOrderCount/totalOrderCount)
+                .build();
+    }
+
+
+    /**
+     * 获取销量TOP10的商品
+     * 必须是已完成的订单！
+     */
+    @Override
+    public SalesTop10ReportVO getTop10Sales(LocalDate begin, LocalDate end) {
+
+        List<GoodsSalesDTO> top10Sales = orderDetailService.getTop10Sales(begin, end);
+        List<String> nameList=new ArrayList<>();
+        List<Integer> numberList=new ArrayList<>();
+
+        for (GoodsSalesDTO sale : top10Sales) {
+            nameList.add(sale.getName());
+            numberList.add(sale.getNumber());
+        }
+
+        return SalesTop10ReportVO.builder()
+                .nameList(StringUtils.join(nameList,","))
+                .numberList(StringUtils.join(numberList,","))
                 .build();
     }
 

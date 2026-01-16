@@ -1,13 +1,16 @@
 package com.sky.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.sky.dto.GoodsSalesDTO;
 import com.sky.entity.OrderDetail;
 import com.sky.mapper.OrderDetailMapper;
 import com.sky.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,15 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         }
 
         return String.join("",strs);
+    }
+
+
+    // 获取销量TOP10的商品
+    @Override
+    public List<GoodsSalesDTO> getTop10Sales(LocalDate begin, LocalDate end) {
+        LocalDateTime beginDateTime=LocalDateTime.of(begin, LocalTime.MIN);
+        LocalDateTime endDateTime=LocalDateTime.of(end, LocalTime.MAX);
+        return orderDetailMapper.getTop10Sales(beginDateTime, endDateTime);
     }
 
 
