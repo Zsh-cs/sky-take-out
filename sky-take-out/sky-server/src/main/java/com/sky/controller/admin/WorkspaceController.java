@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 /**
  * 工作台模块
  */
@@ -30,7 +32,7 @@ public class WorkspaceController {
     @GetMapping("/businessData")
     @ApiOperation("查询今日运营数据")
     public Result<BusinessDataVO> getBusinessData(){
-        BusinessDataVO businessDataVO=workspaceService.getBusinessData();
+        BusinessDataVO businessDataVO=workspaceService.getBusinessDataByDate(LocalDate.now());
         log.info("查询今日运营数据：{}",businessDataVO);
         return Result.success(businessDataVO);
     }

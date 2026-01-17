@@ -1,0 +1,48 @@
+2026-01-17 17:04:42.943 [main] INFO  com.sky.SkyApplication - Starting SkyApplication using Java 17.0.12 on Zsh with PID 15908 (D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out\sky-server\target\classes started by asus in D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out)
+2026-01-17 17:04:42.945 [main] INFO  com.sky.SkyApplication - The following 1 profile is active: "dev"
+2026-01-17 17:04:43.685 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-17 17:04:43.688 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-17 17:04:43.716 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2026-01-17 17:04:44.441 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-01-17 17:04:44.442 [main] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2026-01-17 17:04:44.442 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2026-01-17 17:04:44.442 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2026-01-17 17:04:44.455 [main] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2026-01-17 17:04:44.464 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-17 17:04:44.465 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2026-01-17 17:04:44.579 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-17 17:04:44.580 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1600 ms
+2026-01-17 17:04:44.650 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-01-17 17:04:44.778 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-01-17 17:04:44.824 [main] INFO  com.sky.config.MyBatisPlusConfig - 开始注册MyBatis-Plus的拦截器...
+2026-01-17 17:04:44.969 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.CategoryMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 17:04:45.020 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.DishMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 17:04:45.035 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.EmployeeMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 17:04:45.075 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.SetmealMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 17:04:45.227 [main] INFO  com.sky.config.AliyunOssConfig - 开始创建阿里云OSS文件上传工具对象...
+2026-01-17 17:04:45.424 [main] INFO  com.sky.config.RedisConfig - 开始创建Redis模板对象...
+2026-01-17 17:04:45.577 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'reportController': Unsatisfied dependency expressed through field 'reportService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'reportServiceImpl': Unsatisfied dependency expressed through field 'workspaceService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'workspaceServiceImpl': Unsatisfied dependency expressed through field 'dateUtil'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.sky.utils.DateUtil' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2026-01-17 17:04:45.591 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-01-17 17:04:45.592 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2026-01-17 17:04:45.594 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2026-01-17 17:04:45.610 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-01-17 17:04:45.626 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field dateUtil in com.sky.service.impl.WorkspaceServiceImpl required a bean of type 'com.sky.utils.DateUtil' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.sky.utils.DateUtil' in your configuration.
+

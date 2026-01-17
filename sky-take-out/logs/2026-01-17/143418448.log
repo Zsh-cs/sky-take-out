@@ -351,3 +351,7 @@
 2026-01-17 14:36:01.826 [http-nio-8080-exec-4] DEBUG com.sky.mapper.OrderMapper.selectCount - <==      Total: 1
 2026-01-17 14:36:02.119 [http-nio-8080-exec-5] INFO  com.sky.websocket.WebSocketServer - 客户端uw0ptk20ss与服务端建立连接
 
+2026-01-17 14:36:41.565 [SpringApplicationShutdownHook] INFO  com.sky.websocket.WebSocketServer - 客户端uw0ptk20ss与服务端断开连接
+
+2026-01-17 14:36:41.702 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-01-17 14:36:41.707 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

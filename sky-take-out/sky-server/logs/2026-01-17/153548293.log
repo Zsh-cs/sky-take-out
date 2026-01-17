@@ -1,0 +1,32 @@
+2026-01-17 15:35:48.373 [main] INFO  com.sky.POITest - Starting POITest using Java 17.0.12 on Zsh with PID 21120 (started by asus in D:\ZSH-ComputerScience\CangQiong\sky-take-out\sky-take-out\sky-server)
+2026-01-17 15:35:48.374 [main] INFO  com.sky.POITest - The following 1 profile is active: "dev"
+2026-01-17 15:35:49.174 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-17 15:35:49.177 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-17 15:35:49.204 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2026-01-17 15:35:50.224 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 0 (http)
+2026-01-17 15:35:50.225 [main] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2026-01-17 15:35:50.225 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2026-01-17 15:35:50.226 [main] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2026-01-17 15:35:50.230 [main] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2026-01-17 15:35:50.240 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-17 15:35:50.240 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2026-01-17 15:35:50.386 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-17 15:35:50.386 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1988 ms
+2026-01-17 15:35:50.521 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-01-17 15:35:50.683 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-01-17 15:35:50.744 [main] INFO  com.sky.config.MyBatisPlusConfig - 开始注册MyBatis-Plus的拦截器...
+2026-01-17 15:35:50.908 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.CategoryMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 15:35:50.972 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.DishMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 15:35:50.998 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.EmployeeMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 15:35:51.070 [main] WARN  c.b.mybatisplus.core.injector.methods.Update - [com.sky.mapper.SetmealMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2026-01-17 15:35:51.278 [main] INFO  com.sky.config.AliyunOssConfig - 开始创建阿里云OSS文件上传工具对象...
+2026-01-17 15:35:51.490 [main] INFO  com.sky.config.RedisConfig - 开始创建Redis模板对象...
+2026-01-17 15:35:52.034 [main] INFO  com.sky.config.WebMvcConfig - 开始注册自定义拦截器...
+2026-01-17 15:35:52.191 [main] INFO  com.sky.config.WebMvcConfig - 准备生成管理端接口文档...
+2026-01-17 15:35:52.199 [main] INFO  com.sky.config.WebMvcConfig - 准备生成用户端接口文档...
+2026-01-17 15:35:52.262 [main] INFO  com.sky.config.WebMvcConfig - 扩展消息转换器...
+2026-01-17 15:35:52.273 [main] INFO  com.sky.config.WebMvcConfig - 开始设置静态资源映射...
+2026-01-17 15:35:53.130 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 53684 (http) with context path ''
+2026-01-17 15:35:53.674 [main] INFO  com.sky.POITest - Started POITest in 5.676 seconds (JVM running for 6.506)
+2026-01-17 15:35:54.381 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-01-17 15:35:54.382 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.sky.constant.OrderStatus;
 import com.sky.constant.StatusConstant;
 import com.sky.service.*;
+import com.sky.utils.DateUtil;
 import com.sky.vo.BusinessDataVO;
 import com.sky.vo.DishOverViewVO;
 import com.sky.vo.SetmealOverViewVO;
@@ -10,8 +11,8 @@ import com.sky.vo.order.OrderOverViewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class WorkspaceServiceImpl implements WorkspaceService {
@@ -25,14 +26,23 @@ public class WorkspaceServiceImpl implements WorkspaceService {
     @Autowired
     private SetmealService setmealService;
 
-    // 查询今日运营数据
+    // 查询指定日期区间内的运营数据
     @Override
-    public BusinessDataVO getBusinessData() {
+    public BusinessDataVO getBusinessDataDuringPeriod(LocalDate begin, LocalDate end) {
 
-        Double turnover = orderService.countTurnoverByDate(LocalDate.now());
-        Integer validOrderCount = orderService.countValidOrderByDate(LocalDate.now());
-        Integer totalOrderCount = orderService.countOrderByDate(LocalDate.now());
-        Integer newUsers = userService.countNewUsersByDate(LocalDate.now());
+        Double turnover = 0.0;
+        Integer validOrderCount = 0;
+        Integer totalOrderCount = 0;
+        Integer newUsers = 0;
+
+        List<LocalDate> dateList = DateUtil.getDateList(begin, end);
+        for (LocalDate date : dateList) {
+
+            turnover += orderService.countTurnoverByDate(date);
+            validOrderCount += orderService.countValidOrderByDate(date);
+            totalOrderCount += orderService.countOrderByDate(date);
+            newUsers += userService.countNewUsersByDate(date);
+        }
 
         return BusinessDataVO.builder()
                 .turnover(turnover)
@@ -41,6 +51,13 @@ public class WorkspaceServiceImpl implements WorkspaceService {
                 .unitPrice(turnover / validOrderCount)
                 .newUsers(newUsers)
                 .build();
+    }
+
+
+    // 查询某日的运营数据
+    @Override
+    public BusinessDataVO getBusinessDataByDate(LocalDate date) {
+        return getBusinessDataDuringPeriod(date,date);
     }
 
 
@@ -82,4 +99,5 @@ public class WorkspaceServiceImpl implements WorkspaceService {
                 .allOrders(orderService.countAllOrders())
                 .build();
     }
+
 }

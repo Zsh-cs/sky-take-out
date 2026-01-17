@@ -5,7 +5,9 @@ import com.sky.vo.TurnoverReportVO;
 import com.sky.vo.UserReportVO;
 import com.sky.vo.order.OrderReportVO;
 
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
+import java.util.List;
 
 public interface ReportService {
 
@@ -18,7 +20,10 @@ public interface ReportService {
     // 订单统计：有效订单是指已完成订单
     OrderReportVO countOrders(LocalDate begin, LocalDate end);
 
-
     // 获取销量TOP10的商品
     SalesTop10ReportVO getTop10Sales(LocalDate begin, LocalDate end);
+
+    // 运营数据导出为Excel报表
+    void export(HttpServletResponse response);
+
 }
