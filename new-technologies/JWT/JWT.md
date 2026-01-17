@@ -37,7 +37,7 @@ JWT由三部分组成，用`.`拼接起来：
   }
   ```
 
-+ Payload（载荷：存放有效信息，一般情况下采用`Base64`编码）
++ Payload（载荷：也称为声明信息，包含了一些有关实体的信息以及其他元数据，一般情况下采用`Base64`编码）
 
   > [!Warning]
   >
@@ -91,11 +91,14 @@ sky-server:
         	JwtTokenInterceptor
         	JwtTokenAdminInterceptor
         	JwtTokenUserInterceptor
+    src/main/resources: application.yml
 ```
 
+<img src="images/JWT.png" alt="JWT" style="zoom:100%;" />
 
 
-### 1.导入JWT的依赖坐标
+
+### 1.导入JWT的`Maven`依赖坐标
 
 #### 1.1 `sky-take-out: pom.xml`
 
@@ -244,10 +247,390 @@ sky-server:
             <artifactId>jaxb-api</artifactId>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 ```
 
 
 
+---
 
+
+
+### 2.编写JWT工具类`JwtUtil`
+
+```java
+/**
+ * JWT工具类
+ */
+public class JwtUtil {
+
+    /**
+     * 生成jwt
+     * 使用HS256算法, 私匙使用固定秘钥
+     *
+     * @param secretKey jwt秘钥
+     * @param ttlMillis jwt过期时间(毫秒)
+     * @param claims    设置的信息
+     */
+    public static String createJwt(String secretKey, long ttlMillis, Map<String, Object> claims) {
+
+        // 指定签名的时候使用的签名算法是HS256
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+
+        // 生成jwt过期的时间点
+        long expMillis = System.currentTimeMillis() + ttlMillis;
+        Date exp = new Date(expMillis);
+
+        // 设置jwt的body
+        JwtBuilder builder = Jwts.builder()
+                // 如果有私有声明，一定要先设置这个自己创建的私有声明，这个是给builder的claims赋值，
+                // 一旦写在标准声明赋值之后，就会覆盖掉那些标准声明
+                .setClaims(claims)
+                // 设置签名使用的签名算法和秘钥
+                .signWith(signatureAlgorithm, secretKey.getBytes(StandardCharsets.UTF_8))
+                // 设置过期时间
+                .setExpiration(exp);
+
+        return builder.compact();
+    }
+
+    /**
+     * token解密
+     *
+     * @param secretKey jwt秘钥：此秘钥一定要保存在服务端，不能泄露出去，否则sign就可以被伪造，如果对接多个客户端建议改造成多个
+     * @param token     加密后的token
+     * @return
+     */
+    public static Claims parseJwt(String secretKey, String token) {
+        // 得到DefaultJwtParser
+        Claims claims = Jwts.parser()
+                // 设置签名的秘钥
+                .setSigningKey(secretKey.getBytes(StandardCharsets.UTF_8))
+                // 设置需要解析的jwt
+                .parseClaimsJws(token).getBody();
+        return claims;
+    }
+
+}
+```
+
+
+
+---
+
+
+
+### 3.编写JWT的Claims相关常量类`JwtClaimsConstant`
+
+```java
+/**
+ * JWT的Claims相关常量类
+ */
+public class JwtClaimsConstant {
+    public static final String EMP_ID = "empId";
+    public static final String USER_ID = "userId";
+}
+```
+
+
+
+---
+
+
+
+### 4.配置JWT相关属性类
+
+#### 4.1 `JwtProperties`
+
+```java
+@Component
+@ConfigurationProperties(prefix = "sky.jwt")
+@Data
+public class JwtProperties {
+
+    // 管理端员工生成jwt令牌相关配置
+    private String adminSecretKey;
+    private long adminTtl;
+    private String adminTokenName;
+
+    // 用户端微信用户生成jwt令牌相关配置
+    private String userSecretKey;
+    private long userTtl;
+    private String userTokenName;
+
+}
+```
+
+
+
+#### 4.2 `application.yml`
+
+```yml
+sky:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: cszsh
+    #Caution: 设置jwt过期时间，尽量设得长一点，防止过没多久运行项目令牌就过期报401！
+    #Caution: 等项目上线后再改回来
+    admin-ttl: 720000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: itzsh
+    user-ttl: 720000000
+    user-token-name: authentication
+```
+
+
+
+---
+
+
+
+### 5.自定义拦截器
+
+#### 5.1 `JwtTokenInterceptor`
+
+```java
+/**
+ * jwt令牌校验的拦截器抽象父类（模板方法设计模式）
+ */
+@Slf4j
+public abstract class JwtTokenInterceptor implements HandlerInterceptor {
+
+    @Autowired
+    protected JwtProperties jwtProperties;
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // 判断当前拦截到的是Controller的方法还是其他资源
+        if (!(handler instanceof HandlerMethod)) {
+            // 当前拦截到的不是动态方法，直接放行
+            return true;
+        }
+
+        // 1.从请求头中获取令牌
+        String token = getAndTokenFromHeader(request);
+
+        // 2.校验令牌
+        try {
+            checkToken(token);
+            // 3.通过，放行
+            return true;
+        } catch (Exception e) {
+            // 4.不通过，响应401状态码
+            response.setStatus(401);
+            return false;
+        }
+    }
+
+    // 钩子方法，由子类重写
+    protected abstract String getAndTokenFromHeader(HttpServletRequest request);
+    protected abstract void checkToken(String token);
+}
+```
+
+
+
+#### 5.2 `JwtTokenAdminInterceptor`
+
+```java
+/**
+ * 管理端jwt令牌校验的拦截器
+ */
+@Component
+@Slf4j
+public class JwtTokenAdminInterceptor extends JwtTokenInterceptor {
+
+    // 从请求头中获取管理员令牌
+    @Override
+    protected String getAndTokenFromHeader(HttpServletRequest request) {
+        return request.getHeader(jwtProperties.getAdminTokenName());
+    }
+
+    // 校验管理员令牌，并将empId存入ThreadLocal中
+    @Override
+    protected void checkToken(String token) {
+        Claims claims = JwtUtil.parseJwt(jwtProperties.getAdminSecretKey(), token);
+        Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
+        BaseContext.setCurrentId(empId);
+    }
+}
+```
+
+
+
+#### 5.3 `JwtTokenUserInterceptor`
+
+```java
+/**
+ * 用户端jwt令牌校验的拦截器
+ */
+@Component
+@Slf4j
+public class JwtTokenUserInterceptor extends JwtTokenInterceptor {
+
+    // 从请求头中获取用户令牌
+    @Override
+    protected String getAndTokenFromHeader(HttpServletRequest request) {
+        return request.getHeader(jwtProperties.getUserTokenName());
+    }
+
+    // 校验用户令牌，并将userId存入ThreadLocal中
+    @Override
+    protected void checkToken(String token) {
+        Claims claims = JwtUtil.parseJwt(jwtProperties.getUserSecretKey(), token);
+        Long userId = Long.valueOf(claims.get(JwtClaimsConstant.USER_ID).toString());
+        // BaseContext内部使用了ThreadLocal技术，它是线程隔离的
+        // 不会与BaseContext.setCurrentId(empId);发生冲突
+        BaseContext.setCurrentId(userId);
+    }
+}
+```
+
+
+
+---
+
+
+
+### 6.在`WebMvcConfig`中将自定义拦截器添加到拦截器类中
+
+```java
+/**
+ * 配置类，注册web层相关组件
+ */
+@Configuration
+@Slf4j
+public class WebMvcConfig extends WebMvcConfigurationSupport {
+
+    @Autowired
+    private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
+    @Autowired
+    private JwtTokenUserInterceptor jwtTokenUserInterceptor;
+    
+    // 设置静态资源映射
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        log.info("开始设置静态资源映射...");
+        registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+    
+
+    // 注册自定义拦截器
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        log.info("开始注册自定义拦截器...");
+        // 管理端：除了登录请求，其他请求必须进行jwt令牌校验
+        registry.addInterceptor(jwtTokenAdminInterceptor)
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/employee/login");
+        // 用户端：除了登录和查看店铺营业状态这两个请求，其他请求必须进行jwt令牌校验
+        registry.addInterceptor(jwtTokenUserInterceptor)
+                .addPathPatterns("/user/**")
+                .excludePathPatterns(new String[]{"/user/user/login", "/user/shop/status"});
+    }  
+}
+```
+
+
+
+---
+
+
+
+### 7.编写登录相关接口
+
+#### 7.1 `EmployeeController`
+
+```java
+/**
+ * 员工管理模块
+ */
+@RestController
+@RequestMapping("/admin/employee")
+public class EmployeeController {
+
+    @Autowired
+    private EmployeeService employeeService;
+    @Autowired
+    private JwtProperties jwtProperties;
+
+    // 员工登录
+    @PostMapping("/login")
+    public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
+        
+        Employee employee = employeeService.login(employeeLoginDTO);
+
+        // 登录成功后，生成jwt令牌
+        Map<String, Object> claims = new HashMap<>();
+        claims.put(JwtClaimsConstant.EMP_ID, employee.getId());
+        String token = JwtUtil.createJwt(
+                jwtProperties.getAdminSecretKey(),
+                jwtProperties.getAdminTtl(),
+                claims);
+
+        // 构建EmployeeLoginVO对象
+        EmployeeLoginVO employeeLoginVO = EmployeeLoginVO.builder()
+                .id(employee.getId())
+                .userName(employee.getUsername())
+                .name(employee.getName())
+                .token(token)
+                .build();
+        return Result.success(employeeLoginVO);
+    }
+}
+```
+
+
+
+#### 7.2 `UserController`
+
+```java
+/**
+ * 用户端-用户接口
+ */
+@RestController
+@RequestMapping("/user/user")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private JwtProperties jwtProperties;
+
+    // 微信用户登录
+    @PostMapping("/login")
+    public Result<UserLoginVO> wxLogin(@RequestBody UserLoginDTO userLoginDTO) {
+
+        User user = userService.wxLogin(userLoginDTO);
+
+        // 登录成功后，生成jwt令牌
+        Map<String, Object> claims = new HashMap<>();
+        claims.put(JwtClaimsConstant.USER_ID, user.getId());
+        String token = JwtUtil.createJwt(
+                jwtProperties.getUserSecretKey(),
+                jwtProperties.getUserTtl(),
+                claims
+        );
+
+        // 构建UserLoginVO对象
+        UserLoginVO userLoginVO = UserLoginVO.builder()
+                .id(user.getId())
+                .openid(user.getOpenid())
+                .token(token)
+                .build();
+        return Result.success(userLoginVO);
+    }
+}
+```
 

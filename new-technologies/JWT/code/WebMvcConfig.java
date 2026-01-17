@@ -33,15 +33,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Autowired
     private JwtTokenUserInterceptor jwtTokenUserInterceptor;
 
-    // 设置静态资源映射
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        log.info("开始设置静态资源映射...");
-        registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
-
-
     // 注册自定义拦截器
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
@@ -97,16 +88,25 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     }
 
 
+    // 设置静态资源映射
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        log.info("开始设置静态资源映射...");
+        registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+
     // 扩展SpringMVC消息转换器，统一对日期时间类型进行格式化处理
     @Override
     protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         log.info("扩展消息转换器...");
 
         // 创建一个消息转换器对象
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        MappingJackson2HttpMessageConverter converter=new MappingJackson2HttpMessageConverter();
         // 设置对象转换器，可以将Java对象序列化为json字符串
         converter.setObjectMapper(new JacksonObjectMapper());
         // 将我们设置的对象转换器放入SpringMVC的消息转换器中的第一位置，最优先使用
-        converters.add(0, converter);
+        converters.add(0,converter);
     }
 }

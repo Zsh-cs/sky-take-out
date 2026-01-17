@@ -1,0 +1,57 @@
+@startuml
+'JWT在项目中的应用
+
+class JwtClaimsConstant{
+    + {static} EMP_ID: String
+    + {static} USER_ID: String
+}
+
+class JwtProperties{
+    - adminSecretKey: String
+    - adminTtl: long
+    - adminTokenName: String
+    - userSecretKey: String
+    - userTtl: long
+    - userTokenName: String
+}
+
+class JwtUtil{}
+
+class JwtTokenInterceptor{
+
+}
+JwtTokenInterceptor --> JwtProperties
+JwtTokenInterceptor <|-- JwtTokenAdminInterceptor
+JwtTokenInterceptor <|-- JwtTokenUserInterceptor
+class JwtTokenAdminInterceptor{
+
+}
+class JwtTokenUserInterceptor{
+
+}
+
+class WebMvcConfigurationSupport{}
+WebMvcConfigurationSupport <|-- WebMvcConfig
+class WebMvcConfig{
+    - jwtTokenAdminInterceptor: JwtTokenAdminInterceptor
+    - jwtTokenUserInterceptor: JwtTokenUserInterceptor
+}
+WebMvcConfig --> JwtTokenAdminInterceptor
+WebMvcConfig --> JwtTokenUserInterceptor
+
+
+class EmployeeController{
+    + login()
+}
+EmployeeController --> JwtProperties
+EmployeeController ..> JwtClaimsConstant
+EmployeeController ..> JwtUtil
+
+class UserController{
+    + wxLogin()
+}
+UserController --> JwtProperties
+UserController ..> JwtClaimsConstant
+UserController ..> JwtUtil
+
+@enduml

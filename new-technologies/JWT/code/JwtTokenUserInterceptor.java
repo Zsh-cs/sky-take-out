@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Component
 @Slf4j
-public class JwtTokenUserInterceptor extends JwtTokenInterceptor {
+public class JwtTokenUserInterceptor extends JwtTokenInterceptor{
 
     // 从请求头中获取用户令牌
     @Override
