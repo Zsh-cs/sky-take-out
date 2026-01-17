@@ -8,6 +8,7 @@ import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
+import com.sky.dto.PasswordModifyDTO;
 import com.sky.dto.page.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import com.sky.exception.AccountLockedException;
@@ -74,6 +75,27 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         // 调用持久层方法新增员工
         employeeMapper.save(employee);
+    }
+
+
+    // 修改密码
+    @Override
+    public void modifyPassword(PasswordModifyDTO passwordModifyDTO) {
+        Long empId = passwordModifyDTO.getEmpId();
+        String oldPassword = DigestUtils.md5DigestAsHex(passwordModifyDTO.getOldPassword().getBytes());
+        String newPassword = DigestUtils.md5DigestAsHex(passwordModifyDTO.getNewPassword().getBytes());
+
+        Employee employee = employeeMapper.selectById(empId);
+        // 校验旧密码的正确性
+        String passwordInDB = employee.getPassword();
+        if(!oldPassword.equals(passwordInDB)){
+            throw new PasswordErrorException(MessageConstant.OLD_PASSWORD_ERROR);
+        }
+
+        // 如果旧密码正确，才允许修改密码
+        employee.setPassword(newPassword);
+        employeeMapper.update(employee);
+
     }
 
 

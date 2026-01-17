@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
+import com.sky.dto.PasswordModifyDTO;
 import com.sky.dto.page.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import com.sky.result.PageResult;
@@ -14,6 +15,9 @@ public interface EmployeeService {
     // 新增员工
     void save(EmployeeDTO employeeDTO);
 
+    // 修改密码
+    void modifyPassword(PasswordModifyDTO passwordModifyDTO);
+
     // 员工分页查询
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
@@ -25,4 +29,5 @@ public interface EmployeeService {
 
     // 修改员工信息
     void update(EmployeeDTO employeeDTO);
+
 }
