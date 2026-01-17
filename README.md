@@ -19,6 +19,8 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 
 #### 1.2 Technology Stack
 
++ **Programming Language**: `Java(corretto-17)`
+
 - **User Layer**: `node.js`, `VUE.js`, `ElementUI`, WeChat Mini Program 2.25.4, `Apache ECharts`
 - **Gateway Layer**: `Nginx 1.20.2`
 - **Application Layer**:

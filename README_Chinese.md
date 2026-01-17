@@ -19,6 +19,8 @@
 
 #### 1.2 技术选型
 
++ **编程语言**：`Java(corretto-17)`
+
 + **用户层**：`node.js`、`VUE.js`、`ElementUI`、微信小程序 2.25.4、`Apache ECharts`
 + **网关层**：`Nginx 1.20.2`
 + **应用层**：
