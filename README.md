@@ -47,10 +47,20 @@ Sky-Take-Out is a front-end and back-end separated takeout project  designed for
 ### 2.Pre-launch Preparation Steps
 
 1. Start MySQL and execute `database/sky.sql`.
+
 2. Run the `start-redis-by-docker.bat` script, and then the cmd will start Redis by Docker. **Caution**: Make sure Docker Desktop is installed on your computer and the Redis 6.2.19 image has been pulled. **Caution**: Nginx must be located in a fully English path.
+
 3. Double-click `nginx-1.20.2/nginx.exe` to launch Nginx.
+
 4. Modify the database configuration in `application-dev.yml` and replace it with your own database details, including but not limited to the database name, username and password.
+
 5. Configure two system environment variables: `ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET`, and fill them with the AccessKey ID and secret of your own Alibaba Cloud OSS. Then modify the corresponding Alibaba Cloud OSS configuration items in `application-dev.yml` to match your personal OSS settings.
-6. Modify the corresponding Wechat Mini Program configuration items in `application-dev.yml` to match your personal Wechat Mini Program settings.
-7. Open IntelliJ IDEA and start SkyApplication.
+
+6. Set the read and write permissions of the Alibaba Cloud OSS bucket to public read and disable block public access:
+
+   <img src="images/image-20260118172239763.png" alt="image-20260118172239763" style="zoom:80%;" /><img src="images/image-20260118172640169.png" alt="image-20260118172640169" style="zoom:95%;" />
+
+7. Modify the corresponding Wechat Mini Program configuration items in `application-dev.yml` to match your personal Wechat Mini Program settings.
+
+8. Open IntelliJ IDEA and start SkyApplication.
 

@@ -55,12 +55,22 @@
 ### 2.启动项目的前置步骤
 
 1. 启动MySQL并执行`database/sky.sql`。
+
 2. 运行`start-redis-by-docker.bat`脚本，然后cmd会通过Docker启动Redis。**注意**：确保你的电脑已经安装了Docker Desktop并拉取了Redis 6.2.19。
+
 3. 双击`nginx-1.20.2/nginx.exe`，启动Nginx。**注意**：Nginx必须位于全英文路径下。
+
 4. 修改`application-dev.yml`中的数据库相关配置，替换成你自己的数据库配置信息，包括但不限于数据库名称、用户名和密码。
+
 5. 配置两个系统环境变量`ALIYUN_OSS_ACCESS_KEY_ID`和`ALIYUN_OSS_ACCESS_KEY_SECRET`，填入你自己的阿里云OSS的AccessKey的id和密钥，然后相应地修改`application-dev.yml`中的阿里云OSS，替换成你自己的阿里云OSS配置信息。
-6. 修改`application-dev.yml`中的微信小程序，替换成你自己的微信小程序配置信息。
-7. 进入Intellij IDEA，启动SkyApplication。
+
+6. 将阿里云OSS的bucket的读写权限设置为公共读，并关闭阻止公共访问：
+
+   <img src="images/image-20260118172138755.png" alt="image-20260118172138755" style="zoom:80%;" /><img src="images/image-20260118172455788.png" alt="image-20260118172455788" style="zoom:95%;" />
+
+7. 修改`application-dev.yml`中的微信小程序，替换成你自己的微信小程序配置信息。
+
+8. 进入Intellij IDEA，启动SkyApplication。
 
 
 
