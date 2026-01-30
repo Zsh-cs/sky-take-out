@@ -57,9 +57,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     }
 
 
-    // 通过knife4j生成接口文档
+    //Logic: 注册Swagger文档生成器Docket，通过Knife4j生成接口文档
     // 管理端接口
-    @Bean("adminDocket")
+    @Bean("adminDocket")// 手动指定Bean名称，防止冲突
     public Docket adminDocket() {
         log.info("准备生成管理端接口文档...");
         ApiInfo apiInfo = new ApiInfoBuilder()
