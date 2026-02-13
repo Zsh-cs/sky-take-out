@@ -48,7 +48,7 @@ sky-server:
 		SkyApplication
 		controller:
 			admin: SetmealController
-			u
+			user: SetmealController
 ```
 
 
